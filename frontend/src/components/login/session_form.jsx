@@ -27,7 +27,7 @@ class SessionForm extends React.Component {
         };
 
         this.props.formProcess(user)
-            .then( () => this.props.history.push(`/`));
+            .then( () => this.props.history.push(`/games`));
     }
 
     renderErrors() {
@@ -58,7 +58,8 @@ class SessionForm extends React.Component {
                                 placeholder="what is your username?"
                                 />
                         <br />
-                        <input className="sessionform__input"
+                        <input type="password"
+                                className="sessionform__input"
                                 value={this.state.password}
                                 onChange={this.update('password')}
                                 placeholder="what is your password?"
