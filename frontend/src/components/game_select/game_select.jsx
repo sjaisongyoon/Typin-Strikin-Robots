@@ -1,12 +1,8 @@
 import React from 'react';
-import {withRouter, Link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 
 class GameSelect extends React.Component {
-    constructor(props) {
-        super(props)
-    }
-
 
     render() {
         return (
@@ -15,10 +11,10 @@ class GameSelect extends React.Component {
                     <h2 className="gameselect__message">
                         Select the Mode
                     </h2>
-                    <Link to={`/`} className="gameselect__single">
+                    <Link to={`/single`} className="gameselect__single">
                         Single Play
                     </Link>
-                    <Link to={`/`} className="gameselect__multi">
+                    <Link to={`/multi`} className="gameselect__multi">
                         Multi Play
                     </Link>
                 </div>

@@ -2,7 +2,7 @@ import {connect} from 'react-redux';
 import GameSelect from './game_select';
 
 const mapStateToProps = state => {
-
+    
 }
 
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import {withRouter} from 'react-router-dom';
+import {withRouter, Link} from 'react-router-dom';
 
 
 
@@ -44,9 +44,13 @@ class SessionForm extends React.Component {
 
 
     render () {
+
         return (
             <div className="sessionform">
                 <form onSubmit={this.handleSubmit}>
+                    <h3 className="sessionform__title">{this.props.formType}</h3>
+                    <p className="sessionform__message">{this.props.message}</p>
+                    Please <button className="sessionform__button"><Link to={`/${this.props.otherRoute}`}>{this.props.otherForm}</Link></button>
                     <div className="sessionform__input-container">
                         <input className="sessionform__input"
                                 value={this.state.username}
