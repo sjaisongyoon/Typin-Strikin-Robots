@@ -5,11 +5,12 @@ class MainPage extends React.Component {
 
     render() {
         return (
-            <div>
-                <HeaderContainer />
-                <h1>Typin-Strikin Robots</h1>
-                <footer>
-                </footer>
+            <div className="mainpage__outer">
+                <div className="mainpage__container">
+
+                    <footer>
+                    </footer>
+                </div>
             </div>
         );
     }
