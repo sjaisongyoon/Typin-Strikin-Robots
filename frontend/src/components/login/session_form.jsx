@@ -26,16 +26,16 @@ class SessionForm extends React.Component {
             password: this.state.password
         };
 
-        this.props.formProcess(user)
+        this.props.formProcess({user})
             .then( () => this.props.history.push(`/games`));
     }
 
     renderErrors() {
         return(
             <ul className="loginform__errors">
-                {Object.keys(this.state.errors).map((error, i) => (
+                {Object.keys(this.props.errors).map((error, i) => (
                 <li className="loginform__errors-listitems" key={`error-${i}`}>
-                    {this.state.errors[error]}
+                    {this.props.errors[error]}
                 </li>
                 ))}
             </ul>
@@ -44,9 +44,9 @@ class SessionForm extends React.Component {
 
 
     render () {
-
         return (
             <div className="sessionform">
+
                 <form onSubmit={this.handleSubmit}>
                     <h3 className="sessionform__title">{this.props.formType}</h3>
                     <p className="sessionform__message">{this.props.message}</p>
