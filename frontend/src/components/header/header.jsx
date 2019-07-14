@@ -27,7 +27,8 @@ class Header extends Component {
           </div>
           <div className="header__navbar-container">
             <div className="header__navbar">
-              navbar ...
+              <a href="#" className="header__navbar-btn header__navbar-btn-login">Login</a>
+              <a href="#" className="header__navbar-btn header__navbar-btn-signup">Signup</a>
             </div>
           </div>
         </div>

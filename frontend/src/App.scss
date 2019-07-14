@@ -1,1 +1,8 @@
 @import './stylesheets/header/header.scss';
+@import './stylesheets/mainpage/mainpage.scss';
+@import './stylesheets/gameplay/multi.scss';
+
+.main__container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
