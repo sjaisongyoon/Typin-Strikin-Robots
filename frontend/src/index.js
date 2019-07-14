@@ -6,6 +6,7 @@ import jwt_decode from 'jwt-decode';
 import { setAuthToken } from './util/session_api_util';
 import { logout,signup } from './actions/session_actions';
 // import {signup} from './util/session_api_util';
+import './App.scss';
 
 document.addEventListener('DOMContentLoaded', () => {
     let store;
