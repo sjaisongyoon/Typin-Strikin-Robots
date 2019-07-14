@@ -43,7 +43,17 @@ router.post('/register', (req, res) => {
               if (err) throw err;
               newUser.password = hash;
               newUser.save()
-                .then(user => res.json(user))
+                .then(user => {
+                  const payload = { id: user.id, username: user.username };
+
+                  jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 }, (err, token) => {
+                    res.json({
+                      success: true,
+                      token: "Bearer " + token,
+                      user: payload
+                    });
+                  });
+                })
                 .catch(err => console.log(err));
             })
           })
@@ -73,7 +83,7 @@ router.post('/register', (req, res) => {
         bcrypt.compare(password, user.password)
         .then(isMatch => {
             if (isMatch) {
-            const payload = {id: user.id, name: user.name};
+            const payload = {id: user.id, username: user.username};
 
             jwt.sign(
                 payload,
@@ -82,8 +92,9 @@ router.post('/register', (req, res) => {
                 {expiresIn: 3600},
                 (err, token) => {
                 res.json({
-                    success: true,
-                    token: 'Bearer ' + token
+                  success: true,
+                  token: 'Bearer ' + token,
+                  user: payload
                 });
               });
             } else {
@@ -92,5 +103,25 @@ router.post('/register', (req, res) => {
         })
       })
   })
+
+router.get('/', (req, res) => {
+  User.find()
+    .then(users => {
+      let usersPojo = {};
+      users.forEach( (user) => {
+        let userPojo = {
+          id: user.id,
+          username: user.username,
+          multiplayer_wins: user.multiplayer_wins,
+          multiplayer_losses: user.multiplayer_losses,
+          singleplayer_wpm: user.singleplayer_wpm
+        };
+        usersPojo[user.id] = userPojo
+      })
+      res.json(usersPojo);
+    })
+    .catch(err => res.status(404).json({ nousersfound: 'No users found' }));
+});
+
 
 module.exports = router;
