@@ -2,6 +2,11 @@
 @import './stylesheets/mainpage/mainpage.scss';
 @import './stylesheets/gameplay/multi.scss';
 
+body{
+  font-family: 'Press Start 2P', cursive;
+  font-size: 80%;
+}
+
 .main__container {
   max-width: 1200px;
   margin: 0 auto;
