@@ -5,6 +5,7 @@ import configureStore from './store/store';
 import jwt_decode from 'jwt-decode';
 import { setAuthToken } from './util/session_api_util';
 import { logout,signup } from './actions/session_actions';
+import {fetchUsers} from './actions/user_actions';
 // import {signup} from './util/session_api_util';
 import './App.scss';
 
