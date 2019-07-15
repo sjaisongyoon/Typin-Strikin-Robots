@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import LeaderboardIndex from './leaderboard_index';
 
-const msp = state => {
+const msp = (state, ownProps) => {
   return ({
-    leaderboardSingle: null,
-    leaderboardMulti: null
+    boardType: ownProps.match.params.type
   })
 };
 
@@ -15,4 +15,4 @@ const mdp = dispatch => {
   })
 };
 
-export default connect(msp, mdp)(LeaderboardIndex);
+export default withRouter(connect(msp, mdp)(LeaderboardIndex));
