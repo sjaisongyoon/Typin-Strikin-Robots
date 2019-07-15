@@ -56,24 +56,27 @@ class SessionForm extends React.Component {
 
                 <form onSubmit={this.handleSubmit}>
                     <h3 className="sessionform__title">{this.props.formType}</h3>
-                    <p className="sessionform__message">{this.props.message}</p>
-                    Please <button className="sessionform__button"><Link to={`/${this.props.otherRoute}`}>{this.props.otherForm}</Link></button>
                     <div className="sessionform__input-container">
                         <input className="sessionform__input"
                                 value={this.state.username}
                                 onChange={this.update('username')}
-                                placeholder="what is your username?"
+                                placeholder="Username"
                                 />
                         <br />
                         <input type="password"
                                 className="sessionform__input"
                                 value={this.state.password}
                                 onChange={this.update('password')}
-                                placeholder="what is your password?"
+                                placeholder="Password"
                                 />
                         <br />
-                        <input className="sessionform__submit" type="submit" value={this.props.formType} onClick={this.handleSubmit}/>
+                        <input className="sessionform__submit" type="submit" value='ENTER' onClick={this.handleSubmit}/>
                         {this.renderErrors()}
+
+                        <p className="sessionform__message">{this.props.message} &nbsp;<Link to={`/${this.props.otherRoute}`} className="sessionform__button">
+                            {this.props.otherForm}
+                        </Link></p>
+                        
                     </div>
 
                 </form>

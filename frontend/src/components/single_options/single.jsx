@@ -4,16 +4,16 @@ import LeaderboardSingleContainer from '../leaderboard/leaderboard_single_contai
 
 class Single extends React.Component {
     render () {
-        return(
+        return (
             <div className="single__container">
                 <div className="singleoptions__title">
                     Single Player MODE 
                 </div>
                 <div className="single__leaderboard">
-                    <LeaderboardSingleContainer />
+                    {/* <LeaderboardSingleContainer /> */}
                 </div>
                 <div className="single__options">
-                    <SingleOptionsForm />
+                    {/* <SingleOptionsForm /> */}
                 </div>
             </div>
         )
