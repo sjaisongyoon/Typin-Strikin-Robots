@@ -18,9 +18,17 @@ export class SingleGame extends Component {
     this.createWordsArray = this.createWordsArray.bind(this);
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.createWordsDisplay = this.createWordsDisplay.bind(this);
   }
 
-  
+  createWordsDisplay() {
+    let wordsArr = this.props.gamePassage.split(' ').map((word, idx) => {
+      return <span key={idx} id={idx} className="word__span">{word}&nbsp;</span>
+    })
+
+    return wordsArr;
+  }
+
   componentDidMount() {
     this.createWordsArray();
   }
@@ -41,13 +49,14 @@ export class SingleGame extends Component {
       currentWord: currentWord,
       wordCount: wordCount
     });
+
   }
 
-  handleInput(e) {
-    console.log(e.key);
-    if (e.key !== ' ') {
+   handleInput(e) {
+     if (e.key !== ' ') {
+      console.log(e.target.value);
       this.setState({
-        currentWord: e.currentTarget.value
+        currentInput: e.currentTarget.value
       });
     } else {
       this.handleSubmit();
@@ -67,11 +76,7 @@ export class SingleGame extends Component {
         currentWord: this.state.initialWords[1]
       })
     }
-
   }
-
-
-
 
 
   render() {
@@ -98,11 +103,12 @@ export class SingleGame extends Component {
         </div>
         <div className="game__input-container">
           <div className="game__display-paragraph">
-            {this.props.gamePassage}
+            {this.createWordsDisplay()}
           </div>
 
           {/* TESTING */}
-            <p>{this.state.currentWord}</p>
+          <p>{this.state.currentInput}</p>
+          {/* {this.updateUserOutput()} */}
           {/* TESTING END */}
 
           <div className="game__input-box-outer">
