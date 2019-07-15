@@ -5,7 +5,7 @@ class SingleOptionsForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            gameSeconds: 30
+            gameSeconds: 5
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -19,7 +19,7 @@ class SingleOptionsForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        // this.props.setGameTime(this.state.gameSeconds);
+        this.props.setGameTime(this.state.gameSeconds);
         this.props.history.push('/games/single');
     }
 
@@ -33,7 +33,7 @@ class SingleOptionsForm extends React.Component {
                     <input 
                         type="number" 
                         className="singleoptions__form-input"
-                        min="20"
+                        min="5"
                         max="60"
                         value={this.state.gameSeconds}
                         onChange={this.handleChange}/>

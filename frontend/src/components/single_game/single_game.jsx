@@ -19,6 +19,7 @@ export class SingleGame extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.createWordsDisplay = this.createWordsDisplay.bind(this);
     this.updateUserOutput = this.updateUserOutput.bind(this);
+    this.startTimer = this.startTimer.bind(this);
   }
 
   createWordsDisplay() {
@@ -31,6 +32,21 @@ export class SingleGame extends Component {
 
   componentDidMount() {
     this.createWordsArray();
+    this.startTimer();
+    console.log(this.state);
+  }
+
+  startTimer() {
+    let timer = setInterval(() => {
+      if (this.state.gameTime > 0) {
+        this.setState((prevState) => ({
+          gameTime: prevState.gameTime - 1
+        }))
+      } else {
+        clearInterval(timer);
+        console.log(this.state); 
+      }
+    }, 1000);
   }
 
 
@@ -62,17 +78,15 @@ export class SingleGame extends Component {
   }
 
    async handleInput(e) {
-     let key = e.key;
-     let wordSoFar = e.target.value;
-
-    //  if (key !== ' ') {
-      await this.setState({
-        currentInput: wordSoFar
-      });
-      this.updateUserOutput();
-    // } else {
-      this.handleSubmit();
-    // }
+    if (this.state.gameTime !== 0) {
+      let wordSoFar = e.target.value;
+ 
+       await this.setState({
+         currentInput: wordSoFar
+       });
+       this.updateUserOutput();
+       this.handleSubmit();
+    }
   }
   
   updateUserOutput() {
@@ -80,8 +94,7 @@ export class SingleGame extends Component {
   }
 
   handleSubmit() {
-    // update initialWords, correctWords, currentWord
-    // clear input
+    // update initialWords, correctWords, currentWord, clear input
     let { currentWord, currentInput} = this.state;
     console.log('handlesubmit triggered');
     console.log(currentWord);
@@ -110,11 +123,13 @@ export class SingleGame extends Component {
 
   render() {
   
-    let {currentUser, gamePassage, gameTime} = this.props;
+    let { currentUser, openModal } = this.props;
 
-    if (this.state.wordCount === this.state.correctWords.length) {
-      console.log('game over!');
-    }
+    setTimeout(() => {
+      if (this.state.wordCount === this.state.correctWords.length || this.state.gameTime === 0) {
+        openModal('gameend-single-modal');
+      }
+    }, 2000);
 
     return (
       <div className="singlegame__container">
@@ -126,7 +141,7 @@ export class SingleGame extends Component {
             </div>
             <div className="singlegame__top-timer">
               <h3 className="singlegame__top-timer-text">Timer</h3>
-              <h4 className="singlegame__top-time">00:{this.state.gameTime}</h4>
+              <h4 className="singlegame__top-time">00:{this.state.gameTime > 9 ? this.state.gameTime : `0${this.state.gameTime}`}</h4>
             </div>
           </div>
         </div>
