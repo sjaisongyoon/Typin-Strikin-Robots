@@ -7,7 +7,7 @@ const MatchSchema = new Schema({
         required: true
     },
     winnerId: {
-        type: Schema.Types.ObjectId,
+        type: Schema.Types.ObjectId, //same as mongoose.Types.ObjectId
         ref: 'users',
         required: true
     },
