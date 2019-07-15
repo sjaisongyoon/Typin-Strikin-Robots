@@ -1,5 +1,6 @@
 .singlegame__top {
   margin-top: 2rem;  
+  margin-bottom: 10rem;  
 }
 .singlegame__top-stats-wrapper {
   display: flex;
@@ -45,5 +46,11 @@
   background-color: pink;
   border-radius: 5px;
   margin: 3rem 0;
+
+  display: none;
+}
+
+.singlegame__container {
+  margin-top: 4rem;
 }
 

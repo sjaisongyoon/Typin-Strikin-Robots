@@ -69,3 +69,25 @@
   font-size: 1.2rem;
   text-align: right;  
 }
+
+
+////////// 
+// Header gameplay
+////////// 
+
+.header__gameplay-container {
+  position: absolute;
+  padding: 0;
+  margin: 0;
+}
+
+.header__gameplay-container .header__container-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;  
+}
+
+.header__gameplay-container .header__navbar-dropdown-btn {
+  margin-left: 0;
+}

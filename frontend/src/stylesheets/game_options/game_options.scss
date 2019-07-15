@@ -16,10 +16,12 @@ h2.singleoptions__title {
 .singleoptions__form-header {
   text-align: center;
 }
+
 .singleoptions__form {
   display: flex;
   flex-direction: column;
 }
+
 .singleoptions__form-input {
   background-color: rgba(0,0,0,0);
   border: 1px solid blue;
@@ -30,6 +32,7 @@ h2.singleoptions__title {
   width: 300px;
   font-size: 2rem;
 }
+
 .singleoptions__form-btn-submit {
   background-color: transparent;
   color: #fff;
