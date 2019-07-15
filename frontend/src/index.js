@@ -41,7 +41,8 @@ document.addEventListener('DOMContentLoaded', () => {
     window.fetchPassage = fetchPassage;
     window.setGameTime = setGameTime;
     window.updateUser = updateUser;
-    window.createGameRoom = createGameRoom
+    window.createGameRoom = createGameRoom;
+    window.deleteGameRoom = deleteGameRoom;
     const root = document.getElementById('root');
 
     ReactDOM.render(<Root store={store} />, root);
