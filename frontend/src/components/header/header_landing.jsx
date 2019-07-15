@@ -1,15 +1,7 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom';
 
-class HeaderGameplay extends Component {
-  constructor(props) {
-    super(props);
-    this.handleModal = this.handleModal.bind(this);
-  }
-
-  handleModal() {
-    this.props.openModal('menu-dropdown');
-  }
-  
+class HeaderLanding extends Component {
   render() {
     return (
       <div className="header__container">
@@ -20,9 +12,9 @@ class HeaderGameplay extends Component {
           <div className="header__navbar-container">
             <div className="header__navbar">
               <div className="header__navbar-menu-wrapper">
-                <button className="header__navbar-dropdown-btn" onClick={this.handleModal}>
-                  Menu
-                </button>
+                <Link to='/signup' className="header__navbar-dropdown-btn">Sign up</Link>
+                <Link to='/login' className="header__navbar-dropdown-btn">Log in</Link>
+                
               </div>
             </div>
           </div>
@@ -32,4 +24,4 @@ class HeaderGameplay extends Component {
   }
 }
 
-export default HeaderGameplay;
+export default HeaderLanding;
