@@ -1,0 +1,48 @@
+.leaderboard__btn {
+  font-size: 1.6rem;
+  text-align: center;
+  line-height: 3rem; 
+  color: #fff;
+}  
+
+.leaderboard__header-container {
+  margin-bottom: 4rem;
+}
+
+.leaderboard__header {
+  text-align: center;
+  font-size: 2.6rem;
+}
+
+.leaderboard__board-btn-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.leaderboard__btn-container {
+  margin-top: 5rem;
+}
+
+.leaderboard__btn--active {
+  color: #4183c4;
+}
+
+.leaderboard__board-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.leaderboard__table {
+  font-size: 2rem;
+  line-height: 4rem;
+  width: 75%;  
+  margin-top: 3rem;  
+  text-align: center;
+}
+
+.leaderboard__table-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
