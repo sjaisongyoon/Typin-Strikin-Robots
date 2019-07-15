@@ -10,3 +10,7 @@ const receiveUsers = users => ({
 export const fetchUsers = () => dispatch => (
     APIUtil.fetchUsers().then((users) => dispatch(receiveUsers(users)))
 )
+
+export const updateUser = userData => dispatch =>(
+    APIUtil.updateUser(userData).then(user => dispatch(receiveUser))
+);
