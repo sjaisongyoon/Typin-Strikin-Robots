@@ -132,7 +132,7 @@ router.get('/leaderboard', (req, res) => {
     })
     .catch(err => res.status(404).json({ nousersfound: 'No users found' }));
   User.find()
-    .sort({ singleplayer_wpm: -1})
+    .sort({ singleplayerWPM: -1})
     .then( users => {
       leaderboardPojo["singleplayerWPM"] = users;
       res.json(leaderboardPojo);
