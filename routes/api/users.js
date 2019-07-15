@@ -163,7 +163,7 @@ router.patch('/update', (req, res) => {
       };
       return res.json(updatedUserPojo);
     })
-    .catch(err => res.status(404).json({ updatefailed: 'Something wrong when updating user!' }));
+    .catch(err => res.status(400).json({ updatefailed: 'Something wrong when updating user!' }));
     
 });
 
