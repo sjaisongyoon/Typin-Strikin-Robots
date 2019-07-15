@@ -11,6 +11,8 @@ import SignupFormContainer from './login/signup_form_container';
 import GameSelectContainer from './game_select/game_select_container';
 import MultiGameContainer from './multi_game/multi_game_container';
 import SingleGameContainer from './single_game/single_game_container';
+import SingleContainer from './single_options/single_container';
+import MultiContainer from './single_options/single_container';
 import LeaderboardIndexContainer from './leaderboard/leaderboard_index_container';
 
 
@@ -25,8 +27,10 @@ const App = () => (
             <Route path="/signup" component={SignupFormContainer}/>
             <Route path="/leaderboard/:type" component={LeaderboardIndexContainer} />
             <ProtectedRoute exact path="/games" component={GameSelectContainer}/>
-            <Route exact path="/single" component={SingleGameContainer} />
-            <Route exact path="/multi" component={MultiGameContainer} />
+            <Route exact path="/games/single" component={SingleGameContainer} />
+            <Route exact path="/games/multi" component={MultiGameContainer} />
+            <Route exact path="/options/single" component={SingleContainer} />
+            <Route exact path="/options/multi" component={MultiContainer} />
 
         </Switch>
       </div>
