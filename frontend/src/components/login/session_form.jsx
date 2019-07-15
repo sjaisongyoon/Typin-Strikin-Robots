@@ -35,6 +35,7 @@ class SessionForm extends React.Component {
         this.props.formProcess(user)
             .then(() => this.props.history.push(`/select`));
         }
+        // test
     }
 
     handleLogin() {
