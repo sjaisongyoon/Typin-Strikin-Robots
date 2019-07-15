@@ -27,7 +27,7 @@ class SessionForm extends React.Component {
             password: this.state.password
         };
         // debugger;
-        if (this.props.formRoute === "login") {
+        if (this.props.otherRoute === "login") {
             this.props.formProcess(user)
                 .then( () => this.handleLogin() )
                 .then( () => this.props.history.push(`/select`));
