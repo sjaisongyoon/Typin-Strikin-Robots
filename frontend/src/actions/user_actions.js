@@ -1,10 +1,16 @@
 import * as APIUtil from '../util/user_api_util';
 
 export const RECEIVE_USERS = "RECEIVE_USERS";
+export const RECEIVE_USER = "RECEUVE_USER"
 
 const receiveUsers = users => ({
     type: RECEIVE_USERS,
     users
+})
+
+const receiveUser = user => ({
+    type: RECEIVE_USER,
+    user
 })
 
 export const fetchUsers = () => dispatch => (
@@ -12,5 +18,5 @@ export const fetchUsers = () => dispatch => (
 )
 
 export const updateUser = userData => dispatch =>(
-    APIUtil.updateUser(userData).then(user => dispatch(receiveUser))
+    APIUtil.updateUser(userData).then(user => dispatch(receiveUser(user)))
 );
