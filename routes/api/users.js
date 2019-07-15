@@ -112,9 +112,9 @@ router.get('/', (req, res) => {
         let userPojo = {
           id: user.id,
           username: user.username,
-          multiplayer_wins: user.multiplayer_wins,
-          multiplayer_losses: user.multiplayer_losses,
-          singleplayer_wpm: user.singleplayer_wpm
+          multiplayerWins: user.multiplayerWins,
+          multiplayerLosses: user.multiplayerLosses,
+          singleplayerWPM: user.singleplayerWPM
         };
         usersPojo[user.id] = userPojo
       })
@@ -123,5 +123,21 @@ router.get('/', (req, res) => {
     .catch(err => res.status(404).json({ nousersfound: 'No users found' }));
 });
 
+router.get('/leaderboard', (req, res) => {
+  let leaderboardPojo = {};
+  User.find()
+    .sort({ multiplayerWins: -1 })
+    .then( users => {
+      leaderboardPojo["multiplayerWins"] = users;
+    })
+    .catch(err => res.status(404).json({ nousersfound: 'No users found' }));
+  User.find()
+    .sort({ singleplayer_wpm: -1})
+    .then( users => {
+      leaderboardPojo["singleplayerWPM"] = users;
+      res.json(leaderboardPojo);
+    })
+    .catch(err => res.status(404).json({ nousersfound: 'No users found' }));
+});
 
 module.exports = router;
