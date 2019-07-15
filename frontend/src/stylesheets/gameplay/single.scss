@@ -1,55 +1,49 @@
-.multigame__container {
-
-}
-.multigame__top {
+.singlegame__top {
   margin-top: 2rem;  
 }
-.multigame__top-stats-wrapper {
+.singlegame__top-stats-wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.multigame__top-player {
+.singlegame__top-player {
   display: flex;
   flex-direction: column;
   align-items: center;  
 }
 
-.multigame__player-name {
+.singlegame__player-name {
   font-weight: 600;
   font-size: 1.7rem;
   margin-bottom: 1rem;
 }
-.multigame__player-health {
+.singlegame__player-health {
   font-size: 1.8rem;
   margin-bottom: 1rem;  
 }
-.multigame__player-wpm {
+.singlegame__player-wpm {
   font-size: 1.4rem;
 }
 
-
-.multigame__top-timer {}
-
-.multigame__top-timer-text {
-  font-size: 2rem;
-  margin-bottom: 0;  
-}
-
-.multigame__top-time {
+.singlegame__top-time {
   text-align: center;
   margin-top: 0;
-  font-size: 2rem;  
 }
 
-.multigame__fight-container {
-  text-align: center;
-  height: 350px;
+.singlegame__top-stats-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.singlegame__fight-container {
+  height: 300px;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: pink;
   border-radius: 5px;
   margin: 3rem 0;
-} 
+}
+

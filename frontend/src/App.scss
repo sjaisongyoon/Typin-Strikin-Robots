@@ -1,11 +1,23 @@
 @import './stylesheets/header/header.scss';
 @import './stylesheets/mainpage/mainpage.scss';
 @import './stylesheets/gameplay/multi.scss';
+@import './stylesheets/gameplay/single.scss';
+@import './stylesheets/gameplay/input.scss';
 @import './stylesheets/gameselect/gameselect.scss';
 
 body{
   font-family: 'Press Start 2P', cursive;
   font-size: 80%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  font-family: 'Press Start 2P', cursive;
 }
 
 .main__container {
