@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
-import Header from './header';
+import HeaderMenu from './header-menu';
 
 const msp = (state, ownProps) => {
   return ({
-
+    currentUser: state.session.user.id
   });
 }
 
@@ -13,6 +13,4 @@ const mdp = (state, ownProps) => {
   });
 }
 
-
-export default connect(null, null)(Header);
-// export default connect(msp, mdp)(SingleGame);
+export default connect(msp, mdp)(HeaderMenu);

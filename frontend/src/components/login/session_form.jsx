@@ -73,7 +73,7 @@ class SessionForm extends React.Component {
                                 />
                         <br />
                         <input className="sessionform__submit" type="submit" value={this.props.formType} onClick={this.handleSubmit}/>
-                        {this.renderErrors}
+                        {this.renderErrors()}
                     </div>
 
                 </form>
