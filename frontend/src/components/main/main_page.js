@@ -1,5 +1,5 @@
 import React from 'react';
-import HeaderContainer from '../header/header_container';
+import HeaderContainer from '../header/header_menu_container';
 
 class MainPage extends React.Component {
 
