@@ -18,8 +18,8 @@ import LeaderboardIndexContainer from './leaderboard/leaderboard_index_container
 
 const App = () => (
     <div>
-        <HeaderMenuContainer />
-        {/* <HeaderGameplayContainer /> */}
+        {/* <HeaderMenuContainer /> */}
+        <HeaderGameplayContainer />
       <div className="main__container">
         <Switch>
             <AuthRoute exact path="/" component={MainPage} />

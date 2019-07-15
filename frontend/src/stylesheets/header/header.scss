@@ -17,6 +17,15 @@
   font-weight: 600;
 }
 
+.header__logo-img {
+  background-image: url('assets/images/01-tsr-logo-200.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 150px;
+  width: 150px;
+}
+
 .header__navbar-container {}
 .header__navbar {}
 

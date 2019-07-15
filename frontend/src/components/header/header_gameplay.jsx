@@ -10,7 +10,7 @@ class HeaderGameplay extends Component {
       <div className="header__container">
         <div className="header__container-inner">
           <div className="header__logo-container">
-            <div className="header__logo">TSR Logo</div>
+            <div className="header__logo-img"></div>
           </div>
           <div className="header__navbar-container">
             <div className="header__navbar">
