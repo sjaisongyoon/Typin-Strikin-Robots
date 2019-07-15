@@ -150,8 +150,8 @@ router.get('/leaderboard', (req, res) => {
   //   .catch(err => res.status(404).json({ nousersfound: 'No users found' }));
 });
 
-router.patch('/update', (req, res) => {
-  const user = { _id: mongoose.Types.ObjectId(req.body.id)}
+router.patch('/:userId', (req, res) => {
+  const user = { _id: mongoose.Types.ObjectId(req.params.userId)}
   User.findOneAndUpdate(user, req.body, { new: true })
     .then( updatedUser => {
       let updatedUserPojo = {

@@ -11,11 +11,11 @@ const MultiplayerGameRoomSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'users',
     },
-    // date: {
-    //     type: Date,
-    //     require: true,
-    //     default: Date.now
-    // }
+    date: {
+        type: Date,
+        require: true,
+        default: Date.now
+    }
 })
 
 module.exports = MultiplayerGameRoom = mongoose.model('multiplayerGameRooms', MultiplayerGameRoomSchema);
