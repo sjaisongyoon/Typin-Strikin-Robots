@@ -1,0 +1,40 @@
+.gameselect__container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.gameselect__box {
+    display: block;
+    width: 100%;
+    justify-content: center;
+}
+
+.gameselect__message {
+    display: flex;
+    font-size: 2rem;
+    width: 100%;
+    padding: 1em;
+    justify-content: center;
+    margin: 2em;
+}
+.gameselect__button {
+    display: flex;
+    position: relative;
+    font-size: 2rem;
+    width: 50%;
+    padding: 1em;
+    background-color: black;
+    justify-content: center;
+    margin: 1em;
+}
+
+.gameselect__box-flex {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.gameselect__button:hover {
+    background-color: #cce2ff;
+}

@@ -25,9 +25,16 @@ class SessionForm extends React.Component {
             username: this.state.username,
             password: this.state.password
         };
+        // debugger;
+        if (this.props.formRoute === "login") {
+            this.props.formProcess(user)
+            .then( (user) => this.props.login(user) )
+                .then( () => this.props.history.push(`/games`));
 
-        this.props.formProcess({user})
+        } else {
+        this.props.formProcess(user)
             .then( () => this.props.history.push(`/games`));
+        }
     }
 
     renderErrors() {
