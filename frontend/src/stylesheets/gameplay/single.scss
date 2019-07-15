@@ -58,3 +58,27 @@ h3.singlegame__top-timer-text {
   margin-top: 4rem;
 }
 
+
+
+// Word styling
+
+.word__span {
+  transition: all 100ms ease-in;
+  color: #fff;
+}
+
+.word__span--correct {
+  color: lawngreen;
+}
+
+.game__input-preview {
+  position: absolute;
+  top: -2rem;
+}
+
+.game__input-box-outer {
+
+}
+.game__input-box-outer {
+  position: relative;
+}

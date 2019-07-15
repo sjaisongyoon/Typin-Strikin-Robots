@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import SingleGame from './single_game';
 import { setGameTime } from '../../actions/game_actions';
+import { openModal } from '../../actions/modal_actions';
 // import { updateUserStats } from '../../actions/user_actions';
 
 const msp = (state, ownProps) => {
@@ -14,6 +15,7 @@ const msp = (state, ownProps) => {
 const mdp = (dispatch) => {
   return ({
     setGameTime: time => dispatch(setGameTime(time)),
+    openModal: type => dispatch(openModal(type)) 
     // updateUserStats: (stats) => dispatch(updateUserStats(stats))
   });
 }
