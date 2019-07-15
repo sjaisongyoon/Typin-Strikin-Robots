@@ -25,17 +25,24 @@ class SessionForm extends React.Component {
             username: this.state.username,
             password: this.state.password
         };
+        // debugger;
+        if (this.props.formRoute === "login") {
+            this.props.formProcess(user)
+            .then( (user) => this.props.login(user) )
+                .then( () => this.props.history.push(`/games`));
 
+        } else {
         this.props.formProcess(user)
-            .then( () => this.props.history.push(`/`));
+            .then( () => this.props.history.push(`/games`));
+        }
     }
 
     renderErrors() {
         return(
             <ul className="loginform__errors">
-                {Object.keys(this.state.errors).map((error, i) => (
+                {Object.keys(this.props.errors).map((error, i) => (
                 <li className="loginform__errors-listitems" key={`error-${i}`}>
-                    {this.state.errors[error]}
+                    {this.props.errors[error]}
                 </li>
                 ))}
             </ul>
@@ -44,9 +51,9 @@ class SessionForm extends React.Component {
 
 
     render () {
-
         return (
             <div className="sessionform">
+
                 <form onSubmit={this.handleSubmit}>
                     <h3 className="sessionform__title">{this.props.formType}</h3>
                     <p className="sessionform__message">{this.props.message}</p>
@@ -58,14 +65,15 @@ class SessionForm extends React.Component {
                                 placeholder="what is your username?"
                                 />
                         <br />
-                        <input className="sessionform__input"
+                        <input type="password"
+                                className="sessionform__input"
                                 value={this.state.password}
                                 onChange={this.update('password')}
                                 placeholder="what is your password?"
                                 />
                         <br />
                         <input className="sessionform__submit" type="submit" value={this.props.formType} onClick={this.handleSubmit}/>
-                        {this.renderErrors()}
+                        {this.renderErrors}
                     </div>
 
                 </form>

@@ -1,7 +1,11 @@
 import React, { Component } from 'react'
 
 class Header extends Component {
+  constructor(props) {
+    super(props);
 
+    this.renderNav = this.renderNav.bind(this);
+  }
   // renderNavbar() {
   //   if (this.props.currentUser) {
   //     return (
@@ -17,6 +21,25 @@ class Header extends Component {
   //     );
   //   }
   // }
+
+  renderNav() {
+    let nav;
+    if (true) {
+      nav = (
+        <div className="header__navbar header__navbar-loggedout">
+          <a href="#" className="header__navbar-btn header__navbar-btn-login">Login</a>
+          <a href="#" className="header__navbar-btn header__navbar-btn-signup">Signup</a>
+        </div>
+      );
+    } else {
+      nav = (
+        <div className="header__navbar header__navbar-loggedin">
+          <a href="#" className="header__navbar-btn header__navbar-btn-login">Login</a>
+          <a href="#" className="header__navbar-btn header__navbar-btn-signup">Signup</a>
+        </div>
+      );
+    }
+  }
   
   render() {
     return (
@@ -26,10 +49,7 @@ class Header extends Component {
             <div className="header__logo">TSR Logo</div>
           </div>
           <div className="header__navbar-container">
-            <div className="header__navbar">
-              <a href="#" className="header__navbar-btn header__navbar-btn-login">Login</a>
-              <a href="#" className="header__navbar-btn header__navbar-btn-signup">Signup</a>
-            </div>
+            {this.renderNav()}
           </div>
         </div>
       </div>

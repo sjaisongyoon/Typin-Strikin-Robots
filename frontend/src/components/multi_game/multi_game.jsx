@@ -27,12 +27,12 @@ class MultiGame extends Component {
             Image goes here...
           </p> 
         </div>
-        <div className="multigame__input-container">
-          <div className="multigame__display-paragraph">
+        <div className="game__input-container">
+          <div className="game__display-paragraph">
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iste, ab maxime nihil ducimus nisi, enim obcaecati esse, asperiores aspernatur perspiciatis quam voluptate explicabo consequatur. Libero dignissimos iure error facilis consequatur.
           </div>
-          <div className="multigame__input-box-outer">
-            <input type="text" className="multigame__input-box" placeholder="Type here.."/>
+          <div className="game__input-box-outer">
+            <input type="text" className="game__input-box" placeholder="Type here.."/>
           </div>
         </div>
       </div>
