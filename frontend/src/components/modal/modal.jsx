@@ -1,6 +1,7 @@
 import React from 'react';
 import { openModal, closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 const Modal = ({ modal, closeModal }) => {
   if (!modal) return null;
@@ -35,5 +36,5 @@ const mdp = dispatch => {
   })
 }
 
-export default connect(msp, mdp)(Modal);
+export default withRouter(connect(msp, mdp)(Modal));
 

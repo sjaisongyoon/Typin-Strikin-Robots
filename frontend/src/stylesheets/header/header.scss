@@ -20,7 +20,10 @@
 .header__navbar-container {}
 .header__navbar {}
 
-
+.header__navbar.header__navbar-loggedin {
+  display: flex;
+  align-items: center;
+}
 
 .header__navbar-btn {
   font-size: 18px;
@@ -28,6 +31,12 @@
   padding: 1rem 2rem;
   border: 1px solid rgba(0,0,0,.3);
   border-radius: 5px;
+  margin-left: 2rem;
+}
+
+.header__navbar-dropdown-btn {
+  display: inline-block;
+  padding: 1rem;
   margin-left: 2rem;
 }
 
