@@ -14,4 +14,4 @@ const mdp = dispatch => {
 }
 
 // export default connect(msp, mdp)(MultiGame);
-export default connect(null, null)(MultiGame);
+export default connect(msp, mdp)(MultiGame);
