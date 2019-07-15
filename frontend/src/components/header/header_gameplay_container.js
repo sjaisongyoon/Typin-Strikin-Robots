@@ -3,7 +3,7 @@ import HeaderGameplay from './header_gameplay';
 
 const msp = (state, ownProps) => {
   return ({
-    currentUser: state.session.user.id
+    currentUser: state.session.user
   });
 }
 
