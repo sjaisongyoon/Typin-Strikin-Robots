@@ -1,5 +1,6 @@
 .singlegame__top {
   margin-top: 2rem;  
+  margin-bottom: 10rem;  
 }
 .singlegame__top-stats-wrapper {
   display: flex;
@@ -15,20 +16,24 @@
 
 .singlegame__player-name {
   font-weight: 600;
-  font-size: 1.7rem;
+  font-size: 1rem;
   margin-bottom: 1rem;
 }
 .singlegame__player-health {
-  font-size: 1.8rem;
+  font-size: 1rem;
   margin-bottom: 1rem;  
 }
 .singlegame__player-wpm {
-  font-size: 1.4rem;
+  font-size: 1rem;
 }
 
 .singlegame__top-time {
   text-align: center;
   margin-top: 0;
+}
+
+h3.singlegame__top-timer-text {
+  font-size: 1rem;
 }
 
 .singlegame__top-stats-wrapper {
@@ -45,5 +50,11 @@
   background-color: pink;
   border-radius: 5px;
   margin: 3rem 0;
+
+  display: none;
+}
+
+.singlegame__container {
+  margin-top: 4rem;
 }
 

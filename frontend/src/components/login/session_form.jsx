@@ -86,9 +86,7 @@ class SessionForm extends React.Component {
                         <p className="sessionform__message">{this.props.message} &nbsp;<Link to={`/${this.props.otherRoute}`} className="sessionform__button">
                             {this.props.otherForm}
                         </Link></p>
-                        
                     </div>
-
                 </form>
             </div>
         )

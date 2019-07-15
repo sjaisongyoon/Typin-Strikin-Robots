@@ -12,27 +12,31 @@
 
 .gameselect__message {
     display: flex;
-    font-size: 3rem;
     width: 100%;
     padding: 1em;
     justify-content: center;
     margin: 2em;
+    font-size: 2rem;
+    margin-bottom: 3rem;
 }
+
 .gameselect__button-container {
     display: flex;
+    flex-direction: column;
     position: relative;
     font-size: 2rem;
     width: 50%;
-    padding: 1em;
     background-color: transparent;
     justify-content: center;
     margin: 1em;
+    text-align: center;
+    align-items: center;
 }
 
 .gameselect__button {
     color: #fff;
     display: inline-block;
-
+    font-size: 1.28571429rem;
 }
 
 .gameselect__button:hover {
