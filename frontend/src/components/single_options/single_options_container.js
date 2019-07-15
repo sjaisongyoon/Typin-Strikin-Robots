@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import Single from './single';
+import SingleOptions from './single_options';
 
 const mapStateToProps = state => {
     return {
@@ -19,4 +19,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(Single);
+)(SingleOptions);

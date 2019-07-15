@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import Multi from './multi';
+import MultiOptions from './multi_options';
 
 const mapStateToProps = (state) => {
     return ({
@@ -16,4 +16,4 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(Multi);
+)(MultiOptions);

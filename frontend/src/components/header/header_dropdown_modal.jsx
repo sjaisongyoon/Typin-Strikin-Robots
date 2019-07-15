@@ -5,12 +5,19 @@ class HeaderDropdownModal extends Component {
   constructor(props) {
     super(props);
     this.handleLogout = this.handleLogout.bind(this);
-    this.handleClick = this.handleClick.bind(this);
+    this.handleLeaderboardClick = this.handleLeaderboardClick.bind(this);
+    this.handleGameModalClick = this.handleGameModalClick.bind(this);
   }
 
-  handleClick(e) {
+  handleLeaderboardClick(e) {
     e.preventDefault();
     this.props.history.push('/leaderboard/single');
+    this.props.closeModal();
+  }
+
+  handleGameModalClick(e) {
+    e.preventDefault();
+    this.props.history.push('/select');
     this.props.closeModal();
   }
 
@@ -25,7 +32,9 @@ class HeaderDropdownModal extends Component {
   render() {
     return (
       <div className="header__dropdown-container">
-        <button href="#" onClick={this.handleClick} className="header__dropdown-btn">LEADERBOARD</button>
+        <button href="#" onClick={this.handleGameModalClick} className="header__dropdown-btn">SELECT GAME MODE</button>
+
+        <button href="#" onClick={this.handleLeaderboardClick} className="header__dropdown-btn">LEADERBOARD</button>
 
         <button href="#" onClick={this.handleLogout} className="header__dropdown-btn">LOGOUT</button>
       </div>
