@@ -43,10 +43,19 @@
   margin-left: 2rem;
 }
 
+.header__navbar-btn-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+
 .header__navbar-dropdown-btn {
   display: inline-block;
   padding: 1rem;
   margin-left: 2rem;
+  color: #fff;
+  font-size: 2rem;
+  text-transform: uppercase;  
 }
 
 .header__container {}
