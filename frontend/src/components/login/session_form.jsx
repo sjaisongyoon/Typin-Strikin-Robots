@@ -29,11 +29,11 @@ class SessionForm extends React.Component {
         if (this.props.formRoute === "login") {
             this.props.formProcess(user)
             .then( (user) => this.props.login(user) )
-                .then( () => this.props.history.push(`/games`));
+                .then( () => this.props.history.push(`/select`));
 
         } else {
         this.props.formProcess(user)
-            .then( () => this.props.history.push(`/games`));
+            .then(() => this.props.history.push(`/select`));
         }
     }
 

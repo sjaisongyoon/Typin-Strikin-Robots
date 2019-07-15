@@ -15,4 +15,4 @@ const mdp = (state, ownProps) => {
 
 
 // export default connect(msp, mdp)(SingleGame);
-export default connect(null, null)(SingleGame);
+export default connect(msp, mdp)(SingleGame);

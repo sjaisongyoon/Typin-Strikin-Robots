@@ -54,8 +54,17 @@
   padding: 1rem;
   margin-left: 2rem;
   color: #fff;
-  font-size: 2rem;
-  text-transform: uppercase;  
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  border: 5px solid blue;
+  padding: 1rem;
+  background-color: transparent;
+  font-family: 'Press Start 2P', sans-serif;
+  cursor: pointer;
 }
 
 .header__container {}
+
+.header__navbar-user-wrapper {
+  font-size: 1.2rem;
+}
