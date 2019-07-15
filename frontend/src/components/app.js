@@ -1,6 +1,6 @@
 import React from 'react';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
 
 import HeaderMenuContainer from './header/header_menu_container';
@@ -12,7 +12,7 @@ import GameSelectContainer from './game_select/game_select_container';
 import MultiGameContainer from './multi_game/multi_game_container';
 import SingleGameContainer from './single_game/single_game_container';
 import SingleContainer from './single_options/single_container';
-import MultiContainer from './single_options/single_container';
+import MultiContainer from './multi_options/multi_container';
 import LeaderboardIndexContainer from './leaderboard/leaderboard_index_container';
 
 
@@ -22,16 +22,18 @@ const App = () => (
         <HeaderGameplayContainer />
       <div className="main__container">
         <Switch>
-            <AuthRoute exact path="/" component={MainPage} />
-            <Route path="/login" component={LoginFormContainer}/>
-            <Route path="/signup" component={SignupFormContainer}/>
+            {/* <AuthRoute exact path="/" component={MainPage} /> */}
+            <Route exact path="/" render={() => (
+              <Redirect to="/login" />
+            )} />
+            <Route exact path="/login" component={LoginFormContainer}/>
+            <Route exact path="/signup" component={SignupFormContainer}/>
             <Route path="/leaderboard/:type" component={LeaderboardIndexContainer} />
             <ProtectedRoute exact path="/games" component={GameSelectContainer}/>
             <Route exact path="/games/single" component={SingleGameContainer} />
             <Route exact path="/games/multi" component={MultiGameContainer} />
             <Route exact path="/options/single" component={SingleContainer} />
             <Route exact path="/options/multi" component={MultiContainer} />
-
         </Switch>
       </div>
     </div>

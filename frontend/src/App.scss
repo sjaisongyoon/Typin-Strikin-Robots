@@ -5,6 +5,7 @@
 @import './stylesheets/gameplay/input.scss';
 @import './stylesheets/gameselect/gameselect.scss';
 @import './stylesheets/leaderboard/leaderboard.scss';
+@import './stylesheets/session_form/session_form.scss';
 
 
 // colors
@@ -23,7 +24,7 @@
 
 
 body{
-  font-family: 'Press Start 2P', cursive;
+  font-family: 'Press Start 2P', sans-serif;
   font-size: 80%;
   background-color: rgba(0,0,0,.9);
   color: #fff;
