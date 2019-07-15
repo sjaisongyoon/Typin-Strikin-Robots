@@ -130,14 +130,23 @@ router.get('/leaderboard', (req, res) => {
     .then( users => {
       leaderboardPojo["multiplayerWins"] = users;
     })
-    .catch(err => res.status(404).json({ nousersfound: 'No users found' }));
-  User.find()
-    .sort({ singleplayerWPM: -1})
-    .then( users => {
-      leaderboardPojo["singleplayerWPM"] = users;
-      res.json(leaderboardPojo);
+    .then( () => {  //have to chain on second query because async results yield unpredictable output sometimes.
+      User.find()
+        .sort({ singleplayerWPM: -1 })
+        .then(users => {
+          leaderboardPojo["singleplayerWPM"] = users;
+          res.json(leaderboardPojo);
+        })
+        .catch(err => res.status(404).json({ nousersfound: 'No users found' }));
     })
     .catch(err => res.status(404).json({ nousersfound: 'No users found' }));
+  // User.find()
+  //   .sort({ singleplayerWPM: -1})
+  //   .then( users => {
+  //     leaderboardPojo["singleplayerWPM"] = users;
+  //     res.json(leaderboardPojo);
+  //   })
+  //   .catch(err => res.status(404).json({ nousersfound: 'No users found' }));
 });
 
 module.exports = router;
