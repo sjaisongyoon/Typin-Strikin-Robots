@@ -3,7 +3,12 @@ import {randomPassage} from '../actions/game_actions';
 
 let defaultPassage = randomPassage();
 
-const gamesReducer = (state={passage: defaultPassage}, action) =>{
+let defaultState = {
+    passage: defaultPassage,
+    time: 30
+}
+
+const gamesReducer = (state = defaultState, action) =>{
     Object.freeze(state);
     switch (action.type) {
         case RECEIVE_PASSAGE:
