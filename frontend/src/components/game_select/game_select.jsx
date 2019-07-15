@@ -17,14 +17,14 @@ class GameSelect extends React.Component {
                     <div className="gameselect__box-flex">
                         <div className="gameselect__button-container">
                             <Link to={`/options/single`} className="gameselect__button">
-                            Single Play
+                            TIME ATTACK
                         </Link>
                         </div>
                     </div>
                     <div className="gameselect__box-flex">
                         <div className="gameselect__button-container">
                         <Link to={`/options/multi`} className="gameselect__button">
-                            Multi Play
+                            MULTIPLAYER
                         </Link>
                         </div>
                     </div>
