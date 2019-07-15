@@ -5,6 +5,7 @@ const User = require('../../models/User');
 const jwt = require('jsonwebtoken');
 const keys = require('../../config/keys');
 const passport = require('passport');
+const mongoose = require('mongoose');
 
 const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
@@ -147,6 +148,23 @@ router.get('/leaderboard', (req, res) => {
   //     res.json(leaderboardPojo);
   //   })
   //   .catch(err => res.status(404).json({ nousersfound: 'No users found' }));
+});
+
+router.patch('/update', (req, res) => {
+  const user = { _id: mongoose.Types.ObjectId(req.body.id)}
+  User.findOneAndUpdate(user, req.body, { new: true })
+    .then( updatedUser => {
+      let updatedUserPojo = {
+        id: updatedUser.id,
+        username: updatedUser.username,
+        multiplayerWins: updatedUser.multiplayerWins,
+        multiplayerLosses: updatedUser.multiplayerLosses,
+        singleplayerWPM: updatedUser.singleplayerWPM
+      };
+      return res.json(updatedUserPojo);
+    })
+    .catch(err => res.status(404).json({ updatefailed: 'Something wrong when updating user!' }));
+    
 });
 
 module.exports = router;
