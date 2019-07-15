@@ -9,8 +9,7 @@ class SessionForm extends React.Component {
         this.state = {username:"", password:"", errors:{}};
         this.handleSubmit = this.handleSubmit.bind(this);
         this.renderErrors = this.renderErrors.bind(this);
-        this.handleLogin = this.handleLogin.bind(this);
-
+        this.handleSignupLogin = this.handleSignupLogin.bind(this);
     }
 
     update(field) {
@@ -29,8 +28,7 @@ class SessionForm extends React.Component {
         // debugger;
         if (this.props.otherRoute === "login") {
             this.props.formProcess(user)
-                .then( () => this.handleLogin() )
-                .then( () => this.props.history.push(`/select`));
+                .then(() => this.handleSignupLogin() );
         } else {
         this.props.formProcess(user)
             .then(() => this.props.history.push(`/select`));
@@ -38,14 +36,15 @@ class SessionForm extends React.Component {
         // test
     }
 
-    handleLogin() {
+    handleSignupLogin() {
         let user = {
             username: this.state.username,
             password: this.state.password
         }
 
-        debugger
+        // debugger
         this.props.login(user)
+            .then(() => this.props.history.push(`/select`));
     }
 
     renderErrors() {
@@ -87,9 +86,7 @@ class SessionForm extends React.Component {
                         <p className="sessionform__message">{this.props.message} &nbsp;<Link to={`/${this.props.otherRoute}`} className="sessionform__button">
                             {this.props.otherForm}
                         </Link></p>
-                        
                     </div>
-
                 </form>
             </div>
         )

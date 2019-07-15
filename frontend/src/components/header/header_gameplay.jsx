@@ -12,7 +12,7 @@ class HeaderGameplay extends Component {
   
   render() {
     return (
-      <div className="header__container">
+      <div className="header__container header__gameplay-container">
         <div className="header__container-inner">
           <div className="header__logo-container">
             <div className="header__logo-img"></div>
