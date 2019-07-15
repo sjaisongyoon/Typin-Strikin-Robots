@@ -23,7 +23,7 @@ class HeaderMenu extends Component {
           <div className="header__navbar-container">
             <div className="header__navbar header__navbar-loggedin">
               <div className="header__navbar-user-wrapper">
-                <p className="header__navbar-username">Username</p>
+                <p className="header__navbar-username">{this.props.currentUser.username}</p>
                 <p className="header__navbar-wpm">WPM: 134</p>
               </div>
               <div className="header__navbar-menu-wrapper">

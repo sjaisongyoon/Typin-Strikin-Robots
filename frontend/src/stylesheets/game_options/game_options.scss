@@ -1,0 +1,45 @@
+//////////////////////////////////////////
+// Single game options
+//////////////////////////////////////////
+.single__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h2.singleoptions__title {
+  font-size: 2rem;
+  margin-bottom: 3rem;
+}
+
+.singleoptions__form-container {}
+.singleoptions__form-header {
+  text-align: center;
+}
+.singleoptions__form {
+  display: flex;
+  flex-direction: column;
+}
+.singleoptions__form-input {
+  background-color: rgba(0,0,0,0);
+  border: 1px solid blue;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  font-family: 'Press Start 2P', cursive !important;
+  color: #fff;  
+  width: 300px;
+  font-size: 2rem;
+}
+.singleoptions__form-btn-submit {
+  background-color: transparent;
+  color: #fff;
+  border: 5px solid blue;
+  font-family: 'Press Start 2P', sans-serif !important;
+  cursor: pointer;
+  padding: 1.4rem;  
+}
+
+.singleoptions__form-btn-submit:hover {
+  background-color: blue;
+  border: 5px solid #fff;
+}

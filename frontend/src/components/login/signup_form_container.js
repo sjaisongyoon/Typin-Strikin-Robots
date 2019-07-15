@@ -8,7 +8,8 @@ const mapStateToProps = (state) => {
         formType: 'Sign Up',
         otherForm: 'Log In',
         otherRoute: 'login',
-        message: 'Already a user?'
+        message: 'Already a user?',
+        currentUser: state.session.user
     }
 }
 
