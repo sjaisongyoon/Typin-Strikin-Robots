@@ -47,11 +47,8 @@ router.post("/",
 
 router.patch('/:multiplayerGameRoomId', (req, res) => {
     // res.send('Got a PATCH request at /multiplayerGameRooms');
-
     let gameRoomIdOnly = { _id: mongoose.Types.ObjectId(req.params.multiplayerGameRoomId) }
-    // res.send(gameRoomIdOnly);
     let updateParams = { player2Id: mongoose.Types.ObjectId(req.body.playerId)}
-    // res.send(updateParams);
     MultiplayerGameRoom.findOneAndUpdate(gameRoomIdOnly, updateParams, { new: true })
         .then(updatedGameRoom => {
             let gameRoomPojo = {
