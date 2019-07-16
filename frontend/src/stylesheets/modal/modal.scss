@@ -14,3 +14,41 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+// GAME END SINGLE MODAL
+
+.gameend-single__modal-container {
+  padding: 3rem;
+  text-align: center;
+}
+h2.gameend-single__modal-header {
+  font-size: 2rem;
+}
+p.gameend-single__modal-stat-single {
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+}
+
+.gameend-single__modal-btn-container {
+  margin: 2rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.gameend-single__modal-btn {
+  background-color: transparent;
+  color: #fff;
+  border: 5px solid blue;
+  font-family: 'Press Start 2P', sans-serif !important;
+  cursor: pointer;
+  padding: 1.4rem;
+  font-size: 1rem;
+  margin: 1rem;
+}
+
+.gameend-single__modal-btn:hover {
+  background-color: blue;
+  border: 5px solid #fff;
+  color: #fff;
+}

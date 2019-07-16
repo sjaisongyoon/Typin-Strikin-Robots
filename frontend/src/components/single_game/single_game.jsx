@@ -8,10 +8,12 @@ export class SingleGame extends Component {
       gameTime: this.props.gameTime,
       initialWords: [],
       wordCount: 0,
-      playerWPM: 0,
+      currentWPM: 0,
+      elapsedTime: 0,
       correctWords: [],
       currentWord: '',
-      currentInput: ''
+      currentInput: '',
+      modal: this.props.modal
     }
 
     this.createWordsArray = this.createWordsArray.bind(this);
@@ -20,6 +22,7 @@ export class SingleGame extends Component {
     this.createWordsDisplay = this.createWordsDisplay.bind(this);
     this.updateUserOutput = this.updateUserOutput.bind(this);
     this.startTimer = this.startTimer.bind(this);
+    this.calculateWPM = this.calculateWPM.bind(this);
   }
 
   createWordsDisplay() {
@@ -40,7 +43,8 @@ export class SingleGame extends Component {
     let timer = setInterval(() => {
       if (this.state.gameTime > 0) {
         this.setState((prevState) => ({
-          gameTime: prevState.gameTime - 1
+          gameTime: prevState.gameTime - 1,
+          elapsedTime: prevState.elapsedTime + 1
         }))
       } else {
         clearInterval(timer);
@@ -93,6 +97,16 @@ export class SingleGame extends Component {
     return this.state.currentInput;
   }
 
+  calculateWPM() {
+    let numCorrectWords = this.state.correctWords.length;
+    let elapsedTime = this.state.elapsedTime;
+
+    let currentWPM = ((numCorrectWords / elapsedTime) * 60).toFixed(0);
+    this.setState({
+      currentWPM: currentWPM
+    });
+  }
+
   handleSubmit() {
     // update initialWords, correctWords, currentWord, clear input
     let { currentWord, currentInput} = this.state;
@@ -117,19 +131,26 @@ export class SingleGame extends Component {
         currentWord: this.state.initialWords[0]
       })
       console.log(this.state);
+      console.log(this.calculateWPM());
+
+      console.log(this.state.currentWPM);
     }
   }
 
 
   render() {
-  
     let { currentUser, openModal } = this.props;
 
-    setTimeout(() => {
-      if (this.state.wordCount === this.state.correctWords.length || this.state.gameTime === 0) {
-        openModal('gameend-single-modal');
-      }
-    }, 2000);
+    // show modal on game end
+    if (!this.state.modal) {
+      setTimeout(() => {
+        if (this.state.wordCount === this.state.correctWords.length || this.state.gameTime === 0) {
+          this.setState({modal: true});
+          this.props.updateSingleGameWpm(parseInt(this.state.currentWPM));
+          openModal('gameend-single-modal');  
+        }
+      }, 100);
+    }
 
     return (
       <div className="singlegame__container">
@@ -137,7 +158,7 @@ export class SingleGame extends Component {
           <div className="singlegame__top-stats-wrapper">
             <div className="singlegame__top-player">
               <div className="singlegame__player-name">{currentUser.username}</div>
-              <div className="singlegame__player-wpm">WPM: 121</div>
+              <div className="singlegame__player-wpm">WPM: {this.state.currentWPM}</div>
             </div>
             <div className="singlegame__top-timer">
               <h3 className="singlegame__top-timer-text">Timer</h3>
