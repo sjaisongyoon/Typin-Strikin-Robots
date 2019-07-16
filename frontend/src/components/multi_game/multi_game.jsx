@@ -92,8 +92,7 @@ class MultiGame extends Component {
 
   handleHealthBarUpdate() {
     let newEnemyHealthBar = this.state.enemyHealthBar - this.state.decrementAmt;
-    // console.log(this.state.decrementAmt);
-
+  
     if (newEnemyHealthBar <= 0) {
       newEnemyHealthBar = 0;
     }

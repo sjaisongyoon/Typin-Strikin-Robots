@@ -179,7 +179,10 @@ export class SingleGame extends Component {
               </div>
             </div>
           </div>
-          <div className="singlegame__fight-inner"></div>
+          <div className="singlegame__fight-inner">
+            <div className="player1"></div>
+            <div className="player2"></div>
+          </div>
         </div>
         <div className="game__input-container">
           <div className="game__display-paragraph">
@@ -208,3 +211,4 @@ export class SingleGame extends Component {
 }
 
 export default SingleGame;
+
