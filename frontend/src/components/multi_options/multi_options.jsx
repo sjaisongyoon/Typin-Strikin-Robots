@@ -13,6 +13,7 @@ class Multi extends React.Component {
 
     componentDidMount(){
         this.props.fetchGameRooms();
+        debugger
         if (this.props.gameRoom){
             this.setState({
                 canCreate: false

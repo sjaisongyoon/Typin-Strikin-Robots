@@ -13,6 +13,7 @@ const gameRoomsReducer = (state ={}, action) => {
             delete new_state[action.gameRoom]
             return new_state;
         case RECEIVE_ALL_GAME_ROOMS: 
+            debugger
             return Object.assign({}, state, action.gameRoom.data)
         default:
             return state;
