@@ -88,8 +88,7 @@ class SessionForm extends React.Component {
                 username: this.state.username,
                 password: this.state.password
             })
-                .then(() => this.props.history.push('/select'))
-        } 
+                .then(() => this.props.history.push('/select'))        } 
           
     }
 
