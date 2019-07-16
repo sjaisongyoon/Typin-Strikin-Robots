@@ -3,7 +3,7 @@ import MultiGame from './multi_game';
 
 const msp = state => {
   return ({
-    
+    currentUser: state.session.user,
   })
 }
 
