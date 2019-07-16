@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import SingleGame from './single_game';
 import { setGameTime, updateSingleGameWpm } from '../../actions/game_actions';
-import { openModal } from '../../actions/modal_actions';
+import { openModal, closeModal } from '../../actions/modal_actions';
 import { updateUser } from '../../actions/user_actions';
 
 const msp = (state, ownProps) => {
@@ -18,7 +18,8 @@ const mdp = (dispatch) => {
     setGameTime: time => dispatch(setGameTime(time)),
     updateSingleGameWpm: wpm => dispatch(updateSingleGameWpm(wpm)),
     openModal: type => dispatch(openModal(type)),
-    updateUser: (stats) => dispatch(updateUser(stats))
+    updateUser: (stats) => dispatch(updateUser(stats)),
+    closeModal: () => dispatch(closeModal()),
   });
 }
 
