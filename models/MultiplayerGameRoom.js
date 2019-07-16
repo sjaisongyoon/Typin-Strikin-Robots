@@ -11,9 +11,14 @@ const MultiplayerGameRoomSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'users',
     },
+    passageId: {
+        type: Number,
+        required: true,
+        default: Math.floor(Math.random() * (7 - 0 + 1)) + 0,
+    },
     date: {
         type: Date,
-        require: true,
+        required: true,
         default: Date.now
     }
 })
