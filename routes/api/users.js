@@ -173,8 +173,8 @@ router.patch('/:userId', (req, res) => {
     if (req.body.singleplayerWPM) {
       fetchedUser.singleplayerWPM = fetchedUser.singleplayerWPM < req.body.singleplayerWPM ? req.body.singleplayerWPM : fetchedUser.singleplayerWPM
     }
-    fetchedUser.multiplayerWins = (req.body.multiplayerWins === 1) ? fetchedUser.multiplayerWins + 1 : fetchedUser.multiplayerWins;
-    fetchedUser.multiplayerLosses = (req.body.multiplayerLosses === 1) ? fetchedUser.multiplayerLosses + 1 : fetchedUser.multiplayerLosses;
+    fetchedUser.multiplayerWins = (parseInt(req.body.multiplayerWins) === 1) ? fetchedUser.multiplayerWins + 1 : fetchedUser.multiplayerWins;
+    fetchedUser.multiplayerLosses = (parseInt(req.body.multiplayerLosses) === 1) ? fetchedUser.multiplayerLosses + 1 : fetchedUser.multiplayerLosses;
     fetchedUser.save()
       .then(updatedUser => {
         // let updatedUserPojo = {
