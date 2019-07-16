@@ -12,19 +12,20 @@ class Multi extends React.Component {
     }
 
     componentDidMount(){
-        this.props.fetchGameRooms();
-        debugger
-        if (this.props.gameRoom){
-            this.setState({
-                canCreate: false
+        this.props.fetchGameRooms()
+            .then( () => { 
+                if (this.props.gameRoom){
+                    this.setState({
+                        canCreate: false
+                    })}
             })
-        }
+        
     }
 
     handleSubmit(e){
-        debugger;
         e.preventDefault();
-        if (e.target.className === 'join__game__button'){
+        debugger;
+        if (e.target.className === 'joingame__button'){
             this.props.updateGameRoom({
                 playerId: this.state.playerId,
                 id: this.props.gameRoom.id
@@ -38,19 +39,15 @@ class Multi extends React.Component {
         return (
             <div className="multi__container">
                 <button disabled={this.state.canCreate}
-                    className="join__game__button"
+                    className="joingame__button"
                     onClick={this.handleSubmit}>
-                    <div>
-                        Join Game
-                    </div>
+                    Join Game
                 </button>
                 
                 <button disabled={!this.state.canCreate}
-                    className="create__game__button"
+                    className="creategame__button"
                     onClick={this.handleSubmit}>
-                    <div>
-                        Create Game
-                    </div>
+                    Create Game
                 </button>
             </div>
         );

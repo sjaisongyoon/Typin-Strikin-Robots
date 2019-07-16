@@ -13,7 +13,7 @@ const mapDispatchToProps = (dispatch) => {
     return ({
         createGameRoom: gameRoomData => dispatch(createGameRoom(gameRoomData)),
         updateGameRoom: gameRoomData => dispatch(updateGameRoom(gameRoomData)),
-        fetchGameRooms: () => dispatch(fetchGameRooms)
+        fetchGameRooms: () => dispatch(fetchGameRooms())
     });
 }
 

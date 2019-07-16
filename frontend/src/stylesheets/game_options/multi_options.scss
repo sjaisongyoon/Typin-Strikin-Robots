@@ -1,0 +1,40 @@
+.creategame__button, .joingame__button {
+  background-color: transparent;
+  color: #fff;
+  border: 5px solid blue;
+  font-family: 'Press Start 2P', sans-serif !important;
+  cursor: pointer;
+  padding: 1.4rem;
+  font-size: 1rem;
+}
+
+.creategame__button:hover, .joingame__button:hover {
+  background-color: blue;
+  border: 5px solid #fff;
+}
+
+.multi__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem;
+}
+
+.joingame__button{
+  margin-bottom: 1.4rem;
+}
+
+.joingame__button:disabled, .creategame__button:disabled{
+  background: grey;
+  color: black;
+  border: 5px solid black;
+  opacity: .5;
+  cursor: not-allowed;
+}
+
+.joingame__button:disabled:hover, .creategame__button:disabled:hover{
+  background: grey;
+  color: black;
+  border: 5px solid black;
+}
