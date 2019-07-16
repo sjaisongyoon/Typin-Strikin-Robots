@@ -19,14 +19,14 @@
 
 .header__logo-img {
   // background-image: url('assets/images/01-tsr-logo-200.png');
-  background-image: url('assets/images/01-type-fighter-small.png');
+  background-image: url('assets/images/type_fighter_logo.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   // height: 150px;
   // width: 150px;
-  height: 155px;
-  width: 100px;
+  height: 128px;
+  width: 220px;
 }
 
 .header__navbar-container {}
@@ -59,7 +59,7 @@
   color: #fff;
   font-size: 1rem;
   text-transform: uppercase;
-  border: 5px solid blue;
+  border: 5px solid rgb(222, 155, 5);
   padding: 1rem;
   background-color: transparent;
   font-family: 'Press Start 2P', sans-serif;
@@ -67,7 +67,7 @@
 }
 
 .header__navbar-dropdown-btn:hover {
-  background-color: blue;
+  background-color: rgb(222, 155, 5);
   border: 5px solid #fff;
   color: #fff;
 }
