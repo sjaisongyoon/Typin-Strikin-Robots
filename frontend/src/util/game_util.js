@@ -1,8 +1,13 @@
 import axios from 'axios';
 
-// export const fetchPassage = () => {
-//     const proxyurl = "https://cors-anywhere.herokuapp.com/";
-//     const url = 'https://www.poemist.com/api/v1/randompoems';
-//     return axios.get(proxyurl+url)
-// }
+export const createGameRoom =  gameRoomData => (
+    axios.post('/api/multiplayerGameRooms', gameRoomData)
+)
 
+export const deleteGameRoom = gameRoomId => (
+    axios.delete(`/api/multiplayerGameRooms/${gameRoomId}`)
+)
+
+export const updateGameRoom = gameRoomData => (
+    axios.patch(`/api/multiplayerGameRooms/${gameRoomData.id}`, gameRoomData)
+)

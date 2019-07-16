@@ -5,9 +5,9 @@ import configureStore from './store/store';
 import jwt_decode from 'jwt-decode';
 import { setAuthToken } from './util/session_api_util';
 import { logout,signup } from './actions/session_actions';
-import {fetchUsers} from './actions/user_actions';
+import {fetchUsers, updateUser} from './actions/user_actions';
 import {fetchLeaderboards} from './actions/leaderboard_actions';
-import {fetchPassage, setGameTime} from './actions/game_actions';
+import {fetchPassage, setGameTime, createGameRoom, deleteGameRoom} from './actions/game_actions';
 
 // import {signup} from './util/session_api_util';
 import './App.scss';
@@ -36,12 +36,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     window.dispatch = store.dispatch;
     window.getState = store.getState;
-    window.signup = signup;
-    window.logout = logout;
     window.fetchUsers = fetchUsers;
     window.fetchLeaderboards = fetchLeaderboards;
     window.fetchPassage = fetchPassage;
     window.setGameTime = setGameTime;
+    window.updateUser = updateUser;
+    window.createGameRoom = createGameRoom
     const root = document.getElementById('root');
 
     ReactDOM.render(<Root store={store} />, root);
