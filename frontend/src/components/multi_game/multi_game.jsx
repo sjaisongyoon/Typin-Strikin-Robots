@@ -47,7 +47,7 @@ class MultiGame extends Component {
 
     // Moves
 
-    this.callPlayer1Animation = this.callPlayer1Animation.bind(this);
+    this.callPlayerAnimation = this.callPlayerAnimation.bind(this);
     this.punch = this.punch.bind(this);
     this.kick = this.kick.bind(this);
     this.rkick = this.rkick.bind(this);
@@ -84,6 +84,10 @@ class MultiGame extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     let { currentUser, openModal, updateSingleGameWpm, updateUser, deleteGameRoom, gameRoom } = this.props;
+
+    if (prevState.ownHealthBar > this.state.ownHealthBar) {
+      this.callPlayerAnimation('player2');
+    }
 
     if (!this.state.modal && (this.state.ownHealthBar === 0 || this.state.enemyHealthBar === 0 || this.state.gameTime === 0)) {
       this.setState({ modal: true });
@@ -242,7 +246,7 @@ class MultiGame extends Component {
 
 
       // ANIMATION
-      this.callPlayer1Animation();
+      this.callPlayerAnimation('player1');
       // ANIMATION
 
 
@@ -287,7 +291,7 @@ class MultiGame extends Component {
   }
 
 
-  callPlayer1Animation() {
+  callPlayerAnimation(player) {
 
     let moves = ["punch", "kick", "rkick", "tatsumaki", "hadoken", "shoryuken", "jump", "kneel", "walkLeft", "walkRight"];
     let randomMoveNum = Math.floor(Math.random() * moves.length);
@@ -296,69 +300,94 @@ class MultiGame extends Component {
 
     switch (randomMoveNum) {
       case 0:
-        this.punch();
+        this.punch(player);
         break;
       case 1:
-        this.kick();
+        this.kick(player);
         break;
       case 2:
-        this.rkick();
+        this.rkick(player);
         break;
       case 3:
-        this.tatsumaki();
+        this.tatsumaki(player);
         break;
       case 4:
-        this.punch();
+        this.punch(player);
         break;
       case 5:
-        this.shoryuken();
+        this.shoryuken(player);
         break;
       case 6:
-        this.hadoken();
+        this.hadoken(player);
         break;
       case 7:
-        this.hadoken();
+        this.hadoken(player);
         break;
       case 8:
-        this.hadoken();
+        this.hadoken(player);
         break;
       case 9:
-        this.walkLeft();
+        this.walkLeft(player);
         break;
       default:
-        this.walkRight();
+        this.walkRight(player);
         break;
     }
   }
 
-  punch() {
-    let $ken = $('.player1');
+  punch(player) {
+    let $ken;
+    if (player === 'player1') {
+      $ken = $('.player1');
+    } else {
+      $ken = $('.player2');
+    }
     let $kenPos, $fireballPos;
     $ken.addClass('punch');
     setTimeout(function () { $ken.removeClass('punch'); }, 150);
   };
 
-  kick() {
-    let $ken = $('.player1');
+  kick(player) {
+    let $ken;
+    if (player === 'player1') {
+      $ken = $('.player1');
+    } else {
+      $ken = $('.player2');
+    }
     let $kenPos, $fireballPos;
     $ken.addClass('kick');
     setTimeout(function () { $ken.removeClass('kick'); }, 500);
   };
-  rkick() {
-    let $ken = $('.player1');
+  rkick(player) {
+    let $ken;
+    if (player === 'player1') {
+      $ken = $('.player1');
+    } else {
+      $ken = $('.player2');
+    }
     let $kenPos, $fireballPos;
     $ken.addClass('reversekick');
     setTimeout(function () { $ken.removeClass('reversekick'); }, 500);
   };
-  tatsumaki() {
-    let $ken = $('.player1');
+  tatsumaki(player) {
+    let $ken;
+    if (player === 'player1') {
+      $ken = $('.player1');
+    } else {
+      $ken = $('.player2');
+    }
     let $kenPos, $fireballPos;
     $ken.addClass('tatsumaki');
     setTimeout(function () { $ken.addClass('down'); }, 1500);
     setTimeout(function () { $ken.removeClass('tatsumaki down'); }, 2000);
   };
-  hadoken() {
-    let $ken = $('.player1');
+  hadoken(player) {
+    let $ken;
+    if (player === 'player1') {
+      $ken = $('.player1');
+    } else {
+      $ken = $('.player2');
+    }
     let $kenPos, $fireballPos;
     $ken.addClass('hadoken');
     setTimeout(function () { $ken.removeClass('hadoken'); }, 500);
@@ -392,8 +421,13 @@ class MultiGame extends Component {
 
     }, (250));
   };
-  shoryuken() {
-    let $ken = $('.player1');
+  shoryuken(player) {
+    let $ken;
+    if (player === 'player1') {
+      $ken = $('.player1');
+    } else {
+      $ken = $('.player2');
+    }
     let $kenPos, $fireballPos;
     $ken.addClass('shoryuken');
     setTimeout(function () { $ken.addClass('down'); }, 500);
@@ -411,13 +445,23 @@ class MultiGame extends Component {
   //   let $kenPos, $fireballPos;
   //   $ken.addClass('kneel');
   // };
-  walkLeft() {
-    let $ken = $('.player1');
+  walkLeft(player) {
+    let $ken;
+    if (player === 'player1') {
+      $ken = $('.player1');
+    } else {
+      $ken = $('.player2');
+    }
     let $kenPos, $fireballPos;
     $ken.addClass('walk').css({ marginLeft: '-=10px' });
   };
-  walkRight() {
-    let $ken = $('.player1');
+  walkRight(player) {
+    let $ken;
+    if (player === 'player1') {
+      $ken = $('.player1');
+    } else {
+      $ken = $('.player2');
+    }
     let $kenPos, $fireballPos;
     $ken.addClass('walk').css({ marginLeft: '+=10px' });
   };
