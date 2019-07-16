@@ -20,3 +20,4 @@ export const fetchUsers = () => dispatch => (
 export const updateUser = userData => dispatch =>(
     APIUtil.updateUser(userData).then(user => dispatch(receiveUser(user)))
 );
+
