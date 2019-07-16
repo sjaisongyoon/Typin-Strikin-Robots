@@ -13,7 +13,7 @@ const MatchSchema = new Schema({
     },
     winnerWPM: {
         type: Number,
-        require: true,
+        required: true,
     },
     loserId: {
         type: Schema.Types.ObjectId,
@@ -21,11 +21,11 @@ const MatchSchema = new Schema({
     },
     loserWPM: {
         type: Number,
-        require: true,
+        required: true,
     },
     date: {
         type: Date,
-        require: true,
+        required: true,
         default: Date.now
     }
 })
