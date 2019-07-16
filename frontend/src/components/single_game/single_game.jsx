@@ -13,7 +13,7 @@ export class SingleGame extends Component {
       correctWords: [],
       currentWord: '',
       currentInput: '',
-      modal: this.props.modal
+      modal: true,
     }
 
     this.createWordsArray = this.createWordsArray.bind(this);
@@ -37,6 +37,8 @@ export class SingleGame extends Component {
     this.createWordsArray();
     this.startTimer();
     console.log(this.state);
+
+    this.props.openModal('gamestart-single-modal')
   }
 
   startTimer() {

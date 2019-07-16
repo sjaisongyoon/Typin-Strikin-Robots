@@ -8,7 +8,7 @@ class GameStartSingleModal extends React.Component {
   }
 
   componentDidMount() {
-
+    this.countdown();
   }
 
   countdown() {
@@ -19,15 +19,17 @@ class GameStartSingleModal extends React.Component {
         }))
       } else {
         clearInterval(timer);
-        console.log(this.state);
-        this.props.closeModal();
+        // console.log(this.state);
+        // this.props.closeModal();
       }
     }, 1000);
   }
 
   render() {
     return (
-      <div></div>
+      <div>
+        <div>{this.state.time}</div>
+      </div>
     )
   }
 }
