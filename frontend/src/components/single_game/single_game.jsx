@@ -178,6 +178,7 @@ export class SingleGame extends Component {
               </div>
             </div>
           </div>
+          <div className="singlegame__fight-inner"></div>
         </div>
         <div className="game__input-container">
           <div className="game__display-paragraph">

@@ -272,7 +272,6 @@ class MultiGame extends Component {
     return (
       <div className="multigame__container">
         <div className="multigame__fight-container">
-          <div className="multigame__fight-inner">
             <div className="multigame__top">
               <div className="multigame__top-stats-wrapper">
                 <div className="multigame__top-player">
@@ -293,6 +292,7 @@ class MultiGame extends Component {
                   <div className="multigame__player-wpm">WPM: 121</div>
                 </div>
               </div>
+            <div className="multigame__fight-inner">
             </div>
           </div>
         </div>
