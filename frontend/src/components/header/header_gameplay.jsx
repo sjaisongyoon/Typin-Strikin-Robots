@@ -14,9 +14,9 @@ class HeaderGameplay extends Component {
     return (
       <div className="header__container header__gameplay-container">
         <div className="header__container-inner">
-          <div className="header__logo-container">
+          {/* <div className="header__logo-container">
             <div className="header__logo-img"></div>
-          </div>
+          </div> */}
           <div className="header__navbar-container">
             <div className="header__navbar">
               <div className="header__navbar-menu-wrapper">

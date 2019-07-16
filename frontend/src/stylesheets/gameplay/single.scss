@@ -55,6 +55,7 @@ h3.singlegame__top-timer-text {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  position: relative;
   // display: none;
 }
 
@@ -90,3 +91,47 @@ h3.singlegame__top-timer-text {
 .game__input-box-outer {
   position: relative;
 }
+
+
+//////////
+// Gameplay Characters
+//////////
+
+
+.player1 {
+  transform: scale(3);
+  bottom: 8rem;
+//   background-image: url('assets//images/01-ken-sprite.png');
+//   width: 11rem;
+//   height: 15rem;
+//   position: absolute;
+//   bottom: 3rem;
+//   left: 22rem;
+//   background-size: 900%;
+//   background-position-x: -27px;
+//   background-position-y: -6px;
+//   // animation-name: player1__move;
+//   // animation-duration: 1s;
+//   // animation-delay: 1s;
+}
+
+// // @keyframes player1__move {
+// //   0% { background-position-x: -27px; }
+// //   20% { background-position-x: -219px; }
+// //   40% { background-position-x: -431px; }
+// //   50% { background-position-x: -631px; }
+// //   60% { background-position-x: -631px; }
+// //   80% { background-position-x: -631px; }
+// // }
+
+// .player2 {
+//   background-image: url('assets//images/01-ryu-sprite.png');
+//   width: 11rem;
+//   height: 17rem;
+//   position: absolute;
+//   bottom: 2.7rem;
+//   right: 26rem;
+//   background-size: 950%;
+//   background-position-x: -53px;
+//   background-position-y: -4px;
+// }
