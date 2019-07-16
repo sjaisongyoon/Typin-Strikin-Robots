@@ -2,6 +2,7 @@ import * as APIUtil from '../util/game_util';
 import generateGamePassage from '../util/generate_game_passage';
 export const RECEIVE_PASSAGE = 'RECEIVE_PASSAGE';
 export const SET_GAME_TIME = 'SET_GAME_TIME';
+export const UPDATE_SINGLE_WPM = 'UPDATE_SINGLE_WPM';
 export const RECEIVE_GAME_ROOM = 'RECEIVE_GAME_ROOM';
 export const REMOVE_GAME_ROOM = 'REMOVE_GAME_ROOM';
 
@@ -24,6 +25,13 @@ export const setGameTime = time => ({
     type: SET_GAME_TIME,
     time
 })
+
+export const updateSingleGameWpm = wpm => {
+    return ({
+        type: UPDATE_SINGLE_WPM,
+        wpm
+    });
+}
 
 
 export const fetchPassage = () => dispatch => {
