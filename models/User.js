@@ -12,22 +12,22 @@ const UserSchema = new Schema({
     },
     multiplayerWins: {
       type: Number,
-      require: true,
+      required: true,
       default: 0
     },
     multiplayerLosses: {
       type: Number,
-      require: true,
+      required: true,
       default: 0
     },
     singleplayerWPM: {
       type: Number,
-      require: true,
+      required: true,
       default: 0
     },
     // numMatches: {
     //   type: Number,
-    //   require: true,
+    //   required: true,
     //   default: 0
     // },
   })

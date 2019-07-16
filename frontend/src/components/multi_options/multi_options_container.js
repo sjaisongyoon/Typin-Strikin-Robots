@@ -1,6 +1,7 @@
 import {connect} from 'react-redux';
 import MultiOptions from './multi_options';
 import {createGameRoom, updateGameRoom, fetchGameRooms} from '../../actions/game_room_actions';
+import {fetchPassage} from '../../actions/game_actions'
 
 const mapStateToProps = (state) => {
     return ({
@@ -13,7 +14,8 @@ const mapDispatchToProps = (dispatch) => {
     return ({
         createGameRoom: gameRoomData => dispatch(createGameRoom(gameRoomData)),
         updateGameRoom: gameRoomData => dispatch(updateGameRoom(gameRoomData)),
-        fetchGameRooms: () => dispatch(fetchGameRooms())
+        fetchGameRooms: () => dispatch(fetchGameRooms()),
+        fetchPassage: passageId => dispatch(fetchPassage(passageId)) 
     });
 }
 
