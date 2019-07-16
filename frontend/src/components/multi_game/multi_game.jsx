@@ -20,7 +20,9 @@ class MultiGame extends Component {
       correctWords: [],
       currentWord: '',
       currentInput: '',
-      modal: this.props.modal
+      modal: this.props.modal,
+      ownHealthBarDisplay: 250,
+      enemyHealthBarDisplay: 250,
     }
 
 
@@ -37,6 +39,7 @@ class MultiGame extends Component {
     this.startTimer = this.startTimer.bind(this);
     this.calculateWPM = this.calculateWPM.bind(this);
     this.calculateHealthBarDecrement = this.calculateHealthBarDecrement.bind(this);
+    this.updateHealthBarDisplay = this.updateHealthBarDisplay.bind(this);
     // this.gameOver = this.gameOver.bind(this);
   }
 
@@ -198,6 +201,7 @@ class MultiGame extends Component {
       // LOL
       let randomSound = soundEffects[Math.floor(Math.random() * soundEffects.length)];
       randomSound.play();
+      this.updateHealthBarDisplay();
 
       let correctWords = [...this.state.correctWords];
       correctWords.push(this.state.currentWord);
@@ -222,6 +226,18 @@ class MultiGame extends Component {
     }
   }
 
+  updateHealthBarDisplay() {
+    let ownHealth = this.state.ownHealthBar;
+    let enemyHealth = this.state.enemyHealthBar;
+
+    let ownBarDisplayPos = (250 * ownHealth) / 100;
+    let enemyBarDisplayPos = (250 * enemyHealth) / 100;
+    
+    this.setState({
+      ownHealthBarDisplay: ownBarDisplayPos,
+      EnemyHealthBarDisplay: enemyBarDisplayPos,
+    })
+  }
 
 
   render() {
@@ -248,7 +264,6 @@ class MultiGame extends Component {
             multiplayerLosses: updateLoss
           };
           updateUser(updatedUser);
-
           openModal('gameend-single-modal');
         }
       }, 100);
@@ -260,7 +275,10 @@ class MultiGame extends Component {
           <div className="multigame__top-stats-wrapper">
             <div className="multigame__top-player">
               <div className="multigame__player-name">{currentUser.username}</div>
-              <div className="multigame__player-health">{(this.state.ownHealthBar).toFixed(2)}%</div>
+              {/* {(this.state.ownHealthBar).toFixed(2)}% */}
+
+              <div className="multigame__player-health" style={{backgroundPosition: `${this.state.ownHealthBarDisplay}px`}}>
+              </div>
               <div className="multigame__player-wpm">WPM: {this.state.currentWPM }</div>
             </div>
             <div className="multigame__top-timer">
@@ -269,7 +287,7 @@ class MultiGame extends Component {
             </div>
             <div className="multigame__top-player">
               <div className="multigame__player-name">Player 2</div>
-              <div className="multigame__player-health">{(this.state.enemyHealthBar).toFixed(2)}%</div>
+              <div className="multigame__player-health" style={{ backgroundPosition: `${this.state.EnemyHealthBarDisplay}px`}}></div>
               <div className="multigame__player-wpm">WPM: 121</div>
             </div>
           </div>
