@@ -12,6 +12,7 @@ class Multi extends React.Component {
     }
 
     componentDidMount(){
+        this.props.fetchGameRooms();
         if (this.props.gameRoom){
             this.setState({
                 canCreate: false
@@ -20,6 +21,7 @@ class Multi extends React.Component {
     }
 
     handleSubmit(e){
+        debugger;
         e.preventDefault();
         if (e.target.className === 'join__game__button'){
             this.props.updateGameRoom({
@@ -36,7 +38,7 @@ class Multi extends React.Component {
             <div className="multi__container">
                 <button disabled={this.state.canCreate}
                     className="join__game__button"
-                    onSubmit={this.handleSubmit}>
+                    onClick={this.handleSubmit}>
                     <div>
                         Join Game
                     </div>
@@ -44,7 +46,7 @@ class Multi extends React.Component {
                 
                 <button disabled={!this.state.canCreate}
                     className="create__game__button"
-                    onSubmit={this.handleSubmit}>
+                    onClick={this.handleSubmit}>
                     <div>
                         Create Game
                     </div>
