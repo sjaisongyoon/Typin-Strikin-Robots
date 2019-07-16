@@ -25,6 +25,11 @@ const UserSchema = new Schema({
       require: true,
       default: 0
     },
+    // numMatches: {
+    //   type: Number,
+    //   require: true,
+    //   default: 0
+    // },
   })
 
 module.exports = User = mongoose.model('users', UserSchema);
