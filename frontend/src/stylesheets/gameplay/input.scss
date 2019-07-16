@@ -24,9 +24,13 @@
 .game__input-box {
   padding: 1rem;
   font-size: 24px;
-  border-radius: 5px;
+  border-radius: 0;
   outline: none;
-  border: 1px solid rgba(0,0,0,.3);  
+  border: 1px solid rgba(0, 0, 0, 0.3);
   width: 100%;
+  background-color: #fff;
+  border: 5px solid blue;
+  /* font-family: "Press Play 2P" !important; */
+  color: #000;
 }
 
