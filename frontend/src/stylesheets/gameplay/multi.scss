@@ -24,7 +24,14 @@
 }
 .multigame__player-health {
   font-size: 1.8rem;
-  margin-bottom: 1rem;  
+  margin-bottom: 1rem;
+  height: 28px;
+  width: 250px;
+  background: linear-gradient(270deg, blue 0%, blue 50%, red 50% , red 100%);
+  border: 2px solid #fff;
+  overflow: hidden;
+  background-size: 250%;
+  background-position: 250px;
 }
 .multigame__player-wpm {
   font-size: 1rem;

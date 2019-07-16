@@ -20,7 +20,9 @@ class MultiGame extends Component {
       correctWords: [],
       currentWord: '',
       currentInput: '',
-      modal: this.props.modal
+      modal: this.props.modal,
+      ownHealthBarDisplay: 250,
+      enemyHealthBarDisplay: 250,
     }
 
 
@@ -37,7 +39,8 @@ class MultiGame extends Component {
     this.startTimer = this.startTimer.bind(this);
     this.calculateWPM = this.calculateWPM.bind(this);
     this.calculateHealthBarDecrement = this.calculateHealthBarDecrement.bind(this);
-    this.gameOver = this.gameOver.bind(this);
+    this.updateHealthBarDisplay = this.updateHealthBarDisplay.bind(this);
+    // this.gameOver = this.gameOver.bind(this);
   }
 
   openSocket() {
@@ -81,28 +84,20 @@ class MultiGame extends Component {
       myUserId: this.props.currentUser.id
     }
     this.state.socket.emit("gameroom", data)
-    this.setState({enemyHealthBar: newEnemyHealthBar}, () => {
-      if (newEnemyHealthBar === 0) {
-        // Game over (lose)
-        this.gameOver('lose'); 
-      } else if (this.state.ownHealthBar === 0) {
-        // Game over (win)
-        this.gameOver('win');
-      }
-    });
+    this.setState({enemyHealthBar: newEnemyHealthBar});
   }
 
 
-  ////////
-  // Gameplay
-  ////////
-  gameOver(type) {
-    // Stop player input
-    // Show game win/lose modal
-    // Render player game stats
-    // Give option to play again
-    // Update player stats in DB
-  }
+  // ////////
+  // // Gameplay
+  // ////////
+  // gameOver(type) {
+  //   // Stop player input
+  //   // Show game win/lose modal
+  //   // Render player game stats
+  //   // Give option to play again
+  //   // Update player stats in DB
+  // }
 
   createWordsDisplay() {
     let wordsArr = this.props.gamePassage.split(' ').map((word, idx) => {
@@ -194,6 +189,20 @@ class MultiGame extends Component {
     console.log(currentWord === currentInput);
 
     if (currentWord === currentInput) {
+      let soundEffects = [
+        new Audio('assets/audio/01-punch.mp3'),
+        new Audio('assets/audio/02-punch.mp3'),
+        new Audio('assets/audio/03-punch.mp3'),
+        new Audio('assets/audio/04-punch.mp3'),
+        new Audio('assets/audio/05-punch.mp3'),
+        new Audio('assets/audio/06-punch.mp3'),
+        new Audio('assets/audio/07-punch.mp3'),
+      ];
+      // LOL
+      let randomSound = soundEffects[Math.floor(Math.random() * soundEffects.length)];
+      randomSound.play();
+      this.updateHealthBarDisplay();
+
       let correctWords = [...this.state.correctWords];
       correctWords.push(this.state.currentWord);
       let lastCorrectIdx = [...this.state.correctWords].length;
@@ -217,17 +226,44 @@ class MultiGame extends Component {
     }
   }
 
+  updateHealthBarDisplay() {
+    let ownHealth = this.state.ownHealthBar;
+    let enemyHealth = this.state.enemyHealthBar;
+
+    let ownBarDisplayPos = (250 * ownHealth) / 100;
+    let enemyBarDisplayPos = (250 * enemyHealth) / 100;
+    
+    this.setState({
+      ownHealthBarDisplay: ownBarDisplayPos,
+      EnemyHealthBarDisplay: enemyBarDisplayPos,
+    })
+  }
 
 
   render() {
-    let { currentUser, openModal } = this.props;
+    let { currentUser, openModal, updateSingleGameWpm, updateUser } = this.props;
 
     // show modal on game end
     if (!this.state.modal) {
       setTimeout(() => {
         if (this.state.ownHealthBar === 0 || this.state.enemyHealthBar === 0 || this.state.gameTime === 0) {
           this.setState({ modal: true });
-          this.props.updateSingleGameWpm(parseInt(this.state.currentWPM));
+          updateSingleGameWpm(parseInt(this.state.currentWPM));
+          let updateLoss;
+          let updateWin;
+          if (this.state.ownHealthBar === 0) {
+            updateLoss = 1;
+            updateWin = 0;
+          } else if (this.state.enemyHealthBar === 0) {
+            updateLoss = 0;
+            updateWin = 1;
+          }
+          let updatedUser = {
+            id: currentUser.id,
+            multiplayerWins: updateWin,
+            multiplayerLosses: updateLoss
+          };
+          updateUser(updatedUser);
           openModal('gameend-single-modal');
         }
       }, 100);
@@ -239,7 +275,10 @@ class MultiGame extends Component {
           <div className="multigame__top-stats-wrapper">
             <div className="multigame__top-player">
               <div className="multigame__player-name">{currentUser.username}</div>
-              <div className="multigame__player-health">{this.state.ownHealthBar}%</div>
+              {/* {(this.state.ownHealthBar).toFixed(2)}% */}
+
+              <div className="multigame__player-health" style={{backgroundPosition: `${this.state.ownHealthBarDisplay}px`}}>
+              </div>
               <div className="multigame__player-wpm">WPM: {this.state.currentWPM }</div>
             </div>
             <div className="multigame__top-timer">
@@ -248,7 +287,7 @@ class MultiGame extends Component {
             </div>
             <div className="multigame__top-player">
               <div className="multigame__player-name">Player 2</div>
-              <div className="multigame__player-health">{this.state.enemyHealthBar}%</div>
+              <div className="multigame__player-health" style={{ backgroundPosition: `${this.state.EnemyHealthBarDisplay}px`}}></div>
               <div className="multigame__player-wpm">WPM: 121</div>
             </div>
           </div>
