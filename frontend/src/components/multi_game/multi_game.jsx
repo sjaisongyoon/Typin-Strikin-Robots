@@ -87,6 +87,7 @@ class MultiGame extends Component {
 
     if (prevState.ownHealthBar > this.state.ownHealthBar) {
       this.callPlayerAnimation('player2');
+      this.updateHealthBarDisplay();
     }
 
     if (!this.state.modal && (this.state.ownHealthBar === 0 || this.state.enemyHealthBar === 0 || this.state.gameTime === 0)) {
