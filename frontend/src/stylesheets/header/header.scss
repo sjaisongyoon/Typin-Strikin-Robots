@@ -90,16 +90,17 @@
   padding: 0;
   margin: 0;
   width: 500px;
-  bottom: 25%;
+  top: 7rem;
   left: 50%;
   transform: translateX(-50%);
+  z-index: 9;
 }
 
 .header__gameplay-container .header__container-inner {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;  
+  color: black;
 }
 
 .header__gameplay-container .header__logo-container {
