@@ -194,6 +194,19 @@ class MultiGame extends Component {
     console.log(currentWord === currentInput);
 
     if (currentWord === currentInput) {
+      let soundEffects = [
+        new Audio('assets/audio/01-punch.mp3'),
+        new Audio('assets/audio/02-punch.mp3'),
+        new Audio('assets/audio/03-punch.mp3'),
+        new Audio('assets/audio/04-punch.mp3'),
+        new Audio('assets/audio/05-punch.mp3'),
+        new Audio('assets/audio/06-punch.mp3'),
+        new Audio('assets/audio/07-punch.mp3'),
+      ];
+      // LOL
+      let randomSound = soundEffects[Math.floor(Math.random() * soundEffects.length)];
+      randomSound.play();
+      
       let correctWords = [...this.state.correctWords];
       correctWords.push(this.state.currentWord);
       let lastCorrectIdx = [...this.state.correctWords].length;
@@ -239,7 +252,7 @@ class MultiGame extends Component {
           <div className="multigame__top-stats-wrapper">
             <div className="multigame__top-player">
               <div className="multigame__player-name">{currentUser.username}</div>
-              <div className="multigame__player-health">{this.state.ownHealthBar}%</div>
+              <div className="multigame__player-health">{(this.state.ownHealthBar).toFixed(2)}%</div>
               <div className="multigame__player-wpm">WPM: {this.state.currentWPM }</div>
             </div>
             <div className="multigame__top-timer">
@@ -248,7 +261,7 @@ class MultiGame extends Component {
             </div>
             <div className="multigame__top-player">
               <div className="multigame__player-name">Player 2</div>
-              <div className="multigame__player-health">{this.state.enemyHealthBar}%</div>
+              <div className="multigame__player-health">{(this.state.enemyHealthBar).toFixed(2)}%</div>
               <div className="multigame__player-wpm">WPM: 121</div>
             </div>
           </div>
