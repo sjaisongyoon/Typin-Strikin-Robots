@@ -113,7 +113,7 @@ router.post('/login', (req, res) => {
       })
   })
 
-router.get('/', (req, res) => {
+router.get('/', passport.authenticate('jwt', { session: false }),(req, res) => {
   User.find()
     .then(users => {
       let usersPojo = {};
@@ -132,7 +132,7 @@ router.get('/', (req, res) => {
     .catch(err => res.status(404).json({ nousersfound: 'No users found' }));
 });
 
-router.get('/leaderboard', (req, res) => {
+router.get('/leaderboard', passport.authenticate('jwt', { session: false }),(req, res) => {
   let leaderboardPojo = {};
   User.find()
     .sort({ multiplayerWins: -1 })
@@ -166,7 +166,7 @@ router.get('/leaderboard', (req, res) => {
   //   .catch(err => res.status(404).json({ nousersfound: 'No users found' }));
 });
 
-router.patch('/:userId', (req, res) => {
+router.patch('/:userId', passport.authenticate('jwt', { session: false }),(req, res) => {
   const user = { _id: mongoose.Types.ObjectId(req.params.userId)}
   User.findOne(user).then((fetchedUser) => {
     // fetchedUser.numMatches = fetchedUser.numMatches === 0 ? 1 : fetchedUser.numMatches + 1;

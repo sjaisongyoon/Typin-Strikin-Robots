@@ -9,7 +9,7 @@ const Match = require('../../models/Match');
 
 router.get("/test", (req, res) => res.json({ msg: "This is the matches route" }));
 
-router.get('/user/:userId', (req, res) => {
+router.get('/user/:userId', passport.authenticate('jwt', { session: false }),(req, res) => {
     let winner = { winnerId: mongoose.Types.ObjectId(req.params.userId)};
     let loser = { loserId: mongoose.Types.ObjectId(req.params.userId) };
     Match.find({ $or: [winner, loser] })
@@ -20,9 +20,7 @@ router.get('/user/:userId', (req, res) => {
 });
 
 //may want to add in validation for game type and be included in only two types: single, multi
-router.post('/',
-    // passport.authenticate('jwt', { session: false }),
-    (req, res) => {
+router.post('/', passport.authenticate('jwt', { session: false }),(req, res) => {
         const newMatch = new Match({
             gameType: req.body.gameType,
             winnerId: mongoose.Types.ObjectId(req.body.winnerId), //may need to use mongoose.Types.ObjectId(req.body.winnerId).  
