@@ -8,7 +8,8 @@ mongoose.set('useFindAndModify', false);
 const gameRoomPojo = gameRoom => ({
     id: gameRoom.id,
     player1Id: gameRoom.player1Id,
-    player2Id: gameRoom.player2Id
+    player2Id: gameRoom.player2Id,
+    passageId: gameRoom.passageId
 })
 
 router.get("/test", (req, res) => res.json({ msg: "This is the multiplayerGameRooms route" }));

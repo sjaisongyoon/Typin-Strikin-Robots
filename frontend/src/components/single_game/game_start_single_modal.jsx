@@ -21,6 +21,7 @@ class GameStartSingleModal extends React.Component {
         this.setState({time: 'TYPE!!!!!'});
       } else {
         clearInterval(timer);
+        this.props.closeModal();
       }
     }, 1000);
   }

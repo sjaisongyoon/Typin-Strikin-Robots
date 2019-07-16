@@ -1,4 +1,4 @@
-import generateGamePassage from '../util/generate_game_passage';
+import {generateRandomGamePassage, findPassage} from '../util/generate_game_passage';
 export const RECEIVE_PASSAGE = 'RECEIVE_PASSAGE';
 export const SET_GAME_TIME = 'SET_GAME_TIME';
 export const UPDATE_SINGLE_WPM = 'UPDATE_SINGLE_WPM';
@@ -22,11 +22,11 @@ export const updateSingleGameWpm = wpm => {
 }
 
 
-export const fetchPassage = () => dispatch => {
-    const passage = generateGamePassage();
+export const fetchPassage = (passageId) => dispatch => {
+    const passage = findPassage(passageId);
     return dispatch(receivePassage(passage))
 };
 
 export const randomPassage = () => (
-    generateGamePassage()
+    generateRandomGamePassage()
 )

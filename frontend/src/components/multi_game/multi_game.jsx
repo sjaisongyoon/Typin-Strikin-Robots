@@ -70,13 +70,20 @@ class MultiGame extends Component {
     })
   }
 
+  componentWillUnmount() {
+    this.state.socket.disconnect();
+  }
+
   componentDidMount() {
     // Sockets
     this.openSocket();
+    // this.setState({modal: true})
+    this.props.openModal('gamestart-multi-modal')
+    console.log('open socket')
 
     // Gameplay
     this.createWordsArray();
-    this.startTimer();
+    console.log(this.state);
     setTimeout(() => {
       this.calculateHealthBarDecrement();
     }, 1000);
@@ -84,7 +91,10 @@ class MultiGame extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     let { currentUser, openModal, updateSingleGameWpm, updateUser, deleteGameRoom, gameRoom } = this.props;
-
+    
+    // if (prevState !== this.state && !this.state.modal) this.setState({modal: this.props.modal})
+    console.log(prevState.modal, this.props.modal);
+    if (this.props.modal === null && this.state.elapsedTime === 0) this.startTimer();
     if (prevState.ownHealthBar > this.state.ownHealthBar) {
       this.callPlayerAnimation('player2');
       this.updateHealthBarDisplay();
