@@ -3,11 +3,11 @@ const router = express.Router();
 const passport = require('passport');
 const mongoose = require('mongoose');
 const MultiplayerGameRoom = require('../../models/MultiplayerGameRoom');
-
+mongoose.set('useFindAndModify', false);
 
 router.get("/test", (req, res) => res.json({ msg: "This is the multiplayerGameRooms route" }));
 
-router.get("/", (req, res) => {
+router.get("/", passport.authenticate('jwt', { session: false }),(req, res) => {
     MultiplayerGameRoom.find()
         .sort({ date: -1 })
         .then( (gameRooms) => {
@@ -25,9 +25,7 @@ router.get("/", (req, res) => {
         .catch(err => res.status(404).json({ nomultiplayergameroomsfound: 'No multiplayerGameRooms found' }));
 });
 
-router.post("/",
-    // passport.authenticate('jwt', { session: false }),
-    (req, res) => {
+router.post("/", passport.authenticate('jwt', { session: false }), (req, res) => {
         const newMultiplayerGameRoom = new MultiplayerGameRoom({
             player1Id: mongoose.Types.ObjectId(req.body.playerId), 
             // player2Id: mongoose.Types.ObjectId(req.body.player2Id),
@@ -45,7 +43,7 @@ router.post("/",
     }
 );
 
-router.patch('/:multiplayerGameRoomId', (req, res) => {
+router.patch('/:multiplayerGameRoomId', passport.authenticate('jwt', { session: false }),(req, res) => {
     // res.send('Got a PATCH request at /multiplayerGameRooms');
     let gameRoomIdOnly = { _id: mongoose.Types.ObjectId(req.params.multiplayerGameRoomId) }
     let updateParams = { player2Id: mongoose.Types.ObjectId(req.body.playerId)}
@@ -61,7 +59,7 @@ router.patch('/:multiplayerGameRoomId', (req, res) => {
         .catch(err => res.status(400).json({ updatefailed: 'Something wrong when updating multiplayerGameRoom!' }));
 });
 
-router.delete("/:multiplayerGameRoomId", (req, res) => {
+router.delete("/:multiplayerGameRoomId", passport.authenticate('jwt', { session: false }),(req, res) => {
     let multiplayerGameRoom = { _id: mongoose.Types.ObjectId(req.params.multiplayerGameRoomId) }
     // res.send('Got a DELETE request at /user');
     MultiplayerGameRoom.findOneAndRemove(multiplayerGameRoom)
