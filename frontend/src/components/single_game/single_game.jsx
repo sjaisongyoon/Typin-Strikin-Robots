@@ -165,19 +165,19 @@ export class SingleGame extends Component {
 
     return (
       <div className="singlegame__container">
-        <div className="singlegame__top">
-          <div className="singlegame__top-stats-wrapper">
-            <div className="singlegame__top-player">
-              <div className="singlegame__player-name">{currentUser.username}</div>
-              <div className="singlegame__player-wpm">WPM: {this.state.currentWPM}</div>
-            </div>
-            <div className="singlegame__top-timer">
-              <h3 className="singlegame__top-timer-text">Timer</h3>
-              <h4 className="singlegame__top-time">00:{this.state.gameTime > 9 ? this.state.gameTime : `0${this.state.gameTime}`}</h4>
+        <div className="singlegame__fight-container">
+          <div className="singlegame__top">
+            <div className="singlegame__top-stats-wrapper">
+              <div className="singlegame__top-player">
+                <div className="singlegame__player-name">{currentUser.username}</div>
+                <div className="singlegame__player-wpm">WPM: {this.state.currentWPM}</div>
+              </div>
+              <div className="singlegame__top-timer">
+                <h3 className="singlegame__top-timer-text">Timer</h3>
+                <h4 className="singlegame__top-time">00:{this.state.gameTime > 9 ? this.state.gameTime : `0${this.state.gameTime}`}</h4>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="singlegame__fight-container">
         </div>
         <div className="game__input-container">
           <div className="game__display-paragraph">
