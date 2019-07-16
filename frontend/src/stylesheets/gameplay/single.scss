@@ -65,10 +65,14 @@ h3.singlegame__top-timer-text {
 .word__span {
   transition: all 100ms ease-in;
   color: #fff;
+  display: inline-block;
 }
 
 .word__span--correct {
-  color: lawngreen;
+  // color: lawngreen;
+  background: linear-gradient(rgba(255,255,255,1) 0%, rgba(38, 110, 255, 1) 28%, rgb(166, 58, 130), #fff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .game__input-preview {
