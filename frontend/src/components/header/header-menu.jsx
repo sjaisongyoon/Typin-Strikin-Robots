@@ -4,6 +4,14 @@ class HeaderMenu extends Component {
   constructor(props) {
     super(props);
     this.handleModal = this.handleModal.bind(this);
+    this.state = {
+      users: null
+    }
+  }
+  
+  componentDidMount() {
+    this.props.fetchUsers()
+      .then(() => this.setState({users: true}));
   }
   
   handleModal(e) {
@@ -12,6 +20,13 @@ class HeaderMenu extends Component {
   }
 
   render() {
+    // console.log(this.props.leaderboards);
+
+    if (!this.state.users) {
+      // debugger
+      return null;
+    }
+
     return (
       <div className="header__container">
         <div className="header__container-inner">
@@ -24,7 +39,9 @@ class HeaderMenu extends Component {
             <div className="header__navbar header__navbar-loggedin">
               <div className="header__navbar-user-wrapper">
                 <p className="header__navbar-username">{this.props.currentUser.username}</p>
-                <p className="header__navbar-wpm">WPM: 134</p>
+                <p className="header__navbar-wpm">
+                  HI SCORE: {this.props.users[this.props.currentUser.id].singleplayerWPM} WPM
+                </p>
               </div>
               <div className="header__navbar-menu-wrapper">
                 <button href="#" className="header__navbar-dropdown-btn" onClick={this.handleModal}>
