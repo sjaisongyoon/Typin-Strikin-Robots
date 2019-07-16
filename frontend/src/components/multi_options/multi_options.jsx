@@ -24,7 +24,7 @@ class Multi extends React.Component {
 
     handleSubmit(e){
         e.preventDefault();
-        debugger;
+        // debugger;
         if (e.target.className === 'joingame__button'){
             this.props.updateGameRoom({
                 playerId: this.state.playerId,
@@ -38,17 +38,20 @@ class Multi extends React.Component {
     render () {
         return (
             <div className="multi__container">
-                <button disabled={this.state.canCreate}
-                    className="joingame__button"
-                    onClick={this.handleSubmit}>
-                    Join Game
-                </button>
-                
-                <button disabled={!this.state.canCreate}
-                    className="creategame__button"
-                    onClick={this.handleSubmit}>
-                    Create Game
-                </button>
+                <h2 className="multioptions__title">MULTIPLAYER</h2>
+                <div className="multi__btn-wrapper">
+                    <button disabled={this.state.canCreate}
+                        className="joingame__button"
+                        onClick={this.handleSubmit}>
+                        Join Game
+                    </button>
+                    
+                    <button disabled={!this.state.canCreate}
+                        className="creategame__button"
+                        onClick={this.handleSubmit}>
+                        Create Game
+                    </button>
+                </div>
             </div>
         );
     }

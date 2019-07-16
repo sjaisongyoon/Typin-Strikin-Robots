@@ -3,8 +3,12 @@ import { Link } from 'react-router-dom';
 
 class LeaderboardIndex extends Component {
   
+  componentDidMount() {
+    this.props.fetchLeaderboards();
+  }
+  
   renderLeaderboard() {
-    let { boardType } = this.props;
+    let { boardType, leaderboardSingle, leaderboardMulti } = this.props;
 
     if (boardType === 'single') {
       return (
@@ -15,56 +19,15 @@ class LeaderboardIndex extends Component {
               <div className="leaderboard__table-item">WPM</div>
               <div className="leaderboard__table-item">NAME</div>
             </div>
-            <div className="leaderboard__table-row">
-              <div className="leaderboard__table-item">1ST</div>
-              <div className="leaderboard__table-item">151</div>
-              <div className="leaderboard__table-item">CALLA</div>
-            </div>
-            <div className="leaderboard__table-row">
-              <div className="leaderboard__table-item">2ND</div>
-              <div className="leaderboard__table-item">143</div>
-              <div className="leaderboard__table-item">KEVIN</div>
-            </div>
-            <div className="leaderboard__table-row">
-              <div className="leaderboard__table-item">3RD</div>
-              <div className="leaderboard__table-item">116</div>
-              <div className="leaderboard__table-item">SAM</div>
-            </div>
-            <div className="leaderboard__table-row">
-              <div className="leaderboard__table-item">4TH</div>
-              <div className="leaderboard__table-item">113</div>
-              <div className="leaderboard__table-item">CHRIS</div>
-            </div>
-            <div className="leaderboard__table-row">
-              <div className="leaderboard__table-item">5TH</div>
-              <div className="leaderboard__table-item">101</div>
-              <div className="leaderboard__table-item">KENNY</div>
-            </div>
-            <div className="leaderboard__table-row">
-              <div className="leaderboard__table-item">6TH</div>
-              <div className="leaderboard__table-item">98</div>
-              <div className="leaderboard__table-item">CALLA</div>
-            </div>
-            <div className="leaderboard__table-row">
-              <div className="leaderboard__table-item">7TH</div>
-              <div className="leaderboard__table-item">80</div>
-              <div className="leaderboard__table-item">KEVIN</div>
-            </div>
-            <div className="leaderboard__table-row">
-              <div className="leaderboard__table-item">8TH</div>
-              <div className="leaderboard__table-item">79</div>
-              <div className="leaderboard__table-item">SAM</div>
-            </div>
-            <div className="leaderboard__table-row">
-              <div className="leaderboard__table-item">9TH</div>
-              <div className="leaderboard__table-item">75</div>
-              <div className="leaderboard__table-item">CHRIS</div>
-            </div>
-            <div className="leaderboard__table-row">
-              <div className="leaderboard__table-item">10TH</div>
-              <div className="leaderboard__table-item">71</div>
-              <div className="leaderboard__table-item">KENNY</div>
-            </div>
+            {leaderboardSingle.map((row, idx) => {
+              return (
+                <div className="leaderboard__table-row" key={idx}>
+                  <div className="leaderboard__table-item">{idx + 1}</div>
+                  <div className="leaderboard__table-item">{row.singleplayerWPM} </div>
+                  <div className="leaderboard__table-item">{row.username}</div>
+                </div>
+              )
+            })}
           </div>
         </div>
       )
@@ -77,56 +40,15 @@ class LeaderboardIndex extends Component {
               <div className="leaderboard__table-item">WINS</div>
               <div className="leaderboard__table-item">NAME</div>
             </div>
-            <div className="leaderboard__table-row">
-              <div className="leaderboard__table-item">1ST</div>
-              <div className="leaderboard__table-item">151</div>
-              <div className="leaderboard__table-item">CALLA</div>
-            </div>
-            <div className="leaderboard__table-row">
-              <div className="leaderboard__table-item">2ND</div>
-              <div className="leaderboard__table-item">143</div>
-              <div className="leaderboard__table-item">KEVIN</div>
-            </div>
-            <div className="leaderboard__table-row">
-              <div className="leaderboard__table-item">3RD</div>
-              <div className="leaderboard__table-item">116</div>
-              <div className="leaderboard__table-item">SAM</div>
-            </div>
-            <div className="leaderboard__table-row">
-              <div className="leaderboard__table-item">4TH</div>
-              <div className="leaderboard__table-item">113</div>
-              <div className="leaderboard__table-item">CHRIS</div>
-            </div>
-            <div className="leaderboard__table-row">
-              <div className="leaderboard__table-item">5TH</div>
-              <div className="leaderboard__table-item">101</div>
-              <div className="leaderboard__table-item">KENNY</div>
-            </div>
-            <div className="leaderboard__table-row">
-              <div className="leaderboard__table-item">6TH</div>
-              <div className="leaderboard__table-item">98</div>
-              <div className="leaderboard__table-item">CALLA</div>
-            </div>
-            <div className="leaderboard__table-row">
-              <div className="leaderboard__table-item">7TH</div>
-              <div className="leaderboard__table-item">80</div>
-              <div className="leaderboard__table-item">KEVIN</div>
-            </div>
-            <div className="leaderboard__table-row">
-              <div className="leaderboard__table-item">8TH</div>
-              <div className="leaderboard__table-item">79</div>
-              <div className="leaderboard__table-item">SAM</div>
-            </div>
-            <div className="leaderboard__table-row">
-              <div className="leaderboard__table-item">9TH</div>
-              <div className="leaderboard__table-item">75</div>
-              <div className="leaderboard__table-item">CHRIS</div>
-            </div>
-            <div className="leaderboard__table-row">
-              <div className="leaderboard__table-item">10TH</div>
-              <div className="leaderboard__table-item">71</div>
-              <div className="leaderboard__table-item">KENNY</div>
-            </div>
+            {leaderboardMulti.map((row, idx) => {
+              return (
+                <div className="leaderboard__table-row" key={idx}>
+                  <div className="leaderboard__table-item">{idx + 1}</div>
+                  <div className="leaderboard__table-item">{row.multiplayerWins}</div>
+                  <div className="leaderboard__table-item">{row.username}</div>
+                </div>
+              );
+            })}
           </div>
         </div>
       )
@@ -154,6 +76,12 @@ class LeaderboardIndex extends Component {
   }
   
   render() {
+    if (!this.props.leaderboardSingle || !this.props.leaderboardMulti) {
+      return (
+        <div>Loading...</div>
+      );
+    }
+
     return (
       <div>
         <div className="leaderboard__header-container">

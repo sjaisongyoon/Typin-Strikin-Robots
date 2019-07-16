@@ -129,7 +129,7 @@ export class SingleGame extends Component {
 
       // Update class for correct Words
       let word = document.getElementById(`${lastCorrectIdx}`);
-      word.classList.add('word__span--correct')
+      word.classList.add('word__span--correct');
       
       this.setState({
         currentInput: '',
@@ -146,14 +146,18 @@ export class SingleGame extends Component {
 
 
   render() {
-    let { currentUser, openModal } = this.props;
+    let { currentUser, openModal, updateUser, updateSingleGameWpm } = this.props;
 
     // show modal on game end
     if (!this.state.modal) {
       setTimeout(() => {
         if (this.state.wordCount === this.state.correctWords.length || this.state.gameTime === 0) {
           this.setState({modal: true});
-          this.props.updateSingleGameWpm(parseInt(this.state.currentWPM));
+          updateSingleGameWpm(parseInt(this.state.currentWPM));
+          updateUser({
+            id: currentUser.id,
+            singleplayerWPM: this.state.currentWPM
+          });
           openModal('gameend-single-modal');  
         }
       }, 100);
