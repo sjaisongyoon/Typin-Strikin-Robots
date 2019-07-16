@@ -6,6 +6,8 @@
   cursor: pointer;
   padding: 1.4rem;
   font-size: 1rem;
+  width: 100%;
+  text-transform: uppercase;
 }
 
 .creategame__button:hover, .joingame__button:hover {
@@ -37,4 +39,13 @@
   background: grey;
   color: black;
   border: 5px solid black;
+}
+
+.multi__btn-wrapper {
+  max-width: 300px;
+}
+
+h2.multioptions__title {
+  font-size: 2rem;
+  margin-bottom: 3rem;
 }

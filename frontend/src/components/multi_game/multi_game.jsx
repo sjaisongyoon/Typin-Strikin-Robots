@@ -37,7 +37,7 @@ class MultiGame extends Component {
     this.startTimer = this.startTimer.bind(this);
     this.calculateWPM = this.calculateWPM.bind(this);
     this.calculateHealthBarDecrement = this.calculateHealthBarDecrement.bind(this);
-    this.gameOver = this.gameOver.bind(this);
+    // this.gameOver = this.gameOver.bind(this);
   }
 
   openSocket() {
@@ -81,28 +81,20 @@ class MultiGame extends Component {
       myUserId: this.props.currentUser.id
     }
     this.state.socket.emit("gameroom", data)
-    this.setState({enemyHealthBar: newEnemyHealthBar}, () => {
-      if (newEnemyHealthBar === 0) {
-        // Game over (lose)
-        this.gameOver('lose'); 
-      } else if (this.state.ownHealthBar === 0) {
-        // Game over (win)
-        this.gameOver('win');
-      }
-    });
+    this.setState({enemyHealthBar: newEnemyHealthBar});
   }
 
 
-  ////////
-  // Gameplay
-  ////////
-  gameOver(type) {
-    // Stop player input
-    // Show game win/lose modal
-    // Render player game stats
-    // Give option to play again
-    // Update player stats in DB
-  }
+  // ////////
+  // // Gameplay
+  // ////////
+  // gameOver(type) {
+  //   // Stop player input
+  //   // Show game win/lose modal
+  //   // Render player game stats
+  //   // Give option to play again
+  //   // Update player stats in DB
+  // }
 
   createWordsDisplay() {
     let wordsArr = this.props.gamePassage.split(' ').map((word, idx) => {
@@ -206,7 +198,7 @@ class MultiGame extends Component {
       // LOL
       let randomSound = soundEffects[Math.floor(Math.random() * soundEffects.length)];
       randomSound.play();
-      
+
       let correctWords = [...this.state.correctWords];
       correctWords.push(this.state.currentWord);
       let lastCorrectIdx = [...this.state.correctWords].length;
@@ -233,14 +225,30 @@ class MultiGame extends Component {
 
 
   render() {
-    let { currentUser, openModal } = this.props;
+    let { currentUser, openModal, updateSingleGameWpm, updateUser } = this.props;
 
     // show modal on game end
     if (!this.state.modal) {
       setTimeout(() => {
         if (this.state.ownHealthBar === 0 || this.state.enemyHealthBar === 0 || this.state.gameTime === 0) {
           this.setState({ modal: true });
-          this.props.updateSingleGameWpm(parseInt(this.state.currentWPM));
+          updateSingleGameWpm(parseInt(this.state.currentWPM));
+          let updateLoss;
+          let updateWin;
+          if (this.state.ownHealthBar === 0) {
+            updateLoss = 1;
+            updateWin = 0;
+          } else if (this.state.enemyHealthBar === 0) {
+            updateLoss = 0;
+            updateWin = 1;
+          }
+          let updatedUser = {
+            id: currentUser.id,
+            multiplayerWins: updateWin,
+            multiplayerLosses: updateLoss
+          };
+          updateUser(updatedUser);
+
           openModal('gameend-single-modal');
         }
       }, 100);
