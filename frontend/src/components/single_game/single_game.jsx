@@ -54,11 +54,6 @@ export class SingleGame extends Component {
   }
 
 
-  updateWordCount() {
-
-  }
-
-
   createWordsArray() {
     let words = this.props.gamePassage.split(' ');
     let wordCount = words.length;
