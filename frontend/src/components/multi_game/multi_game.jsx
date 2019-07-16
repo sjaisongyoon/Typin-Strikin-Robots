@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import socketIOClient from 'socket.io-client';
+import $ from 'jquery';
 
 class MultiGame extends Component {
   constructor(props) {
@@ -41,6 +42,22 @@ class MultiGame extends Component {
     this.calculateHealthBarDecrement = this.calculateHealthBarDecrement.bind(this);
     this.updateHealthBarDisplay = this.updateHealthBarDisplay.bind(this);
     // this.gameOver = this.gameOver.bind(this);
+
+
+
+    // Moves
+
+    this.callPlayer1Animation = this.callPlayer1Animation.bind(this);
+    this.punch = this.punch.bind(this);
+    this.kick = this.kick.bind(this);
+    this.rkick = this.rkick.bind(this);
+    this.tatsumaki = this.tatsumaki.bind(this);
+    this.hadoken = this.hadoken.bind(this);
+    this.shoryuken = this.shoryuken.bind(this);
+    this.jump = this.jump.bind(this);
+    // this.kneel = this.kneel.bind(this);
+    this.walkLeft = this.walkLeft.bind(this);
+    this.walkRight = this.walkRight.bind(this);
   }
 
   openSocket() {
@@ -86,7 +103,9 @@ class MultiGame extends Component {
         multiplayerLosses: updateLoss
       };
       updateUser(updatedUser);
-      deleteGameRoom(gameRoom.id);
+      if (gameRoom) {
+        deleteGameRoom(gameRoom.id);
+      };
       openModal('gameend-single-modal');
     }
   }
@@ -220,6 +239,15 @@ class MultiGame extends Component {
       // LOL
       let randomSound = soundEffects[Math.floor(Math.random() * soundEffects.length)];
       randomSound.play();
+
+
+      // ANIMATION
+      this.callPlayer1Animation();
+      // ANIMATION
+
+
+
+
       this.updateHealthBarDisplay();
 
       let correctWords = [...this.state.correctWords];
@@ -259,6 +287,141 @@ class MultiGame extends Component {
   }
 
 
+  callPlayer1Animation() {
+
+    let moves = ["punch", "kick", "rkick", "tatsumaki", "hadoken", "shoryuken", "jump", "kneel", "walkLeft", "walkRight"];
+    let randomMoveNum = Math.floor(Math.random() * moves.length);
+    // debugger
+    console.log(randomMoveNum);
+
+    switch (randomMoveNum) {
+      case 0:
+        this.punch();
+        break;
+      case 1:
+        this.kick();
+        break;
+      case 2:
+        this.rkick();
+        break;
+      case 3:
+        this.tatsumaki();
+        break;
+      case 4:
+        this.punch();
+        break;
+      case 5:
+        this.shoryuken();
+        break;
+      case 6:
+        this.hadoken();
+        break;
+      case 7:
+        this.hadoken();
+        break;
+      case 8:
+        this.hadoken();
+        break;
+      case 9:
+        this.walkLeft();
+        break;
+      default:
+        this.walkRight();
+        break;
+    }
+  }
+
+  punch() {
+    let $ken = $('.player1');
+    let $kenPos, $fireballPos;
+    $ken.addClass('punch');
+    setTimeout(function () { $ken.removeClass('punch'); }, 150);
+  };
+
+  kick() {
+    let $ken = $('.player1');
+    let $kenPos, $fireballPos;
+    $ken.addClass('kick');
+    setTimeout(function () { $ken.removeClass('kick'); }, 500);
+  };
+  rkick() {
+    let $ken = $('.player1');
+    let $kenPos, $fireballPos;
+    $ken.addClass('reversekick');
+    setTimeout(function () { $ken.removeClass('reversekick'); }, 500);
+  };
+  tatsumaki() {
+    let $ken = $('.player1');
+    let $kenPos, $fireballPos;
+    $ken.addClass('tatsumaki');
+    setTimeout(function () { $ken.addClass('down'); }, 1500);
+    setTimeout(function () { $ken.removeClass('tatsumaki down'); }, 2000);
+  };
+  hadoken() {
+    let $ken = $('.player1');
+    let $kenPos, $fireballPos;
+    $ken.addClass('hadoken');
+    setTimeout(function () { $ken.removeClass('hadoken'); }, 500);
+    setTimeout(function () {
+      var $fireball = $('<div/>', { class: 'fireball' });
+      $fireball.appendTo($ken);
+
+      var isFireballColision = function () {
+        return $fireballPos.left + 75 > $(window).width() ? true : false;
+      };
+
+      var explodeIfColision = setInterval(function () {
+
+        $fireballPos = $fireball.offset();
+        //console.log('fireballInterval:',$fireballPos.left);
+
+        if (isFireballColision()) {
+          $fireball.addClass('explode').removeClass('moving').css('marginLeft', '+=22px');
+          clearInterval(explodeIfColision);
+          setTimeout(function () { $fireball.remove(); }, 500);
+        }
+
+      }, 50);
+
+      setTimeout(function () { $fireball.addClass('moving'); }, 20);
+
+      setTimeout(function () {
+        $fireball.remove();
+        clearInterval(explodeIfColision);
+      }, 3020);
+
+    }, (250));
+  };
+  shoryuken() {
+    let $ken = $('.player1');
+    let $kenPos, $fireballPos;
+    $ken.addClass('shoryuken');
+    setTimeout(function () { $ken.addClass('down'); }, 500);
+    setTimeout(function () { $ken.removeClass('shoryuken down'); }, 1000);
+  };
+  jump() {
+    let $ken = $('.player1');
+    let $kenPos, $fireballPos;
+    $ken.addClass('jump');
+    setTimeout(function () { $ken.addClass('down'); }, 500);
+    setTimeout(function () { $ken.removeClass('jump down'); }, 1000);
+  };
+  // kneel() {
+  //   let $ken = $('.player1');
+  //   let $kenPos, $fireballPos;
+  //   $ken.addClass('kneel');
+  // };
+  walkLeft() {
+    let $ken = $('.player1');
+    let $kenPos, $fireballPos;
+    $ken.addClass('walk').css({ marginLeft: '-=10px' });
+  };
+  walkRight() {
+    let $ken = $('.player1');
+    let $kenPos, $fireballPos;
+    $ken.addClass('walk').css({ marginLeft: '+=10px' });
+  };
+
   render() {
     let { currentUser, openModal, updateSingleGameWpm, updateUser } = this.props;
 
@@ -289,6 +452,8 @@ class MultiGame extends Component {
                 </div>
               </div>
             <div className="multigame__fight-inner">
+              <div className="player1 stance"></div>
+              <div className="player2 stance flip"></div>
             </div>
           </div>
         </div>
