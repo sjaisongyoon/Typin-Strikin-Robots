@@ -39,7 +39,7 @@ p.gameend-single__modal-stat-single {
 .gameend-single__modal-btn {
   background-color: transparent;
   color: #fff;
-  border: 5px solid blue;
+  border: 5px solid rgb(222, 155, 5);
   font-family: 'Press Start 2P', sans-serif !important;
   cursor: pointer;
   padding: 1.4rem;
@@ -48,7 +48,16 @@ p.gameend-single__modal-stat-single {
 }
 
 .gameend-single__modal-btn:hover {
-  background-color: blue;
+  background-color: rgb(222, 155, 5);
   border: 5px solid #fff;
   color: #fff;
+}
+
+.gamestart-single__modal-container {
+  padding: 3rem;
+  text-align: center;
+}
+
+.gamestart-single__modal-header {
+  font-size: 5rem;
 }
