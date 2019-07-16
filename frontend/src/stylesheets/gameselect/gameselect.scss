@@ -23,7 +23,7 @@
 .gameselect__button-container {
     display: flex;
     flex-direction: column;
-    position: relative;
+    // position: relative;
     font-size: 2rem;
     width: 50%;
     background-color: transparent;
@@ -56,8 +56,115 @@
     display: flex;
     width: 100%;
     justify-content: center;
+    position: relative;
 }
 
 .gameselect__button:hover {
     // background-color: #cce2ff;
+}
+
+.gameselect__button-singlePlayer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 50%;
+}
+
+.gameselect__button-multiPlayer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 50%;
+}
+
+.gameselect__instructions-container-singlePlayer {
+    display: none;
+    position: absolute;
+    width: 33%;
+    right: 0;
+    font-size: 1rem;
+    text-align: left;
+}
+
+.gameselect__instructions-container-multiPlayer {
+    display: none;
+    position: absolute;
+    width: 33%;
+    left: 0;
+    font-size: 1rem;
+    text-align: left;
+}
+
+.gameselect__button:hover + .gameselect__instructions-container-singlePlayer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.gameselect__button:hover + .gameselect__instructions-container-multiPlayer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.arrow_box-left {
+	border: 5px solid #0000FF;
+}
+.arrow_box-left:after, .arrow_box-left:before {
+	right: 100%;
+	top: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+.arrow_box-left:after {
+	border-color: rgba(255, 255, 255, 0);
+	border-width: 30px;
+	margin-top: -30px;
+}
+.arrow_box-left:before {
+	border-color: rgba(0, 0, 255, 0);
+	border-right-color: #0000FF;
+	border-width: 37px;
+	margin-top: -37px;
+}
+
+.arrow_box-right {
+	border: 5px solid #0000FF;
+}
+.arrow_box-right:after, .arrow_box-right:before {
+	left: 100%;
+	top: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+.arrow_box-right:after {
+	border-color: rgba(255, 255, 255, 0);
+	border-width: 30px;
+	margin-top: -30px;
+}
+.arrow_box-right:before {
+	border-color: rgba(0, 0, 255, 0);
+	border-left-color: #0000FF;
+	border-width: 37px;
+	margin-top: -37px;
+}
+
+.arrow_box-left li {
+    padding: 10px 0px ;
+}
+
+.arrow_box-right li {
+    padding: 10px 0px ;
 }
