@@ -23,7 +23,7 @@
 .sessionform__button {
   background-color: transparent;
   color: #fff;
-  border: 5px solid blue;
+  border: 5px solid rgb(222, 155, 5);
   font-family: 'Press Start 2P', sans-serif !important;
   cursor: pointer;
   padding: 1.4rem;
@@ -32,7 +32,7 @@
 }
 
 .sessionform__button:hover {
-  background-color: blue;
+  background-color: rgb(222, 155, 5);
   border: 5px solid #fff;
   color: #fff;
 }
@@ -40,7 +40,7 @@
 .sessionform__input-container {}
 .sessionform__input {
   background-color: rgba(0,0,0,0);
-  border: 1px solid blue;
+  border: 1px solid rgb(222, 155, 5);
   padding: 1rem;
   margin-bottom: 2rem;
   font-family: 'Press Start 2P', cursive !important;
@@ -63,7 +63,7 @@ li.loginform__errors-listitems {
 .sessionform__submit, .submitdemo__button {
   background-color: transparent;
   color: #fff;
-  border: 5px solid blue;
+  border: 5px solid rgb(222, 155, 5);
   font-family: 'Press Start 2P', sans-serif !important;
   cursor: pointer;
   padding: 1.4rem;
@@ -72,7 +72,7 @@ li.loginform__errors-listitems {
 }
 
 .sessionform__submit:hover, .submitdemo__button:hover {
-  background-color: blue;
+  background-color: rgb(222, 155, 5);
   border: 5px solid #fff;
   color: #fff;
 }
