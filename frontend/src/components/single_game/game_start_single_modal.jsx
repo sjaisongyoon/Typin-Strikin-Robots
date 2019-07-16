@@ -13,22 +13,27 @@ class GameStartSingleModal extends React.Component {
 
   countdown() {
     let timer = setInterval(() => {
-      if (this.state.time > 0) {
+      if (this.state.time > 1) {
         this.setState((prevState) => ({
           time: prevState.time - 1,
         }))
-      } else {
-        clearInterval(timer);
+      } else if (this.state.time === 1){
+        this.setState({time: 'TYPE!!!!!'})
+        
         // console.log(this.state);
         // this.props.closeModal();
+      } else {
+        clearInterval(timer);
       }
     }, 1000);
   }
 
   render() {
     return (
-      <div>
-        <div>{this.state.time}</div>
+      <div className='gamestart-single__modal-container'>
+        <div className='gamestart-single__modal-header'>
+          {this.state.time}
+        </div>
       </div>
     )
   }

@@ -38,7 +38,7 @@ export class SingleGame extends Component {
     setTimeout(() => {
       this.startTimer();
       this.props.closeModal()
-    }, 3000);
+    }, 4000);
     console.log(this.state);
 
     this.props.openModal('gamestart-single-modal')
