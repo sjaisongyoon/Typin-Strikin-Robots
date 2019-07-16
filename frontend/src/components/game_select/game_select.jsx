@@ -23,7 +23,7 @@ class GameSelect extends React.Component {
                                 </Link>
                                 <div className="gameselect__instructions-container-singlePlayer arrow_box-left">
                                     <ul>
-                                        {singlePlayer.map(instruction => <li>{instruction}</li>)}
+                                        {singlePlayer.map((instruction, i) => <li key={i}>{instruction}</li>)}
                                     </ul>
                                 </div>
                             </div>
@@ -35,7 +35,7 @@ class GameSelect extends React.Component {
                             </Link>
                             <div className="gameselect__instructions-container-multiPlayer arrow_box-right">
                                 <ul>
-                                    {multiPlayer.map(instruction => <li>{instruction}</li>)}
+                                    {multiPlayer.map((instruction,i) => <li key={(i+1)*10}>{instruction}</li>)}
                                 </ul>
                             </div>
                             </div>
