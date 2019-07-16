@@ -20,11 +20,12 @@ h2.singleoptions__title {
 .singleoptions__form {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .singleoptions__form-input {
   background-color: rgba(0,0,0,0);
-  border: 1px solid blue;
+	border: 1px solid rgb(222, 155, 5);
   padding: 1rem;
   margin-bottom: 2rem;
   font-family: 'Press Start 2P', cursive !important;
@@ -33,16 +34,25 @@ h2.singleoptions__title {
   font-size: 1rem;
 }
 
+.singleoptions__form-input:focus {
+  outline: none;
+}
+
+.singleoptions__form-btn-submit:focus {
+  outline: none;
+}
 .singleoptions__form-btn-submit {
   background-color: transparent;
   color: #fff;
-  border: 5px solid blue;
+	border: 5px solid rgb(222, 155, 5);
   font-family: 'Press Start 2P', sans-serif !important;
   cursor: pointer;
   padding: 1.4rem;  
 }
 
 .singleoptions__form-btn-submit:hover {
-  background-color: blue;
+  border: 5px solid rgb(222, 155, 5);
   border: 5px solid #fff;
+  background-color:rgb(222, 155, 5);
+
 }

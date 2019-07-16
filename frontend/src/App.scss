@@ -58,7 +58,13 @@ p {
 
 input[type='text'] { 
   font-family: 'Press Start 2P' !important; 
+  border: 5px solid rgb(222, 155, 5);
 }
+
+input[type='text']:focus {
+  outline: none !important;
+} 
+
 
 .main__container {
   max-width: 1200px;

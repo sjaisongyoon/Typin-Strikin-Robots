@@ -38,15 +38,15 @@
   background-color: transparent;
   color: #fff;
   font-size: 1rem;
-  border: 5px solid blue;
+  border: 5px solid rgb(222, 155, 5);  
   outline: none;
-  padding: 1rem;
+  padding: 1.4rem;
   margin-bottom: 2rem;
   cursor: pointer;
 }
 
 .gameselect__button:hover {
-  background-color: blue;
+  background-color: rgb(222, 155, 5);
   border: 5px solid #fff;
   color: #fff;
 }
@@ -110,7 +110,7 @@
 }
 
 .arrow_box-left {
-	border: 5px solid #0000FF;
+	border: 5px solid rgb(222, 155, 5);
 }
 .arrow_box-left:after, .arrow_box-left:before {
 	right: 100%;
@@ -130,13 +130,13 @@
 }
 .arrow_box-left:before {
 	border-color: rgba(0, 0, 255, 0);
-	border-right-color: #0000FF;
+	border-right-color: rgb(222, 155, 5);
 	border-width: 37px;
 	margin-top: -37px;
 }
 
 .arrow_box-right {
-	border: 5px solid #0000FF;
+	border: 5px solid rgb(222, 155, 5);
 }
 .arrow_box-right:after, .arrow_box-right:before {
 	left: 100%;
@@ -156,15 +156,17 @@
 }
 .arrow_box-right:before {
 	border-color: rgba(0, 0, 255, 0);
-	border-left-color: #0000FF;
+	border-left-color: rgb(222, 155, 5);
 	border-width: 37px;
 	margin-top: -37px;
 }
 
 .arrow_box-left li {
-    padding: 10px 0px ;
+    padding: 10px 0px;
+    line-height: 1.8rem;
 }
 
 .arrow_box-right li {
-    padding: 10px 0px ;
+    padding: 10px 0px;
+    line-height: 1.8rem;
 }
