@@ -16,6 +16,14 @@ import MultiOptionsContainer from './multi_options/multi_options_container';
 import LeaderboardIndexContainer from './leaderboard/leaderboard_index_container';
 import Modal from './modal/modal';
 
+const path = require('path');
+
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static('frontend/build'));
+    app.get('/', (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
+    })
+}
 
 const App = () => (
     <div>
