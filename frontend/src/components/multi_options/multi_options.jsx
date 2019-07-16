@@ -29,9 +29,10 @@ class Multi extends React.Component {
             this.props.updateGameRoom({
                 playerId: this.state.playerId,
                 id: this.props.gameRoom.id
-            })
+            }).then( () => this.props.history.push(`/games/multi/${this.props.gameRoom.id}`))
         } else {
             this.props.createGameRoom({playerId: this.state.playerId})
+            .then( () => this.props.history.push(`/games/multi/${this.props.gameRoom.id}`))
         }
     }
 

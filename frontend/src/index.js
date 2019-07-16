@@ -35,16 +35,16 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
         store = configureStore({});
     }
-    window.dispatch = store.dispatch;
-    window.getState = store.getState;
-    window.fetchUsers = fetchUsers;
-    window.fetchLeaderboards = fetchLeaderboards;
-    window.fetchPassage = fetchPassage;
-    window.setGameTime = setGameTime;
-    window.updateUser = updateUser;
-    window.createGameRoom = createGameRoom;
-    window.deleteGameRoom = deleteGameRoom;
-    window.fetchGameRooms = fetchGameRooms;
+    // window.dispatch = store.dispatch;
+    // window.getState = store.getState;
+    // window.fetchUsers = fetchUsers;
+    // window.fetchLeaderboards = fetchLeaderboards;
+    // window.fetchPassage = fetchPassage;
+    // window.setGameTime = setGameTime;
+    // window.updateUser = updateUser;
+    // window.createGameRoom = createGameRoom;
+    // window.deleteGameRoom = deleteGameRoom;
+    // window.fetchGameRooms = fetchGameRooms;
     const root = document.getElementById('root');
 
     ReactDOM.render(<Root store={store} />, root);
