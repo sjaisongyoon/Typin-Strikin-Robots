@@ -35,16 +35,19 @@ $spriteHeight:80px;
 .player1 { 
   position:absolute; bottom:7rem; margin-left:150px; right: 51rem; transform: scale(2.5);
   width:$spriteWidth; height:$spriteHeight; 
-  background-image:url('https://raw.githubusercontent.com/jkneb/street-fighter-css/master/images/ken.png'); 
+  // background-image:url('https://raw.githubusercontent.com/jkneb/street-fighter-css/master/images/ken.png'); 
+  background-image:url('assets/images/ken.png'); 
   
   /* other sprites preloading */
   &:before { 
     content:'';
-    background: url('https://raw.githubusercontent.com/jkneb/street-fighter-css/master/images/ken-tatsumaki-senpuu-kyaku.png') no-repeat; 
+    background: url('assets/images/ken-tatsumaki-senpuu-kyaku.png') no-repeat; 
+    // background: url('https://raw.githubusercontent.com/jkneb/street-fighter-css/master/images/ken-tatsumaki-senpuu-kyaku.png') no-repeat; 
   }
   &:after { 
     content:'';
-    background: url('https://raw.githubusercontent.com/jkneb/street-fighter-css/master/images/ken-shoryuken.png') no-repeat;
+    background: url('assets/images/ken-shoryuken.png') no-repeat;
+    // background: url('https://raw.githubusercontent.com/jkneb/street-fighter-css/master/images/ken-shoryuken.png') no-repeat;
   }
 }
 
