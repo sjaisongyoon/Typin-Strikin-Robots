@@ -15,7 +15,9 @@
 }
 .sessionform__message {
   font-size: 1rem;
-  margin-top: 6rem;
+  margin-top: 2rem;
+  font-family: 'Press Start 2P', sans-serif !important; 
+  font-size: 1rem;
 }
 
 .sessionform__button {
@@ -24,7 +26,7 @@
   border: 5px solid blue;
   font-family: 'Press Start 2P', sans-serif !important;
   cursor: pointer;
-  padding: 1rem;
+  padding: 1.4rem;
   font-size: 1rem;
 }
 
@@ -69,3 +71,12 @@ li.loginform__errors-listitems {
   border: 5px solid #fff;
   color: #fff;
 }
+
+.hidden{
+  display: none;
+}
+
+.submitdemo__button{
+  margin: 0 5px;
+}
+
