@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 class Multi extends React.Component {
 
@@ -33,6 +34,7 @@ class Multi extends React.Component {
         } else {
             this.props.createGameRoom({playerId: this.state.playerId})
         }
+        this.props.history.push('/games/multi')
     }
 
     render () {
