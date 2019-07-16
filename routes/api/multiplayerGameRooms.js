@@ -3,7 +3,7 @@ const router = express.Router();
 const passport = require('passport');
 const mongoose = require('mongoose');
 const MultiplayerGameRoom = require('../../models/MultiplayerGameRoom');
-
+mongoose.set('useFindAndModify', false);
 
 router.get("/test", (req, res) => res.json({ msg: "This is the multiplayerGameRooms route" }));
 
