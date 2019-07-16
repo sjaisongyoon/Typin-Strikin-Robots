@@ -1,9 +1,15 @@
 @import './stylesheets/header/header.scss';
+@import './stylesheets/header/header_dropdown.scss';
 @import './stylesheets/mainpage/mainpage.scss';
 @import './stylesheets/gameplay/multi.scss';
 @import './stylesheets/gameplay/single.scss';
 @import './stylesheets/gameplay/input.scss';
 @import './stylesheets/gameselect/gameselect.scss';
+@import './stylesheets/leaderboard/leaderboard.scss';
+@import './stylesheets/session_form/session_form.scss';
+@import './stylesheets/modal/modal.scss';
+@import './stylesheets/game_options/game_options.scss';
+@import './stylesheets/game_options/multi_options.scss';
 
 
 // colors
@@ -22,11 +28,12 @@
 
 
 body{
-  font-family: 'Press Start 2P', cursive;
+  font-family: 'Press Start 2P', sans-serif;
+  // font-family: 'Teko', sans-serif;
   font-size: 80%;
   background-color: rgba(0,0,0,.9);
   color: #fff;
-  background-image: linear-gradient(180deg, rgba(0,0,0,1), rgba(166, 58, 130, .3)), url('./assets/images/01-tron-bg.jpg');
+  background-image: linear-gradient(180deg, black, rgba(38, 110, 255, 0.13)), url('./assets/images/01-tron-bg.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -40,6 +47,10 @@ h5,
 h6,
 p {
   font-family: 'Press Start 2P', cursive;
+}
+
+input[type='text'] { 
+  font-family: 'Press Start 2P' !important; 
 }
 
 .main__container {

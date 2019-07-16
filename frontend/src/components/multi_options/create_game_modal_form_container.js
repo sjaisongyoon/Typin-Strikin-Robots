@@ -1,13 +1,11 @@
 import {connect} from 'react-router-dom';
 import CreateGameModalForm from './create_game_modal_form';
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state) => ({
+});
 
-}
-
-const mapDispatchToProps = (dispatch) => {
-
-}
+const mapDispatchToProps = (dispatch) => ({
+});
 
 export default connect(
     mapStateToProps,

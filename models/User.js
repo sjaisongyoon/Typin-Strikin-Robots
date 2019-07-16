@@ -10,21 +10,26 @@ const UserSchema = new Schema({
       type: String,
       required: true
     },
-    multiplayer_wins: {
+    multiplayerWins: {
       type: Number,
       require: true,
       default: 0
     },
-    multiplayer_losses: {
+    multiplayerLosses: {
       type: Number,
       require: true,
       default: 0
     },
-    singleplayer_wpm: {
+    singleplayerWPM: {
       type: Number,
       require: true,
       default: 0
     },
+    // numMatches: {
+    //   type: Number,
+    //   require: true,
+    //   default: 0
+    // },
   })
 
 module.exports = User = mongoose.model('users', UserSchema);

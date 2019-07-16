@@ -1,0 +1,73 @@
+.leaderboard__btn {
+  font-size: 1.6rem;
+  text-align: center;
+  line-height: 3rem; 
+  color: #fff;
+}  
+
+.leaderboard__header-container {
+  margin-bottom: 4rem;
+}
+
+.leaderboard__header {
+  text-align: center;
+  font-size: 2rem;
+}
+
+.leaderboard__board-btn-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.leaderboard__btn-container {
+  margin-top: 5rem;
+}
+
+.leaderboard__btn--active {
+  color: #4183c4;
+}
+
+.leaderboard__board-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.leaderboard__table {
+  font-size: 1.2rem;
+  line-height: 2rem;
+  margin-top: 3rem;  
+  text-align: center;
+}
+
+.leaderboard__table-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.leaderboard__btn {
+  font-size: 1rem;
+  text-align: center;
+  line-height: 2rem;
+  color: #fff;
+}
+
+.leaderboard__btn {
+  display: inline-block;
+  padding: 1rem;
+  margin-left: 2rem;
+  color: #fff;
+  font-size: 1rem;
+  text-transform: uppercase;
+  border: 5px solid blue;
+  padding: 1rem;
+  background-color: transparent;
+  font-family: 'Press Start 2P', sans-serif;
+  cursor: pointer;
+}
+
+.leaderboard__btn:hover {
+  background-color: blue;
+  border: 5px solid #fff;
+  color: #fff;
+}

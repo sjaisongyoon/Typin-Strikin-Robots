@@ -10,21 +10,21 @@ class GameSelect extends React.Component {
                 <div className="gameselect__box">
                     <div className="gameselect__box-flex">
                         <div className="gameselect__message">
-                            Select the Mode
+                            SELECT GAME MODE
                         </div>
                     </div>
                     
                     <div className="gameselect__box-flex">
-                        <div className="gameselect__button"><Link to={`/single`}>
-                            Single Play
-                        </Link>
-                        </div>
-                    </div>
-                    <div className="gameselect__box-flex">
-                        <div className="gameselect__button">
-                        <Link to={`/multi`}>
-                            Multi Play
-                        </Link>
+                        <div className="gameselect__button-container">
+                            <Link 
+                                to={`/options/single`} className="gameselect__button gameselect__button-container">
+                                TIME ATTACK
+                            </Link>
+                            <Link 
+                                to={`/options/multi`} 
+                                className="gameselect__button gameselect__button-container">
+                                MULTIPLAYER
+                            </Link>
                         </div>
                     </div>
                 </div>

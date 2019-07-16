@@ -7,22 +7,30 @@
 
 .game__display-paragraph {
   max-width: 60%;
-  font-size: 24px;
-  line-height: 34px;
-  margin-bottom: 3rem;  
+  font-size: 1rem;
+  line-height: 2rem;
+  margin-bottom: 5rem;
+  overflow-wrap: break-word;
 }
+
+
 
 .game__input-box-outer {
   width: 60%;  
-
+  display: flex;
+  justify-content: center;
 }
 
 .game__input-box {
   padding: 1rem;
   font-size: 24px;
-  border-radius: 5px;
+  border-radius: 0;
   outline: none;
-  border: 1px solid rgba(0,0,0,.3);  
+  border: 1px solid rgba(0, 0, 0, 0.3);
   width: 100%;
+  background-color: #fff;
+  border: 5px solid blue;
+  /* font-family: "Press Play 2P" !important; */
+  color: #000;
 }
 

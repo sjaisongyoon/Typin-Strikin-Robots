@@ -3,11 +3,16 @@ import React, { Component } from 'react'
 class HeaderGameplay extends Component {
   constructor(props) {
     super(props);
+    this.handleModal = this.handleModal.bind(this);
   }
 
+  handleModal() {
+    this.props.openModal('menu-dropdown');
+  }
+  
   render() {
     return (
-      <div className="header__container">
+      <div className="header__container header__gameplay-container">
         <div className="header__container-inner">
           <div className="header__logo-container">
             <div className="header__logo-img"></div>
@@ -15,9 +20,9 @@ class HeaderGameplay extends Component {
           <div className="header__navbar-container">
             <div className="header__navbar">
               <div className="header__navbar-menu-wrapper">
-                <a href="#" className="header__navbar-dropdown-btn">
+                <button className="header__navbar-dropdown-btn" onClick={this.handleModal}>
                   Menu
-                </a>
+                </button>
               </div>
             </div>
           </div>

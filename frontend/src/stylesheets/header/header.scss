@@ -18,12 +18,15 @@
 }
 
 .header__logo-img {
-  background-image: url('assets/images/01-tsr-logo-200.png');
+  // background-image: url('assets/images/01-tsr-logo-200.png');
+  background-image: url('assets/images/01-type-fighter-small.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 150px;
-  width: 150px;
+  // height: 150px;
+  // width: 150px;
+  height: 155px;
+  width: 100px;
 }
 
 .header__navbar-container {}
@@ -43,10 +46,66 @@
   margin-left: 2rem;
 }
 
+.header__navbar-btn-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+
 .header__navbar-dropdown-btn {
   display: inline-block;
   padding: 1rem;
   margin-left: 2rem;
+  color: #fff;
+  font-size: 1rem;
+  text-transform: uppercase;
+  border: 5px solid blue;
+  padding: 1rem;
+  background-color: transparent;
+  font-family: 'Press Start 2P', sans-serif;
+  cursor: pointer;
 }
 
+.header__navbar-dropdown-btn:hover {
+  background-color: blue;
+  border: 5px solid #fff;
+  color: #fff;
+}
+
+
 .header__container {}
+
+.header__navbar-user-wrapper {
+  font-size: 1.2rem;
+  text-align: right;  
+}
+
+
+////////// 
+// Header gameplay
+////////// 
+
+.header__gameplay-container {
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  width: 500px;
+  bottom: 25%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.header__gameplay-container .header__container-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;  
+}
+
+.header__gameplay-container .header__logo-container {
+  margin: 1rem 0;
+}
+
+.header__gameplay-container .header__navbar-dropdown-btn {
+  margin-left: 0;
+}

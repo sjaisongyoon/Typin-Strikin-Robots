@@ -1,0 +1,90 @@
+.sessionform {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-size: 2rem;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);  
+}
+
+.sessionform__title {
+  font-size: 2rem;
+  margin-bottom: 3rem;
+}
+.sessionform__message {
+  font-size: 1rem;
+  margin-top: 2rem;
+  font-family: 'Press Start 2P', sans-serif !important; 
+  font-size: 1rem;
+}
+
+.sessionform__button {
+  background-color: transparent;
+  color: #fff;
+  border: 5px solid blue;
+  font-family: 'Press Start 2P', sans-serif !important;
+  cursor: pointer;
+  padding: 1.4rem;
+  font-size: 1rem;
+  width: 100%;
+}
+
+.sessionform__button:hover {
+  background-color: blue;
+  border: 5px solid #fff;
+  color: #fff;
+}
+
+.sessionform__input-container {}
+.sessionform__input {
+  background-color: rgba(0,0,0,0);
+  border: 1px solid blue;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  font-family: 'Press Start 2P', cursive !important;
+  color: #fff;
+  font-size: 1rem;
+
+}
+
+li.loginform__errors-listitems {
+  line-height: 4rem;
+  font-size: 1.2rem;
+  list-style: none;
+  color: red;
+}
+
+.sessionform__submit, .submitdemo__button {
+  background-color: transparent;
+  color: #fff;
+  border: 5px solid blue;
+  font-family: 'Press Start 2P', sans-serif !important;
+  cursor: pointer;
+  padding: 1.4rem;
+  font-size: 1rem;
+  width: 12rem;
+}
+
+.sessionform__submit:hover, .submitdemo__button:hover {
+  background-color: blue;
+  border: 5px solid #fff;
+  color: #fff;
+}
+
+.hidden{
+  display: none;
+}
+
+.submitdemo__button{
+  margin: 0 5px;
+}
+
+.demobuttons__container{
+  display: flex;
+}
+
+.submitdemo__button{
+  width: 100%;
+}

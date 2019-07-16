@@ -1,0 +1,26 @@
+.header__dropdown-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 5rem;
+}
+
+button.header__dropdown-btn {
+  font-family: 'Press Start 2P', sans-serif;
+  background-color: transparent;
+  color: #fff;
+  font-size: 1rem;
+  border: 5px solid blue;
+  outline: none;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  cursor: pointer;
+  width: 100%;
+}
+
+button.header__dropdown-btn:hover {
+  background-color: blue;
+  border: 5px solid #fff;
+  color: #fff;
+}

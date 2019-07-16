@@ -6,10 +6,12 @@
   "scripts": {
     "start": "node app.js",
     "server": "nodemon app.js",
+    "server:debug": "nodemon --inspect app.js",
     "debug": "node --inspect app.js",
     "frontend-install": "npm install --prefix frontend",
     "frontend": "npm start --prefix frontend",
-    "dev": "concurrently \"npm run server\" \"npm run frontend\""
+    "dev": "concurrently \"npm run server\" \"npm run frontend\"",
+    "dev:debug": "concurrently \"npm run server:debug\" \"npm run frontend\""
   },
   "keywords": [],
   "author": "",
@@ -26,6 +28,7 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-scripts": "^3.0.1",
+    "socket.io": "^2.2.0",
     "validator": "^10.9.0"
   },
   "devDependencies": {

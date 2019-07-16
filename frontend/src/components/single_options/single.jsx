@@ -1,6 +1,5 @@
 import React from 'react';
 import SingleOptionsForm from './single_options_form';
-// import LeaderboardSingleContainer from '../leaderboard/leaderboard_single_container'
 
 class Single extends React.Component {
     render () {
@@ -10,7 +9,6 @@ class Single extends React.Component {
                     Single Player MODE 
                 </div>
                 <div className="single__leaderboard">
-                    {/* <LeaderboardSingleContainer /> */}
                 </div>
                 <div className="single__options">
                     <SingleOptionsForm />
