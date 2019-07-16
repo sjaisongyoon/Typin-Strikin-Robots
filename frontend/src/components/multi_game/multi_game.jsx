@@ -66,7 +66,7 @@ class MultiGame extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    let { currentUser, openModal, updateSingleGameWpm, updateUser } = this.props;
+    let { currentUser, openModal, updateSingleGameWpm, updateUser, deleteGameRoom, gameRoom } = this.props;
 
     if (!this.state.modal && (this.state.ownHealthBar === 0 || this.state.enemyHealthBar === 0 || this.state.gameTime === 0)) {
       this.setState({ modal: true });
@@ -86,6 +86,7 @@ class MultiGame extends Component {
         multiplayerLosses: updateLoss
       };
       updateUser(updatedUser);
+      deleteGameRoom(gameRoom.id);
       openModal('gameend-single-modal');
     }
   }

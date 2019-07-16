@@ -9,7 +9,7 @@ const gameRoomsReducer = (state ={}, action) => {
             return Object.assign({}, state, {[action.gameRoom.data.id]: action.gameRoom.data });
         case REMOVE_GAME_ROOM:
             let new_state = Object.assign({}, state)
-            delete new_state[action.gameRoom]
+            delete new_state[action.gameRoom.data.id]
             return new_state;
         case RECEIVE_ALL_GAME_ROOMS: 
             return Object.assign({}, state, action.gameRooms.data)
