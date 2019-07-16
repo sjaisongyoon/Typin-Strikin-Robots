@@ -1,5 +1,6 @@
 import {connect} from 'react-redux';
 import GameSelect from './game_select';
+import {fetchGameRooms} from '../../actions/game_room_actions';
 
 const mapStateToProps = state => {
     return {
@@ -9,7 +10,7 @@ const mapStateToProps = state => {
 
 
 const mapDispatchToProps = dispatch => ({
-
+    fetchGameRooms: () => dispatch(fetchGameRooms())
 })
 
 
