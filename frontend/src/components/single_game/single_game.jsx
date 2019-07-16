@@ -162,9 +162,6 @@ export class SingleGame extends Component {
           </div>
         </div>
         <div className="singlegame__fight-container">
-          <p>
-            Image goes here...
-          </p>
         </div>
         <div className="game__input-container">
           <div className="game__display-paragraph">
@@ -183,7 +180,8 @@ export class SingleGame extends Component {
               className="game__input-box" 
               placeholder="Type here.." 
               value={this.state.currentInput}
-              onChange={(e) => this.handleInput(e)}/>
+              onChange={(e) => this.handleInput(e)}
+              autoFocus/>
           </div>
         </div>
       </div>

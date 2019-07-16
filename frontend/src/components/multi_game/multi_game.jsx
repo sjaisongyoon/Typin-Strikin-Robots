@@ -37,6 +37,7 @@ class MultiGame extends Component {
     this.startTimer = this.startTimer.bind(this);
     this.calculateWPM = this.calculateWPM.bind(this);
     this.calculateHealthBarDecrement = this.calculateHealthBarDecrement.bind(this);
+    this.gameOver = this.gameOver.bind(this);
   }
 
   openSocket() {
@@ -83,10 +84,10 @@ class MultiGame extends Component {
     this.setState({enemyHealthBar: newEnemyHealthBar}, () => {
       if (newEnemyHealthBar === 0) {
         // Game over (lose)
-
+        this.gameOver('lose'); 
       } else if (this.state.ownHealthBar === 0) {
         // Game over (win)
-
+        this.gameOver('win');
       }
     });
   }
@@ -95,8 +96,12 @@ class MultiGame extends Component {
   ////////
   // Gameplay
   ////////
-  gameOver() {
-
+  gameOver(type) {
+    // Stop player input
+    // Show game win/lose modal
+    // Render player game stats
+    // Give option to play again
+    // Update player stats in DB
   }
 
   createWordsDisplay() {
@@ -145,7 +150,7 @@ class MultiGame extends Component {
   }
 
   async handleInput(e) {
-    if (this.state.gameTime !== 0) {
+    if (this.state.gameTime !== 0 && this.state.ownHealthBar !== 0) {
       let wordSoFar = e.target.value;
 
       await this.setState({
@@ -220,7 +225,7 @@ class MultiGame extends Component {
     // show modal on game end
     if (!this.state.modal) {
       setTimeout(() => {
-        if (this.state.ownHealthBar > this.state.enemyHealthBar && this.state.gameTime === 0) {
+        if (this.state.ownHealthBar === 0 || this.state.enemyHealthBar === 0 || this.state.gameTime === 0) {
           this.setState({ modal: true });
           this.props.updateSingleGameWpm(parseInt(this.state.currentWPM));
           openModal('gameend-single-modal');
@@ -249,9 +254,8 @@ class MultiGame extends Component {
           </div>
         </div>
         <div className="multigame__fight-container">
-          <div>
-            myhealthbar: {this.state.ownHealthBar} enemyHealthBar: {this.state.enemyHealthBar}
-            <button onClick={this.handleClick}>Hit</button>
+          <div className="multigame__fight-inner">
+
           </div>
         </div>
         <div className="game__input-container">
@@ -267,7 +271,8 @@ class MultiGame extends Component {
               className="game__input-box"
               placeholder="Type here.."
               value={this.state.currentInput}
-              onChange={(e) => this.handleInput(e)} />
+              onChange={(e) => this.handleInput(e)}
+              autoFocus />
           </div>
           </div>
         </div>

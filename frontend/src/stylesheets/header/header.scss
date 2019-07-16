@@ -18,12 +18,15 @@
 }
 
 .header__logo-img {
-  background-image: url('assets/images/01-tsr-logo-200.png');
+  // background-image: url('assets/images/01-tsr-logo-200.png');
+  background-image: url('assets/images/01-type-fighter-small.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 150px;
-  width: 150px;
+  // height: 150px;
+  // width: 150px;
+  height: 155px;
+  width: 100px;
 }
 
 .header__navbar-container {}
@@ -63,6 +66,13 @@
   cursor: pointer;
 }
 
+.header__navbar-dropdown-btn:hover {
+  background-color: blue;
+  border: 5px solid #fff;
+  color: #fff;
+}
+
+
 .header__container {}
 
 .header__navbar-user-wrapper {
@@ -90,6 +100,10 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;  
+}
+
+.header__gameplay-container .header__logo-container {
+  margin: 1rem 0;
 }
 
 .header__gameplay-container .header__navbar-dropdown-btn {

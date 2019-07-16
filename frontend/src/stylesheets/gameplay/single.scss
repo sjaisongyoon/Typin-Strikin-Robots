@@ -43,15 +43,18 @@ h3.singlegame__top-timer-text {
 }
 
 .singlegame__fight-container {
-  height: 300px;
+  height: 350px;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: pink;
   border-radius: 5px;
   margin: 3rem 0;
-
-  display: none;
+  background-image: url('assets/images/01-street-fighter-background-optimized.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  // display: none;
 }
 
 .singlegame__container {
