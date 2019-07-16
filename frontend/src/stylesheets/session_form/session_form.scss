@@ -19,8 +19,19 @@
 }
 
 .sessionform__button {
-  display: inline-block;
-  padding: 1rem;  
+  background-color: transparent;
+  color: #fff;
+  border: 5px solid blue;
+  font-family: 'Press Start 2P', sans-serif !important;
+  cursor: pointer;
+  padding: 1rem;
+  font-size: 1rem;
+}
+
+.sessionform__button:hover {
+  background-color: blue;
+  border: 5px solid #fff;
+  color: #fff;
 }
 
 .sessionform__input-container {}
@@ -55,4 +66,5 @@ li.loginform__errors-listitems {
 .sessionform__submit:hover {
   background-color: blue;
   border: 5px solid #fff;
+  color: #fff;
 }

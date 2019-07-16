@@ -54,11 +54,6 @@ export class SingleGame extends Component {
   }
 
 
-  updateWordCount() {
-
-  }
-
-
   createWordsArray() {
     let words = this.props.gamePassage.split(' ');
     let wordCount = words.length;
@@ -116,6 +111,18 @@ export class SingleGame extends Component {
     console.log(currentWord === currentInput);
     
     if (currentWord === currentInput) {
+      let soundEffects = [
+        new Audio('assets/audio/01-punch.mp3'), 
+        new Audio('assets/audio/02-punch.mp3'), 
+        new Audio('assets/audio/03-punch.mp3'),
+        new Audio('assets/audio/04-punch.mp3'),
+        new Audio('assets/audio/05-punch.mp3'),
+        new Audio('assets/audio/06-punch.mp3'),
+        new Audio('assets/audio/07-punch.mp3'),
+      ];
+      // LOL
+      let randomSound = soundEffects[Math.floor(Math.random() * soundEffects.length)];
+      randomSound.play();
       let correctWords = [...this.state.correctWords];
       correctWords.push(this.state.currentWord);
       let lastCorrectIdx = [...this.state.correctWords].length;
@@ -167,9 +174,6 @@ export class SingleGame extends Component {
           </div>
         </div>
         <div className="singlegame__fight-container">
-          <p>
-            Image goes here...
-          </p>
         </div>
         <div className="game__input-container">
           <div className="game__display-paragraph">
@@ -188,7 +192,8 @@ export class SingleGame extends Component {
               className="game__input-box" 
               placeholder="Type here.." 
               value={this.state.currentInput}
-              onChange={(e) => this.handleInput(e)}/>
+              onChange={(e) => this.handleInput(e)}
+              autoFocus/>
           </div>
         </div>
       </div>
