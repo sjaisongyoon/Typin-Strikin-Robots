@@ -13,7 +13,12 @@ router.get("/", (req, res) => {
         .then( (gameRooms) => {
             let gameRoomsPojo = {};
             gameRooms.forEach( gameRoom => {
-                gameRoomsPojo[gameRoom.id] = gameRoom;
+                let gameRoomPojo = {
+                    id: gameRoom.id,
+                    player1Id: gameRoom.player1Id,
+                    player2Id: gameRoom.player2Id
+                }
+                gameRoomsPojo[gameRoom.id] = gameRoomPojo;
             })
             res.json(gameRoomsPojo);
         })
