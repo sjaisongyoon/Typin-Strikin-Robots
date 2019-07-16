@@ -40,7 +40,7 @@ const App = () => (
             <Route exact path="/games/single" component={SingleGameContainer} />
             <Route exact path="/games/multi" component={MultiGameContainer} />
             <Route exact path="/options/single" component={SingleOptionsContainer} />
-        <Route exact path="/options/multi" component={MultiOptionsContainer} />
+            <Route exact path="/options/multi" component={MultiOptionsContainer} />
         </Switch>
       </div>
     </div>
