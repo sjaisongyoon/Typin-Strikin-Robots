@@ -44,6 +44,21 @@ export class SingleGame extends Component {
     this.props.openModal('gamestart-single-modal')
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    let { currentUser, openModal, updateUser, updateSingleGameWpm } = this.props;
+    // show modal on game end
+    if (!this.state.modal && (this.state.wordCount === this.state.correctWords.length || this.state.gameTime === 0)) {
+      this.setState({ modal: true });
+      updateSingleGameWpm(parseInt(this.state.currentWPM));
+      updateUser({
+        id: currentUser.id,
+        singleplayerWPM: this.state.currentWPM
+      });
+      openModal('gameend-single-modal');
+    }
+
+  }
+  
   startTimer() {
     let timer = setInterval(() => {
       if (this.state.gameTime > 0) {
@@ -56,11 +71,6 @@ export class SingleGame extends Component {
         console.log(this.state); 
       }
     }, 1000);
-  }
-
-
-  updateWordCount() {
-
   }
 
 
@@ -121,13 +131,25 @@ export class SingleGame extends Component {
     console.log(currentWord === currentInput);
     
     if (currentWord === currentInput) {
+      let soundEffects = [
+        new Audio('assets/audio/01-punch.mp3'), 
+        new Audio('assets/audio/02-punch.mp3'), 
+        new Audio('assets/audio/03-punch.mp3'),
+        new Audio('assets/audio/04-punch.mp3'),
+        new Audio('assets/audio/05-punch.mp3'),
+        new Audio('assets/audio/06-punch.mp3'),
+        new Audio('assets/audio/07-punch.mp3'),
+      ];
+      // LOL
+      let randomSound = soundEffects[Math.floor(Math.random() * soundEffects.length)];
+      randomSound.play();
       let correctWords = [...this.state.correctWords];
       correctWords.push(this.state.currentWord);
       let lastCorrectIdx = [...this.state.correctWords].length;
 
       // Update class for correct Words
       let word = document.getElementById(`${lastCorrectIdx}`);
-      word.classList.add('word__span--correct')
+      word.classList.add('word__span--correct');
       
       this.setState({
         currentInput: '',
@@ -144,37 +166,25 @@ export class SingleGame extends Component {
 
 
   render() {
-    let { currentUser, openModal } = this.props;
+    let { currentUser, openModal, updateUser, updateSingleGameWpm } = this.props;
 
-    // show modal on game end
-    if (!this.state.modal) {
-      setTimeout(() => {
-        if (this.state.wordCount === this.state.correctWords.length || this.state.gameTime === 0) {
-          this.setState({modal: true});
-          this.props.updateSingleGameWpm(parseInt(this.state.currentWPM));
-          openModal('gameend-single-modal');  
-        }
-      }, 100);
-    }
-
+    
     return (
       <div className="singlegame__container">
-        <div className="singlegame__top">
-          <div className="singlegame__top-stats-wrapper">
-            <div className="singlegame__top-player">
-              <div className="singlegame__player-name">{currentUser.username}</div>
-              <div className="singlegame__player-wpm">WPM: {this.state.currentWPM}</div>
-            </div>
-            <div className="singlegame__top-timer">
-              <h3 className="singlegame__top-timer-text">Timer</h3>
-              <h4 className="singlegame__top-time">00:{this.state.gameTime > 9 ? this.state.gameTime : `0${this.state.gameTime}`}</h4>
+        <div className="singlegame__fight-container">
+          <div className="singlegame__top">
+            <div className="singlegame__top-stats-wrapper">
+              <div className="singlegame__top-player">
+                <div className="singlegame__player-name">{currentUser.username}</div>
+                <div className="singlegame__player-wpm">WPM: {this.state.currentWPM}</div>
+              </div>
+              <div className="singlegame__top-timer">
+                <h3 className="singlegame__top-timer-text">Timer</h3>
+                <h4 className="singlegame__top-time">00:{this.state.gameTime > 9 ? this.state.gameTime : `0${this.state.gameTime}`}</h4>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="singlegame__fight-container">
-          <p>
-            Image goes here...
-          </p>
+          <div className="singlegame__fight-inner"></div>
         </div>
         <div className="game__input-container">
           <div className="game__display-paragraph">
@@ -193,7 +203,8 @@ export class SingleGame extends Component {
               className="game__input-box" 
               placeholder="Type here.." 
               value={this.state.currentInput}
-              onChange={(e) => this.handleInput(e)}/>
+              onChange={(e) => this.handleInput(e)}
+              autoFocus/>
           </div>
         </div>
       </div>

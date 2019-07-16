@@ -34,16 +34,22 @@
 }
 
 .gameselect__button {
-    color: #fff;
-    display: inline-block;
-    font-size: 1.28571429rem;
+  font-family: 'Press Start 2P', sans-serif;
+  background-color: transparent;
+  color: #fff;
+  font-size: 1rem;
+  border: 5px solid blue;
+  outline: none;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  cursor: pointer;
 }
 
 .gameselect__button:hover {
-    color: blue;
+  background-color: blue;
+  border: 5px solid #fff;
+  color: #fff;
 }
-
-
 
 
 .gameselect__box-flex {

@@ -2,54 +2,79 @@
 
 }
 .multigame__top {
-  margin-top: 2rem;  
+  width: 100%;
+  padding: 0 3rem;
 }
 .multigame__top-stats-wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
 }
 
 .multigame__top-player {
   display: flex;
   flex-direction: column;
-  align-items: center;  
+  align-items: center;
+  margin-top: 2rem;
 }
 
 .multigame__player-name {
   font-weight: 600;
-  font-size: 1.7rem;
+  font-size: 1rem;
   margin-bottom: 1rem;
 }
 .multigame__player-health {
   font-size: 1.8rem;
-  margin-bottom: 1rem;  
+  margin-bottom: 1rem;
+  height: 28px;
+  width: 250px;
+  background: linear-gradient(270deg, blue 0%, blue 50%, red 50% , red 100%);
+  border: 2px solid #fff;
+  overflow: hidden;
+  background-size: 250%;
+  background-position: 250px;
 }
 .multigame__player-wpm {
-  font-size: 1.4rem;
+  font-size: 1rem;
 }
 
 
-.multigame__top-timer {}
+.multigame__top-timer {
+  font-size: 1rem;
+  // position: absolute;
+  // transform: translate(-50%, -50%);
+  // left: 50%;
+  // top: 16%;
+}
 
 .multigame__top-timer-text {
-  font-size: 2rem;
+  font-size: 1rem;
   margin-bottom: 0;  
 }
 
 .multigame__top-time {
   text-align: center;
   margin-top: 0;
-  font-size: 2rem;  
+  font-size: 1rem;  
 }
 
 .multigame__fight-container {
   text-align: center;
-  height: 350px;
+  height: 450px;
   display: flex;
   justify-content: center;
-  align-items: center;
-  background-color: pink;
+  align-items: flex-start;
+  background-image: linear-gradient(0deg, transparent 0%, rgba(0,0,0,0.3) 85%, black 100%), url('assets/images/01-street-fighter-background-optimized.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   border-radius: 5px;
-  margin: 3rem 0;
+  // margin: 12rem 0 3rem 0;
+  margin-top: 1rem;
+  margin-bottom: 3rem;
 } 
+
+.multigame__fight-inner {
+  width: 100%;
+}

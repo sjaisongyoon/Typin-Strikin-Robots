@@ -15,12 +15,26 @@
 }
 .sessionform__message {
   font-size: 1rem;
-  margin-top: 6rem;
+  margin-top: 2rem;
+  font-family: 'Press Start 2P', sans-serif !important; 
+  font-size: 1rem;
 }
 
 .sessionform__button {
-  display: inline-block;
-  padding: 1rem;  
+  background-color: transparent;
+  color: #fff;
+  border: 5px solid blue;
+  font-family: 'Press Start 2P', sans-serif !important;
+  cursor: pointer;
+  padding: 1.4rem;
+  font-size: 1rem;
+  width: 100%;
+}
+
+.sessionform__button:hover {
+  background-color: blue;
+  border: 5px solid #fff;
+  color: #fff;
 }
 
 .sessionform__input-container {}
@@ -42,7 +56,7 @@ li.loginform__errors-listitems {
   color: red;
 }
 
-.sessionform__submit {
+.sessionform__submit, .submitdemo__button {
   background-color: transparent;
   color: #fff;
   border: 5px solid blue;
@@ -50,9 +64,27 @@ li.loginform__errors-listitems {
   cursor: pointer;
   padding: 1.4rem;
   font-size: 1rem;
+  width: 12rem;
 }
 
-.sessionform__submit:hover {
+.sessionform__submit:hover, .submitdemo__button:hover {
   background-color: blue;
   border: 5px solid #fff;
+  color: #fff;
+}
+
+.hidden{
+  display: none;
+}
+
+.submitdemo__button{
+  margin: 0 5px;
+}
+
+.demobuttons__container{
+  display: flex;
+}
+
+.submitdemo__button{
+  width: 100%;
 }

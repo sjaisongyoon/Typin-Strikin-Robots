@@ -16,4 +16,11 @@ button.header__dropdown-btn {
   padding: 1rem;
   margin-bottom: 2rem;
   cursor: pointer;
+  width: 100%;
+}
+
+button.header__dropdown-btn:hover {
+  background-color: blue;
+  border: 5px solid #fff;
+  color: #fff;
 }

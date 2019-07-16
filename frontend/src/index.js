@@ -7,7 +7,8 @@ import { setAuthToken } from './util/session_api_util';
 import { logout,signup } from './actions/session_actions';
 import {fetchUsers, updateUser} from './actions/user_actions';
 import {fetchLeaderboards} from './actions/leaderboard_actions';
-import {fetchPassage, setGameTime, createGameRoom, deleteGameRoom} from './actions/game_actions';
+import {fetchPassage, setGameTime} from './actions/game_actions';
+import { createGameRoom, deleteGameRoom, fetchGameRooms } from './actions/game_room_actions';
 
 // import {signup} from './util/session_api_util';
 import './App.scss';
@@ -41,7 +42,9 @@ document.addEventListener('DOMContentLoaded', () => {
     window.fetchPassage = fetchPassage;
     window.setGameTime = setGameTime;
     window.updateUser = updateUser;
-    window.createGameRoom = createGameRoom
+    window.createGameRoom = createGameRoom;
+    window.deleteGameRoom = deleteGameRoom;
+    window.fetchGameRooms = fetchGameRooms;
     const root = document.getElementById('root');
 
     ReactDOM.render(<Root store={store} />, root);
