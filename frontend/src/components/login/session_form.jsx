@@ -70,7 +70,7 @@ class SessionForm extends React.Component {
             username: "",
             password: ""
         }, () => this.demoUser(demoUsername, demoPassword))
-    }
+    } 
 
     demoUser(demoUsername, demoPassword){
         let rate = 50;
@@ -88,8 +88,7 @@ class SessionForm extends React.Component {
                 username: this.state.username,
                 password: this.state.password
             })
-                .then(() => this.props.history.push('/select'))
-        } 
+                .then(() => this.props.history.push('/select'))        } 
           
     }
 
