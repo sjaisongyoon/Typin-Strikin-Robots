@@ -26,11 +26,11 @@ class MultiGame extends Component {
     console.log('open socket')
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    if (prevState.ownHealthBar !== this.state.ownHealthBar) {
-      this.setState({ownHealthBar: this.state.ownHealthBar})
-    }
-  }
+  // componentDidUpdate(prevProps, prevState) {
+  //   if (prevState.ownHealthBar !== this.state.ownHealthBar) {
+  //     this.setState({ownHealthBar: this.state.ownHealthBar})
+  //   }
+  // }
 
   handleClick(e) {
     e.preventDefault();

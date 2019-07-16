@@ -33,7 +33,14 @@ router.post("/",
             // player2Id: mongoose.Types.ObjectId(req.body.player2Id),
             // date: req.body.date
         });
-        newMultiplayerGameRoom.save().then(multiplayerGameRoom => res.json(multiplayerGameRoom))
+        newMultiplayerGameRoom.save().then(multiplayerGameRoom => {
+            let gameRoomPojo = {
+                id: multiplayerGameRoom.id,
+                player1Id: multiplayerGameRoom.player1Id,
+                player2Id: multiplayerGameRoom.player2Id
+            };
+            res.json(gameRoomPojo)
+        })
             .catch(err => res.status(400).json({ parameters: 'Invalid multiplayerGameRoom parameters' }));
     }
 );
@@ -47,7 +54,12 @@ router.patch('/:multiplayerGameRoomId', (req, res) => {
     // res.send(updateParams);
     MultiplayerGameRoom.findOneAndUpdate(gameRoomIdOnly, updateParams, { new: true })
         .then(updatedGameRoom => {
-            return res.json(updatedGameRoom);
+            let gameRoomPojo = {
+                id: updatedGameRoom.id,
+                player1Id: updatedGameRoom.player1Id,
+                player2Id: updatedGameRoom.player2Id
+            };
+            res.json(gameRoomPojo);
         })
         .catch(err => res.status(400).json({ updatefailed: 'Something wrong when updating multiplayerGameRoom!' }));
 });
@@ -57,7 +69,12 @@ router.delete("/:multiplayerGameRoomId", (req, res) => {
     // res.send('Got a DELETE request at /user');
     MultiplayerGameRoom.findOneAndRemove(multiplayerGameRoom)
         .then( (removedRoom) => {
-            res.json(removedRoom)
+            let gameRoomPojo = {
+                id: removedRoom.id,
+                player1Id: removedRoom.player1Id,
+                player2Id: removedRoom.player2Id
+            };
+            res.json(gameRoomPojo)
         })
         .catch(err => res.status(404).json({ nomultiplayergameroomfound: 'No multiplayerGameRoom found' }));
 });
