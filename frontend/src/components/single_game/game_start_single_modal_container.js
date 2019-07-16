@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import HeaderDropdownModal from './header_dropdown_modal';
+import GameStartSingleModal from './game_start_single_modal';
 import { closeModal } from '../../actions/modal_actions';
 
 const msp = (state, ownProps) => {
@@ -14,4 +14,4 @@ const mdp = dispatch => {
   });
 }
 
-export default connect(msp, mdp)(HeaderDropdownModal);
+export default connect(msp, mdp)(GameStartSingleModal);
