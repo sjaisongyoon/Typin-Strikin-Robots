@@ -65,11 +65,30 @@ class MultiGame extends Component {
     }, 1000);
   }
 
-  // componentDidUpdate(prevProps, prevState) {
-  //   if (prevState.ownHealthBar !== this.state.ownHealthBar) {
-  //     this.setState({ownHealthBar: this.state.ownHealthBar})
-  //   }
-  // }
+  componentDidUpdate(prevProps, prevState) {
+    let { currentUser, openModal, updateSingleGameWpm, updateUser } = this.props;
+
+    if (!this.state.modal && (this.state.ownHealthBar === 0 || this.state.enemyHealthBar === 0 || this.state.gameTime === 0)) {
+      this.setState({ modal: true });
+      updateSingleGameWpm(parseInt(this.state.currentWPM));
+      let updateLoss;
+      let updateWin;
+      if (this.state.ownHealthBar === 0) {
+        updateLoss = 1;
+        updateWin = 0;
+      } else if (this.state.enemyHealthBar === 0) {
+        updateLoss = 0;
+        updateWin = 1;
+      }
+      let updatedUser = {
+        id: currentUser.id,
+        multiplayerWins: updateWin,
+        multiplayerLosses: updateLoss
+      };
+      updateUser(updatedUser);
+      openModal('gameend-single-modal');
+    }
+  }
 
   handleHealthBarUpdate() {
     let newEnemyHealthBar = this.state.enemyHealthBar - this.state.decrementAmt;
@@ -244,57 +263,33 @@ class MultiGame extends Component {
     let { currentUser, openModal, updateSingleGameWpm, updateUser } = this.props;
 
     // show modal on game end
-    if (!this.state.modal) {
-      setTimeout(() => {
-        if (this.state.ownHealthBar === 0 || this.state.enemyHealthBar === 0 || this.state.gameTime === 0) {
-          this.setState({ modal: true });
-          updateSingleGameWpm(parseInt(this.state.currentWPM));
-          let updateLoss;
-          let updateWin;
-          if (this.state.ownHealthBar === 0) {
-            updateLoss = 1;
-            updateWin = 0;
-          } else if (this.state.enemyHealthBar === 0) {
-            updateLoss = 0;
-            updateWin = 1;
-          }
-          let updatedUser = {
-            id: currentUser.id,
-            multiplayerWins: updateWin,
-            multiplayerLosses: updateLoss
-          };
-          updateUser(updatedUser);
-          openModal('gameend-single-modal');
-        }
-      }, 100);
-    }
+
 
     return (
       <div className="multigame__container">
-        <div className="multigame__top">
-          <div className="multigame__top-stats-wrapper">
-            <div className="multigame__top-player">
-              <div className="multigame__player-name">{currentUser.username}</div>
-              {/* {(this.state.ownHealthBar).toFixed(2)}% */}
-
-              <div className="multigame__player-health" style={{backgroundPosition: `${this.state.ownHealthBarDisplay}px`}}>
-              </div>
-              <div className="multigame__player-wpm">WPM: {this.state.currentWPM }</div>
-            </div>
-            <div className="multigame__top-timer">
-              <h3 className="multigame__top-timer-text">Timer</h3>
-              <h4 className="multigame__top-time">00:{this.state.gameTime > 9 ? this.state.gameTime : `0${this.state.gameTime}`}</h4>
-            </div>
-            <div className="multigame__top-player">
-              <div className="multigame__player-name">Player 2</div>
-              <div className="multigame__player-health" style={{ backgroundPosition: `${this.state.EnemyHealthBarDisplay}px`}}></div>
-              <div className="multigame__player-wpm">WPM: 121</div>
-            </div>
-          </div>
-        </div>
         <div className="multigame__fight-container">
-          <div className="multigame__fight-inner">
+            <div className="multigame__top">
+              <div className="multigame__top-stats-wrapper">
+                <div className="multigame__top-player">
+                  <div className="multigame__player-name">{currentUser.username}</div>
+                  {/* {(this.state.ownHealthBar).toFixed(2)}% */}
 
+                  <div className="multigame__player-health" style={{backgroundPosition: `${this.state.ownHealthBarDisplay}px`}}>
+                  </div>
+                  <div className="multigame__player-wpm">WPM: {this.state.currentWPM }</div>
+                </div>
+                <div className="multigame__top-timer">
+                  <h3 className="multigame__top-timer-text">Timer</h3>
+                  <h4 className="multigame__top-time">00:{this.state.gameTime > 9 ? this.state.gameTime : `0${this.state.gameTime}`}</h4>
+                </div>
+                <div className="multigame__top-player">
+                  <div className="multigame__player-name">Player 2</div>
+                  <div className="multigame__player-health" style={{ backgroundPosition: `${this.state.EnemyHealthBarDisplay}px`}}></div>
+                  <div className="multigame__player-wpm">WPM: 121</div>
+                </div>
+              </div>
+            <div className="multigame__fight-inner">
+            </div>
           </div>
         </div>
         <div className="game__input-container">
