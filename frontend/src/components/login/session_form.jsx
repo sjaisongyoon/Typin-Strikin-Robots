@@ -6,11 +6,12 @@ import {withRouter, Link} from 'react-router-dom';
 class SessionForm extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {username:"", password:"", errors:{}};
+        this.state = {username:"", password:"", errors:{}, isDemo: false};
         this.handleSubmit = this.handleSubmit.bind(this);
         this.renderErrors = this.renderErrors.bind(this);
         this.handleSignupLogin = this.handleSignupLogin.bind(this);
-        this.handleDemoSubmit = this.handleDemoSubmit.bind(this)
+        this.handleDemoSubmit = this.handleDemoSubmit.bind(this);
+        this.handleDemoButtons = this.handleDemoButtons.bind(this);
     }
 
     update(field) {
@@ -92,6 +93,12 @@ class SessionForm extends React.Component {
           
     }
 
+    handleDemoButtons(e){
+        e.preventDefault();
+        this.setState({
+            isDemo: true
+        })
+    }
 
     render () {
         return (
@@ -116,18 +123,26 @@ class SessionForm extends React.Component {
                         <input className="sessionform__submit" type="submit" value='ENTER' onClick={this.handleSubmit}/>
                         {this.renderErrors()}
 
-                        {this.props.formType === "Log In" ? <div className="demobuttons__container">
-                                <input type="submit" value="Demo Player 1" 
-                                    className="submitdemo__button" 
-                                    onClick={this.handleDemoSubmit} id="Player 1" />
-                                <input type="submit" value="Demo Player 2" 
-                                    className="submitdemo__button" 
-                                    onClick={this.handleDemoSubmit} id="Player 2"/>
-                            </div> : null }
+                        {this.props.formType === "Sign Up" ? null :
+                            (this.props.formType === "Log In" && this.state.isDemo) ? 
+                                <div className="demobuttons__container">
+                                    <input type="submit" value="Demo Player 1" 
+                                        className="submitdemo__button" 
+                                        onClick={this.handleDemoSubmit} id="Player 1" />
+                                    <input type="submit" value="Demo Player 2" 
+                                        className="submitdemo__button" 
+                                        onClick={this.handleDemoSubmit} id="Player 2"/>
+                                </div> : 
+                                <p className="sessionform__message">
+                                    <button className={`sessionform__button ${this.state.isDemo ? 'hidden' : ''}`} 
+                                    onClick={this.handleDemoButtons}>
+                                        Continue As Guest
+                                    </button>
+                                </p> }
 
-                        <p className="sessionform__message">{this.props.message} &nbsp;<Link to={`/${this.props.otherRoute}`} className="sessionform__button">
-                            {this.props.otherForm}
-                        </Link></p>
+                        {/* <p className="sessionform__message"> 
+                            <button className={`sessionform__button ${this.state.isDemo ? '' : 'hidden'}`} onSubmit={this.handleDemoButtons}>Continue As Guest</button> 
+                        </p> */}
                     </div>
                 </form>
             </div>
