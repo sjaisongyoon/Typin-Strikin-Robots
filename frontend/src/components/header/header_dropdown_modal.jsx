@@ -23,7 +23,7 @@ class HeaderDropdownModal extends Component {
 
   handleLogout(e) {
     e.preventDefault();
-    this.props.logoutUser();
+    this.props.logoutUser()
     this.props.closeModal();
     this.props.history.push('/login');
 
