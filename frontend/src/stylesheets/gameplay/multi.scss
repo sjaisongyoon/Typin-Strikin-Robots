@@ -42,10 +42,8 @@
 
 .multigame__top-timer {
   font-size: 1rem;
-  // position: absolute;
-  // transform: translate(-50%, -50%);
-  // left: 50%;
-  // top: 16%;
+  position: relative;
+  top: 3rem;
 }
 
 .multigame__top-timer-text {
@@ -61,13 +59,13 @@
 
 .multigame__fight-container {
   text-align: center;
-  height: 450px;
+  height: 380px;
   display: flex;
   justify-content: center;
   align-items: flex-start;
   background-image: linear-gradient(0deg, transparent 0%, rgba(0,0,0,0.3) 85%, black 100%), url('assets/images/01-street-fighter-background-optimized.jpg');
   background-size: cover;
-  background-position: center;
+  background-position: bottom;
   background-repeat: no-repeat;
   border-radius: 5px;
   // margin: 12rem 0 3rem 0;
