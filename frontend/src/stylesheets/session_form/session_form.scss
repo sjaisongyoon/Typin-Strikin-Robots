@@ -53,7 +53,7 @@ li.loginform__errors-listitems {
   color: red;
 }
 
-.sessionform__submit {
+.sessionform__submit, .submitdemo__button {
   background-color: transparent;
   color: #fff;
   border: 5px solid blue;
@@ -63,7 +63,7 @@ li.loginform__errors-listitems {
   font-size: 1rem;
 }
 
-.sessionform__submit:hover {
+.sessionform__submit:hover, .submitdemo__button:hover {
   background-color: blue;
   border: 5px solid #fff;
   color: #fff;

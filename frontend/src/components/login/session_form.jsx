@@ -10,6 +10,7 @@ class SessionForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.renderErrors = this.renderErrors.bind(this);
         this.handleSignupLogin = this.handleSignupLogin.bind(this);
+        this.handleDemoSubmit = this.handleDemoSubmit.bind(this)
     }
 
     update(field) {
@@ -60,6 +61,38 @@ class SessionForm extends React.Component {
     }
 
 
+    handleDemoSubmit(e){
+        e.preventDefault();
+        let demoUsername = e.target.id.split('');
+        let demoPassword = 'password'.split(''); 
+        this.setState({
+            username: "",
+            password: ""
+        }, () => this.demoUser(demoUsername, demoPassword))
+    }
+
+    demoUser(demoUsername, demoPassword){
+        let rate = 50;
+        if (demoUsername.length > 0) {
+            this.setState({
+                username: this.state.username += demoUsername.shift()
+            }, () => window.setTimeout(() => this.demoUser(demoUsername, demoPassword), rate))
+        } else if (demoPassword.length > 0) {
+            this.setState({
+                password: this.state.password += demoPassword.shift()
+            }, () => window.setTimeout(() => this.demoUser(demoUsername, demoPassword), rate))
+
+        } else if (demoPassword.length === 0) {
+            this.props.formProcess({
+                username: this.state.username,
+                password: this.state.password
+            })
+                .then(() => this.props.history.push('/select'))
+        } 
+          
+    }
+
+
     render () {
         return (
             <div className="sessionform">
@@ -82,6 +115,15 @@ class SessionForm extends React.Component {
                         <br />
                         <input className="sessionform__submit" type="submit" value='ENTER' onClick={this.handleSubmit}/>
                         {this.renderErrors()}
+
+                        {this.props.formType === "Log In" ? <div className="demobuttons__container">
+                                <input type="submit" value="Demo Player 1" 
+                                    className="submitdemo__button" 
+                                    onClick={this.handleDemoSubmit} id="Player 1" />
+                                <input type="submit" value="Demo Player 2" 
+                                    className="submitdemo__button" 
+                                    onClick={this.handleDemoSubmit} id="Player 2"/>
+                            </div> : null }
 
                         <p className="sessionform__message">{this.props.message} &nbsp;<Link to={`/${this.props.otherRoute}`} className="sessionform__button">
                             {this.props.otherForm}
