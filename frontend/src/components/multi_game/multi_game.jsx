@@ -9,7 +9,8 @@ class MultiGame extends Component {
       // Sockets
       ownHealthBar: 100,
       enemyHealthBar: 100,
-      socket: socketIOClient("http://127.0.0.1:3001"),
+      socket: socketIOClient("127.0.0.1:3001"),
+      // socket: socketIOClient("http://typefighter.herokuapp.com"),
 
       // Gameplay
       gameTime: this.props.gameTime,
@@ -72,12 +73,10 @@ class MultiGame extends Component {
   componentDidMount() {
     // Sockets
     this.openSocket();
-    console.log('open socket')
 
     // Gameplay
     this.createWordsArray();
     this.startTimer();
-    console.log(this.state);
     setTimeout(() => {
       this.calculateHealthBarDecrement();
     }, 1000);
@@ -161,7 +160,6 @@ class MultiGame extends Component {
         }))
       } else {
         clearInterval(timer);
-        // console.log(this.state);
       }
     }, 1000);
   }
@@ -185,7 +183,7 @@ class MultiGame extends Component {
       initialWords,
       currentWord: currentWord,
       wordCount: wordCount
-    }, () => console.log(this.state));
+    });
 
   }
 
@@ -219,7 +217,6 @@ class MultiGame extends Component {
     let totalWords = this.state.wordCount;
     let decrementAmt = 100 / totalWords;
 
-    console.log(decrementAmt);
     this.setState({
       decrementAmt: decrementAmt
     })
@@ -228,10 +225,6 @@ class MultiGame extends Component {
   handleSubmit() {
     // update initialWords, correctWords, currentWord, clear input
     let { currentWord, currentInput } = this.state;
-    console.log('handlesubmit triggered');
-    console.log(currentWord);
-    console.log(currentInput);
-    console.log(currentWord === currentInput);
 
     if (currentWord === currentInput) {
       let soundEffects = [
@@ -273,10 +266,6 @@ class MultiGame extends Component {
       }, () => {
           this.handleHealthBarUpdate();
       })
-      console.log(this.state);
-      console.log(this.calculateWPM());
-
-      console.log(this.state.currentWPM);
     }
   }
 
@@ -298,8 +287,6 @@ class MultiGame extends Component {
 
     let moves = ["punch", "kick", "rkick", "tatsumaki", "hadoken", "shoryuken", "jump", "kneel", "walkLeft", "walkRight"];
     let randomMoveNum = Math.floor(Math.random() * moves.length);
-    // debugger
-    console.log(randomMoveNum);
 
     switch (randomMoveNum) {
       case 0:
@@ -403,9 +390,7 @@ class MultiGame extends Component {
       };
 
       var explodeIfColision = setInterval(function () {
-
         $fireballPos = $fireball.offset();
-        //console.log('fireballInterval:',$fireballPos.left);
 
         if (isFireballColision()) {
           $fireball.addClass('explode').removeClass('moving').css('marginLeft', '+=22px');

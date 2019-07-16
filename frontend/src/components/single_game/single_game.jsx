@@ -73,7 +73,6 @@ export class SingleGame extends Component {
       this.startTimer();
       this.props.closeModal()
     }, 4000);
-    console.log(this.state);
 
     this.props.openModal('gamestart-single-modal')
   }
@@ -102,7 +101,6 @@ export class SingleGame extends Component {
         }))
       } else {
         clearInterval(timer);
-        console.log(this.state); 
       }
     }, 1000);
   }
@@ -159,10 +157,6 @@ export class SingleGame extends Component {
   handleSubmit() {
     // update initialWords, correctWords, currentWord, clear input
     let { currentWord, currentInput} = this.state;
-    console.log('handlesubmit triggered');
-    console.log(currentWord);
-    console.log(currentInput);
-    console.log(currentWord === currentInput);
     
     if (currentWord === currentInput) {
       let soundEffects = [
@@ -200,11 +194,7 @@ export class SingleGame extends Component {
         initialWords: this.state.initialWords.slice(1),
         correctWords: correctWords,
         currentWord: this.state.initialWords[0]
-      })
-      console.log(this.state);
-      console.log(this.calculateWPM());
-
-      console.log(this.state.currentWPM);
+      });
     }
   }
 
@@ -212,8 +202,6 @@ export class SingleGame extends Component {
 
     let moves = ["punch", "kick", "rkick", "tatsumaki", "hadoken", "shoryuken", "jump", "kneel", "walkLeft", "walkRight"];
     let randomMoveNum = Math.floor(Math.random() * moves.length);
-    // debugger
-    console.log(randomMoveNum);
 
     switch (randomMoveNum) {
       case 0:
@@ -292,9 +280,7 @@ export class SingleGame extends Component {
       };
 
       var explodeIfColision = setInterval(function () {
-
         $fireballPos = $fireball.offset();
-        //console.log('fireballInterval:',$fireballPos.left);
 
         if (isFireballColision()) {
           $fireball.addClass('explode').removeClass('moving').css('marginLeft', '+=22px');

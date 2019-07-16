@@ -16,7 +16,6 @@ const userPojo = user => ({
   multiplayerWins: user.multiplayerWins,
   multiplayerLosses: user.multiplayerLosses,
   singleplayerWPM: user.singleplayerWPM,
-  // numMatches: user.numMatches
 })
 
 router.get("/test", (req, res) => res.json({ msg: "This is the users route" }));

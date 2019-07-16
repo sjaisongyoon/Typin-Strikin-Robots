@@ -67,6 +67,9 @@ io.on('connection', socket => {
     });
 });
 
+// http.listen("http://typefighter.herokuapp.com", () => {
+//     console.log('listening on 3001')
+// })
 http.listen(3001, () => {
     console.log('listening on 3001')
 })
