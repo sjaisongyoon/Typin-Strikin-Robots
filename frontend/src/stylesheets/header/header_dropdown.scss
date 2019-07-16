@@ -11,7 +11,7 @@ button.header__dropdown-btn {
   background-color: transparent;
   color: #fff;
   font-size: 1rem;
-  border: 5px solid blue;
+  border: 5px solid rgb(222, 155, 5);  
   outline: none;
   padding: 1rem;
   margin-bottom: 2rem;
@@ -20,7 +20,7 @@ button.header__dropdown-btn {
 }
 
 button.header__dropdown-btn:hover {
-  background-color: blue;
+  background-color: rgb(222, 155, 5);
   border: 5px solid #fff;
   color: #fff;
 }

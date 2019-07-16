@@ -1,7 +1,7 @@
 .creategame__button, .joingame__button {
   background-color: transparent;
   color: #fff;
-  border: 5px solid blue;
+  border: 5px solid rgb(222, 155, 5);
   font-family: 'Press Start 2P', sans-serif !important;
   cursor: pointer;
   padding: 1.4rem;
@@ -11,7 +11,7 @@
 }
 
 .creategame__button:hover, .joingame__button:hover {
-  background-color: blue;
+  background-color: rgb(222, 155, 5);
   border: 5px solid #fff;
 }
 
@@ -48,4 +48,10 @@
 h2.multioptions__title {
   font-size: 2rem;
   margin-bottom: 3rem;
+}
+
+.gameLink{
+  text-decoration: none;
+  color: white;
+  width: 100%;
 }

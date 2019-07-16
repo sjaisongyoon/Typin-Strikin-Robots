@@ -165,17 +165,17 @@ export class SingleGame extends Component {
     console.log(currentWord === currentInput);
     
     if (currentWord === currentInput) {
-      // let soundEffects = [
-      //   new Audio('assets/audio/01-punch.mp3'), 
-      //   new Audio('assets/audio/02-punch.mp3'), 
-      //   new Audio('assets/audio/03-punch.mp3'),
-      //   new Audio('assets/audio/04-punch.mp3'),
-      //   new Audio('assets/audio/05-punch.mp3'),
-      //   new Audio('assets/audio/06-punch.mp3'),
-      //   new Audio('assets/audio/07-punch.mp3'),
-      // ];
-      // let randomSound = soundEffects[Math.floor(Math.random() * soundEffects.length)];
-      // randomSound.play();
+      let soundEffects = [
+        new Audio('assets/audio/01-punch.mp3'), 
+        new Audio('assets/audio/02-punch.mp3'), 
+        new Audio('assets/audio/03-punch.mp3'),
+        new Audio('assets/audio/04-punch.mp3'),
+        new Audio('assets/audio/05-punch.mp3'),
+        new Audio('assets/audio/06-punch.mp3'),
+        new Audio('assets/audio/07-punch.mp3'),
+      ];
+      let randomSound = soundEffects[Math.floor(Math.random() * soundEffects.length)];
+      randomSound.play();
       // LOL
 
       // ANIMATION

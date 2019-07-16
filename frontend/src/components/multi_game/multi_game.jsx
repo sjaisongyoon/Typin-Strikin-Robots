@@ -24,6 +24,7 @@ class MultiGame extends Component {
       modal: this.props.modal,
       ownHealthBarDisplay: 250,
       enemyHealthBarDisplay: 250,
+      enemyWPM: 0,
     }
 
 
@@ -63,7 +64,7 @@ class MultiGame extends Component {
   openSocket() {
     this.state.socket.on("gameroom", data => {
       if (data.myUserId !== this.props.currentUser.id) {
-        this.setState({ ownHealthBar: data.enemyHealthBar })
+        this.setState({ ownHealthBar: data.enemyHealthBar, enemyWPM: data.myCurrentWPM })
       }
     })
   }
@@ -131,8 +132,9 @@ class MultiGame extends Component {
     }
 
     let data = {
+      myUserId: this.props.currentUser.id,
       enemyHealthBar: newEnemyHealthBar,
-      myUserId: this.props.currentUser.id
+      myCurrentWPM: this.state.currentWPM,
     }
     this.state.socket.emit("gameroom", data)
     this.setState({enemyHealthBar: newEnemyHealthBar});
@@ -501,7 +503,7 @@ class MultiGame extends Component {
                 <div className="multigame__top-player">
                   <div className="multigame__player-name">Player 2</div>
                   <div className="multigame__player-health" style={{ backgroundPosition: `${this.state.EnemyHealthBarDisplay}px`}}></div>
-                  <div className="multigame__player-wpm">WPM: 121</div>
+                  <div className="multigame__player-wpm">WPM: {this.state.enemyWPM}</div>
                 </div>
               </div>
             <div className="multigame__fight-inner">
