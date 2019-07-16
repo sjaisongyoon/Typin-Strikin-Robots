@@ -39,6 +39,21 @@ export class SingleGame extends Component {
     console.log(this.state);
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    let { currentUser, openModal, updateUser, updateSingleGameWpm } = this.props;
+    // show modal on game end
+    if (!this.state.modal && (this.state.wordCount === this.state.correctWords.length || this.state.gameTime === 0)) {
+      this.setState({ modal: true });
+      updateSingleGameWpm(parseInt(this.state.currentWPM));
+      updateUser({
+        id: currentUser.id,
+        singleplayerWPM: this.state.currentWPM
+      });
+      openModal('gameend-single-modal');
+    }
+
+  }
+  
   startTimer() {
     let timer = setInterval(() => {
       if (this.state.gameTime > 0) {
@@ -148,21 +163,7 @@ export class SingleGame extends Component {
   render() {
     let { currentUser, openModal, updateUser, updateSingleGameWpm } = this.props;
 
-    // show modal on game end
-    if (!this.state.modal) {
-      setTimeout(() => {
-        if (this.state.wordCount === this.state.correctWords.length || this.state.gameTime === 0) {
-          this.setState({modal: true});
-          updateSingleGameWpm(parseInt(this.state.currentWPM));
-          updateUser({
-            id: currentUser.id,
-            singleplayerWPM: this.state.currentWPM
-          });
-          openModal('gameend-single-modal');  
-        }
-      }, 100);
-    }
-
+    
     return (
       <div className="singlegame__container">
         <div className="singlegame__fight-container">
