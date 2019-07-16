@@ -14,9 +14,6 @@ class GameStartMultiModal extends React.Component {
         }))
       } else if (this.state.time === 1) {
         this.setState({ time: 'TYPE!!!!!' })
-
-        // console.log(this.state);
-        // this.props.closeModal();
       } else {
         clearInterval(timer);
       }
