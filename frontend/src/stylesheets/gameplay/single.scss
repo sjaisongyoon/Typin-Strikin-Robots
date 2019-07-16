@@ -2,6 +2,7 @@
   // margin-bottom: 10rem;
   width: 100%;
   padding: 3rem;
+  padding-top: 2rem;
 }
 .singlegame__top-stats-wrapper {
   display: flex;
@@ -44,23 +45,23 @@ h3.singlegame__top-timer-text {
 }
 
 .singlegame__fight-container {
-  height: 450px;
+  height: 325px;
   display: flex;
   justify-content: center;
   align-items: flex-start;
   background-color: pink;
   border-radius: 5px;
-  margin: 3rem 0;
+  margin: 0 3rem 3rem 3rem;
   background-image: linear-gradient(0deg, transparent 0%, rgba(0,0,0,0.3) 85%, black 100%),url('assets/images/01-street-fighter-background-optimized.jpg');
   background-size: cover;
-  background-position: center;
+  background-position: bottom;
   background-repeat: no-repeat;
   position: relative;
   // display: none;
 }
 
 .singlegame__container {
-  margin-top: 4rem;
+  // margin-top: 4rem;
 }
 
 
