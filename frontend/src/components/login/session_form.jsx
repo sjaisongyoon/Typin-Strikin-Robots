@@ -70,7 +70,7 @@ class SessionForm extends React.Component {
             username: "",
             password: ""
         }, () => this.demoUser(demoUsername, demoPassword))
-    }
+    } 
 
     demoUser(demoUsername, demoPassword){
         let rate = 50;
