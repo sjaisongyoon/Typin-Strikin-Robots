@@ -1,12 +1,28 @@
-import React from 'react'
+import React from 'react';
+import socketIOClient from 'socket.io-client';
 
 class GameStartMultiModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = { 
       time: 3,
-      waiting: true,
+      twoPlayers: false,
+      socket: socketIOClient("http://127.0.0.1:3001"),
      }
+  }
+
+  openSocket() {
+    this.state.socket.on("lobby", twoPlayers => {
+      if (twoPlayers) {
+        this.setState({ twoPlayers })
+      }
+    })
+    this.state.socket.emit("lobby");
+  }
+
+  componentDidMount() {
+    this.openSocket();
+
   }
 
   countdown() {
@@ -18,19 +34,28 @@ class GameStartMultiModal extends React.Component {
       } else if (this.state.time === 1) {
         this.setState({ time: 'TYPE!!!!!' })
       } else {
+        this.props.closeModal();
         clearInterval(timer);
       }
     }, 1000);
   }
 
   componentDidUpdate() {
+    if (this.state.twoPlayers && this.state.time === 3) {
+      this.countdown();
+    }
   }
 
   render() {
+    const display = (!this.state.twoPlayers) ? <div>
+      <div className='gamestart-multi__modal-text'>waiting for</div> < br /> <div>challenger...</div>
+    </div> : <div>
+      {this.state.time}
+    </div> 
     return (
       <div className='gamestart-multi__modal-container'>
         <div className='gamestart-multi__modal-header'>
-          { (this.state.waiting) ? 'waiting for challenger...' : this.state.time}
+          {display}
         </div>
       </div>
     )

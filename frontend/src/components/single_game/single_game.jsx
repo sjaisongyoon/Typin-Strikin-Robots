@@ -71,7 +71,6 @@ export class SingleGame extends Component {
     this.createWordsArray();
     setTimeout(() => {
       this.startTimer();
-      this.props.closeModal()
     }, 4000);
     console.log(this.state);
 
