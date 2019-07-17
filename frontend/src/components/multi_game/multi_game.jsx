@@ -108,7 +108,7 @@ class MultiGame extends Component {
 
     if (!this.state.modal && (this.state.ownHealthBar === 0 || this.state.enemyHealthBar === 0 || this.state.gameTime === 0)) {
       this.setState({ modal: true });
-      updateSingleGameWpm(parseInt(this.state.currentWPM));
+      updateMultiGameWpm({ myOwnWPM: parseInt(this.state.currentWPM), enemyWPM: parseInt(this.state.enemyWPM), });
       let updateLoss;
       let updateWin;
       if (this.state.ownHealthBar === 0) {
