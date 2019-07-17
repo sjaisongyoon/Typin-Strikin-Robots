@@ -147,10 +147,10 @@ export class SingleGame extends Component {
   }
 
   calculateWPM() {
-    let numCorrectWords = this.state.correctWords.length;
+    let numCorrectWords = this.state.correctWords.join('').length;
     let elapsedTime = this.state.elapsedTime;
 
-    let currentWPM = ((numCorrectWords / elapsedTime) * 60).toFixed(0);
+    let currentWPM = ((numCorrectWords / 5 / elapsedTime) * 60).toFixed(0);
     this.setState({
       currentWPM: currentWPM
     });
