@@ -7,9 +7,9 @@
 
 .game__display-paragraph {
   max-width: 75%;
-  font-size: 1rem;
-  line-height: 2rem;
-  margin-bottom: 3rem;
+  font-size: 12px;
+  line-height: 1.8rem;
+  margin-bottom: 2rem;
   overflow-wrap: break-word;
 }
 
@@ -22,8 +22,8 @@
 }
 
 .game__input-box {
-  padding: 1rem;
-  font-size: 16px;
+  padding: 0.6rem;
+  font-size: 12px;
   border-radius: 0;
   outline: none;
   border: 1px solid rgba(0, 0, 0, 0.3);

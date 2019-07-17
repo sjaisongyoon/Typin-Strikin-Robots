@@ -20,10 +20,7 @@ class HeaderMenu extends Component {
   }
 
   render() {
-    // console.log(this.props.leaderboards);
-
     if (!this.state.users) {
-      // debugger
       return null;
     }
 

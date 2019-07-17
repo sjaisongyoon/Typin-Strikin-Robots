@@ -25,7 +25,6 @@ class Multi extends React.Component {
 
     handleSubmit(e){
         e.preventDefault();
-        // debugger;
         if (e.target.id === 'joinGame'){
             this.props.updateGameRoom({
                 playerId: this.state.playerId,
