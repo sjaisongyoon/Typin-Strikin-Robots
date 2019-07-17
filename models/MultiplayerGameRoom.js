@@ -5,11 +5,12 @@ const MultiplayerGameRoomSchema = new Schema({
     player1Id: {
         type: Schema.Types.ObjectId, //same as mongoose.Types.ObjectId
         ref: 'users',
-        required: true
+        default: null
     },
     player2Id: {
         type: Schema.Types.ObjectId,
         ref: 'users',
+        default: null
     },
     passageId: {
         type: Number,

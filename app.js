@@ -40,7 +40,7 @@ app.use("/api/matches", matches);
 app.use("/api/multiplayerGameRooms", multiplayerGameRooms);
 
 const port = process.env.PORT || 5000;
-app.listen(port, () => console.log(`Server is running on port ${port}`));
+// app.listen(port, () => console.log(`Server is running on port ${port}`));
 
 let socketList = {};
 let twoPlayers;
@@ -67,9 +67,12 @@ io.on('connection', socket => {
     });
 });
 
-// http.listen("http://typefighter.herokuapp.com", () => {
+// DEV
+// http.listen(3001, () => {
 //     console.log('listening on 3001')
 // })
-http.listen(3001, () => {
-    console.log('listening on 3001')
-})
+    
+// PRODUCTION
+http.listen(port, () => {
+    console.log('listening on https://typefighter.herokuapp.com')
+});

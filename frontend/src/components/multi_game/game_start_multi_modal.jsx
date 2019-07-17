@@ -7,7 +7,8 @@ class GameStartMultiModal extends React.Component {
     this.state = { 
       time: 3,
       twoPlayers: false,
-      socket: socketIOClient("http://127.0.0.1:3001"),
+      socket: socketIOClient("http://127.0.0.1:5000"),
+      // socket: socketIOClient("https://typefighter.herokuapp.com"),
      }
   }
 
@@ -44,6 +45,10 @@ class GameStartMultiModal extends React.Component {
     if (this.state.twoPlayers && this.state.time === 3) {
       this.countdown();
     }
+  }
+
+  componentWillUnmount() {
+    this.state.socket.disconnect();
   }
 
   render() {

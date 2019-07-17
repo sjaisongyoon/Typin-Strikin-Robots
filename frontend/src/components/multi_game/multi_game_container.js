@@ -21,7 +21,7 @@ const mdp = dispatch => {
     updateSingleGameWpm: wpm => dispatch(updateSingleGameWpm(wpm)),
     openModal: type => dispatch(openModal(type)),
     updateUser: (stats) => dispatch(updateUser(stats)),
-    deleteGameRoom: (id) => dispatch(deleteGameRoom(id))
+    deleteGameRoom: (deleteData) => dispatch(deleteGameRoom(deleteData))
   })
 }
 
