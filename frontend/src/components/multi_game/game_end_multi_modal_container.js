@@ -10,8 +10,7 @@ const msp = (state, ownProps) => {
         sessionWpm: state.entities.game.singleSessionWpm,
         myOwnWPM,
         enemyWPM,
-        winner: -1,
-        // winner: myOwnWPM > enemyWPM ? 1 : myOwnWPM === enemyWPM ? 0 : -1,
+        winner: myOwnWPM > enemyWPM ? 1 : myOwnWPM === enemyWPM ? 0 : -1,
     })
 }
 
