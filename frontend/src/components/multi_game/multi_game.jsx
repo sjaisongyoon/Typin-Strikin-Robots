@@ -43,12 +43,11 @@ class MultiGame extends Component {
     this.calculateWPM = this.calculateWPM.bind(this);
     this.calculateHealthBarDecrement = this.calculateHealthBarDecrement.bind(this);
     this.updateHealthBarDisplay = this.updateHealthBarDisplay.bind(this);
-    // this.gameOver = this.gameOver.bind(this);
+    this.correctInputDisplay = this.correctInputDisplay.bind(this);
+    this.incorrectInputDisplay = this.incorrectInputDisplay.bind(this);
+    this.resetInputDisplay = this.resetInputDisplay.bind(this);
 
-
-
-    // Moves
-
+    // moves
     this.callPlayerAnimation = this.callPlayerAnimation.bind(this);
     this.punch = this.punch.bind(this);
     this.kick = this.kick.bind(this);
@@ -57,7 +56,6 @@ class MultiGame extends Component {
     this.hadoken = this.hadoken.bind(this);
     this.shoryuken = this.shoryuken.bind(this);
     this.jump = this.jump.bind(this);
-    // this.kneel = this.kneel.bind(this);
     this.walkLeft = this.walkLeft.bind(this);
     this.walkRight = this.walkRight.bind(this);
   }
@@ -98,8 +96,7 @@ class MultiGame extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     let { currentUser, openModal, updateSingleGameWpm, updateUser, deleteGameRoom, gameRoom } = this.props;
-    
-    // if (prevState !== this.state && !this.state.modal) this.setState({modal: this.props.modal})
+
     console.log(prevState.modal, this.props.modal);
     if (this.props.modal === null && this.state.elapsedTime === 0) this.startTimer();
     if (prevState.ownHealthBar > this.state.ownHealthBar) {
@@ -145,18 +142,6 @@ class MultiGame extends Component {
     this.setState({enemyHealthBar: newEnemyHealthBar});
   }
 
-
-  // ////////
-  // // Gameplay
-  // ////////
-  // gameOver(type) {
-  //   // Stop player input
-  //   // Show game win/lose modal
-  //   // Render player game stats
-  //   // Give option to play again
-  //   // Update player stats in DB
-  // }
-
   createWordsDisplay() {
     let wordsArr = this.props.gamePassage.split(' ').map((word, idx) => {
       return <span key={idx} id={idx} className="word__span">{word}&nbsp;</span>
@@ -180,16 +165,6 @@ class MultiGame extends Component {
         }
       })
     }, 1000);
-    // let timer = setInterval(() => {
-    //   if (this.state.gameTime > 0) {
-    //     this.setState((prevState) => ({
-    //       gameTime: prevState.gameTime - 1,
-    //       elapsedTime: prevState.elapsedTime + 1
-    //     }))
-    //   } else {
-    //     clearInterval(timer);
-    //   }
-    // }, 1000);
   }
 
 
@@ -251,10 +226,17 @@ class MultiGame extends Component {
   }
   
   handleSubmit() {
-    // update initialWords, correctWords, currentWord, clear input
     let { currentWord, currentInput } = this.state;
     
+    // if word input length is less than current word, display default input box
+    if (currentWord.length > currentInput.length) {
+      this.resetInputDisplay();
+    }
+
+    // if the input is a correct match
     if (currentWord === currentInput) {
+
+      // audio
       let soundEffects = [
         new Audio('assets/audio/01-punch.mp3'),
         new Audio('assets/audio/02-punch.mp3'),
@@ -264,39 +246,46 @@ class MultiGame extends Component {
         new Audio('assets/audio/06-punch.mp3'),
         new Audio('assets/audio/07-punch.mp3'),
       ];
-      // LOL
       let randomSound = soundEffects[Math.floor(Math.random() * soundEffects.length)];
       randomSound.play();
 
-
-      // ANIMATION
+      // animation
       this.callPlayerAnimation('player1');
-      // ANIMATION
-
-
-
-
+      // health bar
       this.updateHealthBarDisplay();
-
+      // input rendering
+      this.resetInputDisplay();
+      this.correctInputDisplay();
+      // update live WPM
+      this.calculateWPM();
+      
+      // update correct words in local state
       let correctWords = [...this.state.correctWords];
       correctWords.push(this.state.currentWord);
       let lastCorrectIdx = [...this.state.correctWords].length;
-
-      // Update class for correct Words
+      // color correct words
       let word = document.getElementById(`${lastCorrectIdx}`);
       word.classList.add('word__span--correct')
-      this.calculateWPM();
+      
+      // update local state with new values (next word)
       this.setState({
         currentInput: '',
         initialWords: this.state.initialWords.slice(1),
         correctWords: correctWords,
         currentWord: this.state.initialWords[0]
       }, () => {
-          this.handleHealthBarUpdate();
+        // update healthbar on successful state update
+        this.handleHealthBarUpdate();
       })
+    }
+
+    // red input on incorrect word
+    if (currentWord.length < currentInput.length) {
+      this.incorrectInputDisplay();
     }
   }
 
+  // update health bar for both players
   updateHealthBarDisplay() {
     let ownHealth = this.state.ownHealthBar;
     let enemyHealth = this.state.enemyHealthBar;
@@ -311,6 +300,7 @@ class MultiGame extends Component {
   }
 
 
+  // character animations (randomized)
   callPlayerAnimation(player) {
 
     let moves = ["punch", "kick", "rkick", "tatsumaki", "hadoken", "shoryuken", "jump", "kneel", "walkLeft", "walkRight"];
@@ -376,6 +366,7 @@ class MultiGame extends Component {
     $ken.addClass('kick');
     setTimeout(function () { $ken.removeClass('kick'); }, 500);
   };
+
   rkick(player) {
     let $ken;
     if (player === 'player1') {
@@ -387,6 +378,7 @@ class MultiGame extends Component {
     $ken.addClass('reversekick');
     setTimeout(function () { $ken.removeClass('reversekick'); }, 500);
   };
+
   tatsumaki(player) {
     let $ken;
     if (player === 'player1') {
@@ -399,6 +391,7 @@ class MultiGame extends Component {
     setTimeout(function () { $ken.addClass('down'); }, 1500);
     setTimeout(function () { $ken.removeClass('tatsumaki down'); }, 2000);
   };
+
   hadoken(player) {
     let $ken;
     if (player === 'player1') {
@@ -437,6 +430,7 @@ class MultiGame extends Component {
 
     }, (250));
   };
+
   shoryuken(player) {
     let $ken;
     if (player === 'player1') {
@@ -449,6 +443,7 @@ class MultiGame extends Component {
     setTimeout(function () { $ken.addClass('down'); }, 500);
     setTimeout(function () { $ken.removeClass('shoryuken down'); }, 1000);
   };
+
   jump() {
     let $ken = $('.player1');
     let $kenPos, $fireballPos;
@@ -456,11 +451,7 @@ class MultiGame extends Component {
     setTimeout(function () { $ken.addClass('down'); }, 500);
     setTimeout(function () { $ken.removeClass('jump down'); }, 1000);
   };
-  // kneel() {
-  //   let $ken = $('.player1');
-  //   let $kenPos, $fireballPos;
-  //   $ken.addClass('kneel');
-  // };
+
   walkLeft(player) {
     let $ken;
     if (player === 'player1') {
@@ -471,6 +462,7 @@ class MultiGame extends Component {
     let $kenPos, $fireballPos;
     $ken.addClass('walk').css({ marginLeft: '-=10px' });
   };
+
   walkRight(player) {
     let $ken;
     if (player === 'player1') {
@@ -482,11 +474,30 @@ class MultiGame extends Component {
     $ken.addClass('walk').css({ marginLeft: '+=10px' });
   };
 
+  // green input box
+  correctInputDisplay() {
+    let input = document.querySelector(".game__input-box");
+    
+    input.classList.add('input__bg--green');
+    setTimeout(() => {
+      input.classList.remove('input__bg--green');
+    }, 200);
+  }
+  
+  // red input box
+  incorrectInputDisplay() {
+    let input = document.querySelector(".game__input-box");
+    input.classList.add('input__bg--red');
+  }
+  
+  // default input box
+  resetInputDisplay() {
+    let input = document.querySelector(".game__input-box");
+    input.classList.remove('input__bg--red');
+  }
+
   render() {
     let { currentUser, openModal, updateSingleGameWpm, updateUser } = this.props;
-
-    // show modal on game end
-
 
     return (
       <div className="multigame__container">
