@@ -9,8 +9,8 @@ class MultiGame extends Component {
       // Sockets
       ownHealthBar: 100,
       enemyHealthBar: 100,
-      // socket: socketIOClient("127.0.0.1:3001"),
-      socket: socketIOClient("http://typefighter.herokuapp.com"),
+      socket: socketIOClient("127.0.0.1:3001"),
+      // socket: socketIOClient("http://typefighter.herokuapp.com"),
 
       // Gameplay
       gameTime: this.props.gameTime,
