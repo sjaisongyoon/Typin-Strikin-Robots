@@ -73,6 +73,6 @@ io.on('connection', socket => {
 // })
     
 // PRODUCTION
-http.listen("http://typefighter.herokuapp.com", () => {
+http.listen(port, () => {
     console.log('listening on http://typefighter.herokuapp.com')
 });
