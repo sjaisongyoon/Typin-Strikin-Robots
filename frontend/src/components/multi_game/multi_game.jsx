@@ -9,8 +9,8 @@ class MultiGame extends Component {
       // Sockets
       ownHealthBar: 100,
       enemyHealthBar: 100,
-      // socket: socketIOClient("http://127.0.0.1:5000"),
-      socket: socketIOClient("https://typefighter.herokuapp.com"),
+      socket: socketIOClient("http://127.0.0.1:5000"),
+      // socket: socketIOClient("https://typefighter.herokuapp.com"),
 
       // Gameplay
       gameTime: this.props.gameTime,
@@ -72,6 +72,13 @@ class MultiGame extends Component {
 
   componentWillUnmount() {
     this.state.socket.disconnect();
+    if (this.props.gameRoom) {
+      let deleteData = {
+        gameRoomId: this.props.gameRoom.id,
+        currentUserId: this.props.currentUser.id
+      }
+      this.props.deleteGameRoom(deleteData);
+    }
   }
 
   componentDidMount() {
@@ -118,9 +125,6 @@ class MultiGame extends Component {
         multiplayerLosses: updateLoss
       };
       updateUser(updatedUser);
-      if (gameRoom) {
-        deleteGameRoom(gameRoom.id);
-      };
       openModal('gameend-single-modal');
     }
   }

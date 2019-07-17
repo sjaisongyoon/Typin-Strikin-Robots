@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const MultiplayerGameRoom = require('../../models/MultiplayerGameRoom');
 mongoose.set('useFindAndModify', false);
 
+
 const gameRoomPojo = gameRoom => ({
     id: gameRoom.id,
     player1Id: gameRoom.player1Id,
@@ -14,7 +15,9 @@ const gameRoomPojo = gameRoom => ({
 
 router.get("/test", (req, res) => res.json({ msg: "This is the multiplayerGameRooms route" }));
 
-router.get("/", passport.authenticate('jwt', { session: false }),(req, res) => {
+router.get("/", 
+// passport.authenticate('jwt', { session: false }),
+(req, res) => {
     MultiplayerGameRoom.find()
         .sort({ date: -1 })
         .then( (gameRooms) => {
@@ -32,7 +35,9 @@ router.get("/", passport.authenticate('jwt', { session: false }),(req, res) => {
         .catch(err => res.status(404).json({ nomultiplayergameroomsfound: 'No multiplayerGameRooms found' }));
 });
 
-router.post("/", passport.authenticate('jwt', { session: false }), (req, res) => {
+router.post("/", 
+// passport.authenticate('jwt', { session: false }), 
+(req, res) => {
         const newMultiplayerGameRoom = new MultiplayerGameRoom({
             player1Id: mongoose.Types.ObjectId(req.body.playerId), 
             // player2Id: mongoose.Types.ObjectId(req.body.player2Id),
@@ -50,7 +55,9 @@ router.post("/", passport.authenticate('jwt', { session: false }), (req, res) =>
     }
 );
 
-router.patch('/:multiplayerGameRoomId', passport.authenticate('jwt', { session: false }),(req, res) => {
+router.patch('/:multiplayerGameRoomId', 
+// passport.authenticate('jwt', { session: false }),
+(req, res) => {
     // res.send('Got a PATCH request at /multiplayerGameRooms');
     let gameRoomIdOnly = { _id: mongoose.Types.ObjectId(req.params.multiplayerGameRoomId) }
     let updateParams = { player2Id: mongoose.Types.ObjectId(req.body.playerId)}
@@ -66,19 +73,34 @@ router.patch('/:multiplayerGameRoomId', passport.authenticate('jwt', { session: 
         .catch(err => res.status(400).json({ updatefailed: 'Something wrong when updating multiplayerGameRoom!' }));
 });
 
-router.delete("/:multiplayerGameRoomId", passport.authenticate('jwt', { session: false }),(req, res) => {
+router.delete("/:multiplayerGameRoomId",
+// passport.authenticate('jwt', { session: false }),
+(req, res) => {
     let multiplayerGameRoom = { _id: mongoose.Types.ObjectId(req.params.multiplayerGameRoomId) }
+    let playerId = mongoose.Types.ObjectId(req.body.currentUserId)
     // res.send('Got a DELETE request at /user');
-    MultiplayerGameRoom.findOneAndRemove(multiplayerGameRoom)
-        .then( (removedRoom) => {
-            // let gameRoomPojo = {
-            //     id: removedRoom.id,
-            //     player1Id: removedRoom.player1Id,
-            //     player2Id: removedRoom.player2Id
-            // };
-            res.json(gameRoomPojo(removedRoom));
-        })
-        .catch(err => res.status(404).json({ nomultiplayergameroomfound: 'No multiplayerGameRoom found' }));
+    MultiplayerGameRoom.findOne(multiplayerGameRoom)
+    .then( (fetchedRoom) => {
+        if (fetchedRoom.player1Id && fetchedRoom.player1Id.equals(playerId)) {
+            fetchedRoom.player1Id = null;
+        } else {
+            fetchedRoom.player2Id = null;
+        }
+        if (fetchedRoom.player1Id === null && fetchedRoom.player2Id === null) {
+            MultiplayerGameRoom.deleteOne(multiplayerGameRoom)
+                .then(() => {
+                    res.json(gameRoomPojo(fetchedRoom));
+                })
+                .catch(err => res.status(404).json({ nomultiplayergameroomfoundtodelete: 'No multiplayerGameRoom found to delete' }));
+        } else {
+            fetchedRoom.save()
+                .then(updatedRoom => {
+                    res.json(gameRoomPojo(updatedRoom));
+                })
+                .catch(err => res.status(400).json({ savefailed: 'Something wrong when saving multiplayerGameRoom!' }));
+        }   
+    })
+    .catch(err => res.status(404).json({ nomultiplayergameroomfound: 'No multiplayerGameRoom found' }));
 });
 
 
