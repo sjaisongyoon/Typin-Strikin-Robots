@@ -70,3 +70,7 @@ io.on('connection', socket => {
 http.listen(3001, () => {
     console.log('listening on 3001')
 })
+
+// http.listen("https://typefighter.herokuapp.com", () => {
+//     console.log('listening on https://typefighter.herokuapp.com')
+// })
