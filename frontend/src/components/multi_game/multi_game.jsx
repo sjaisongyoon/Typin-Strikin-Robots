@@ -100,9 +100,9 @@ class MultiGame extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    let { currentUser, openModal, updateSingleGameWpm, updateUser, deleteGameRoom, gameRoom } = this.props;
-
-    console.log(prevState.modal, this.props.modal);
+    let { currentUser, openModal, updateMultiGameWpm, updateUser, deleteGameRoom, gameRoom } = this.props;
+    
+    // if (prevState !== this.state && !this.state.modal) this.setState({modal: this.props.modal})
     if (this.props.modal === null && this.state.elapsedTime === 0) this.startTimer();
     if (prevState.ownHealthBar > this.state.ownHealthBar) {
       this.callPlayerAnimation('player2');
@@ -111,7 +111,7 @@ class MultiGame extends Component {
 
     if (!this.state.modal && (this.state.ownHealthBar === 0 || this.state.enemyHealthBar === 0 || this.state.gameTime === 0)) {
       this.setState({ modal: true });
-      updateSingleGameWpm(parseInt(this.state.currentWPM));
+      updateMultiGameWpm({ myOwnWPM: parseInt(this.state.currentWPM), enemyWPM: parseInt(this.state.enemyWPM), });
       let updateLoss;
       let updateWin;
       if (this.state.ownHealthBar === 0) {
@@ -127,7 +127,7 @@ class MultiGame extends Component {
         multiplayerLosses: updateLoss
       };
       updateUser(updatedUser);
-      openModal('gameend-single-modal');
+      openModal('gameend-multi-modal');
     }
   }
 

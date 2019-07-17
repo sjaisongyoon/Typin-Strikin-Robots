@@ -32,6 +32,16 @@ const Modal = ({ modal, closeModal }) => {
       return null;
   }
 
+  if (modal === 'gamestart-single-modal' || modal === 'gamestart-multi-modal') {
+    return (
+      <div className="modal__background">
+        <div className="modal__child" onClick={e => e.stopPropagation()}>
+          {component}
+        </div>
+      </div>
+    )
+  }
+  
   return (
     <div className="modal__background" onClick={closeModal}>
       <div className="modal__child" onClick={e => e.stopPropagation()}>
