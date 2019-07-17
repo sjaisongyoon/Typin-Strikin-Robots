@@ -90,7 +90,7 @@ Socket.io is a javascript library that allows for bidirectional and real-time co
 * Sound effects and logo - Sam
 * Heroku deployment - Calla
 * Modals - Chris
-* Match history - Kevin
+* Debugging and stress testing - Kevin
 
 ## Bonus Features
 - [ ] Advanced animation
