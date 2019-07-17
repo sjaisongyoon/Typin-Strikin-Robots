@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import MultiGame from './multi_game';
-import { setGameTime, updateSingleGameWpm } from '../../actions/game_actions';
+import { setGameTime, updateMultiGameWpm } from '../../actions/game_actions';
 import { openModal } from '../../actions/modal_actions';
 import { updateUser } from '../../actions/user_actions';
 import { deleteGameRoom } from '../../actions/game_room_actions.js'
@@ -18,7 +18,7 @@ const msp = state => {
 const mdp = dispatch => {
   return ({
     setGameTime: time => dispatch(setGameTime(time)),
-    updateSingleGameWpm: wpm => dispatch(updateSingleGameWpm(wpm)),
+    updateMultiGameWpm: wpm => dispatch(updateMultiGameWpm(wpm)),
     openModal: type => dispatch(openModal(type)),
     updateUser: (stats) => dispatch(updateUser(stats)),
     deleteGameRoom: (deleteData) => dispatch(deleteGameRoom(deleteData))

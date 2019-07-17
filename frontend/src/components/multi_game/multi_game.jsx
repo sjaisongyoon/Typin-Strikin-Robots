@@ -97,7 +97,7 @@ class MultiGame extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    let { currentUser, openModal, updateSingleGameWpm, updateUser, deleteGameRoom, gameRoom } = this.props;
+    let { currentUser, openModal, updateMultiGameWpm, updateUser, deleteGameRoom, gameRoom } = this.props;
     
     // if (prevState !== this.state && !this.state.modal) this.setState({modal: this.props.modal})
     if (this.props.modal === null && this.state.elapsedTime === 0) this.startTimer();
