@@ -57,7 +57,7 @@ io.on('connection', socket => {
     socket.on("lobby", data => {
         twoPlayers = Object.values(socketList).length >= 4 ? true : false;
         io.emit("lobby", twoPlayers);
-        console.log(socketList);
+        console.log(Object.values(socketList).length);
         console.log(twoPlayers);
     })
 

@@ -26,6 +26,7 @@ class MultiGame extends Component {
       ownHealthBarDisplay: 250,
       enemyHealthBarDisplay: 250,
       enemyWPM: 0,
+      enemyId: "",
     }
 
 
@@ -63,7 +64,10 @@ class MultiGame extends Component {
   openSocket() {
     this.state.socket.on("gameroom", data => {
       if (data.myUserId !== this.props.currentUser.id) {
-        this.setState({ ownHealthBar: data.enemyHealthBar, enemyWPM: data.myCurrentWPM })
+        
+        this.setState({ ownHealthBar: data.enemyHealthBar, 
+          enemyWPM: data.myCurrentWPM, 
+          enemyId: data.myUserId })
       }
     })
   }
@@ -80,6 +84,7 @@ class MultiGame extends Component {
   }
 
   componentDidMount() {
+    this.props.fetchPassage(this.props.gameRoom.passageId)
     // Sockets
     this.openSocket();
     // this.setState({modal: true})
@@ -179,9 +184,8 @@ class MultiGame extends Component {
         return `${word} `;
       }
     });
-
+    
     let currentWord = initialWords.shift();
-
     this.setState({
       initialWords,
       currentWord: currentWord,
@@ -191,6 +195,7 @@ class MultiGame extends Component {
   }
 
   async handleInput(e) {
+    e.persist();
     if (this.state.gameTime !== 0 && this.state.ownHealthBar !== 0) {
       let wordSoFar = e.target.value;
 
@@ -234,6 +239,7 @@ class MultiGame extends Component {
     }
 
     // if the input is a correct match
+    // debugger;
     if (currentWord === currentInput) {
 
       // audio
@@ -497,7 +503,11 @@ class MultiGame extends Component {
   }
 
   render() {
-    let { currentUser, openModal, updateSingleGameWpm, updateUser } = this.props;
+    let { currentUser, openModal, updateSingleGameWpm, updateUser, selectUser } = this.props;
+    let enemyUser = selectUser(this.state.enemyId) || {};
+    let enemyUsername = enemyUser.username;
+
+    // show modal on game end
 
     return (
       <div className="multigame__container">
@@ -517,7 +527,7 @@ class MultiGame extends Component {
                   <h4 className="multigame__top-time">00:{this.state.gameTime > 9 ? this.state.gameTime : `0${this.state.gameTime}`}</h4>
                 </div>
                 <div className="multigame__top-player">
-                  <div className="multigame__player-name">Player 2</div>
+                  <div className="multigame__player-name">{enemyUsername}</div>
                   <div className="multigame__player-health" style={{ backgroundPosition: `${this.state.EnemyHealthBarDisplay}px`}}></div>
                   <div className="multigame__player-wpm">WPM: {this.state.enemyWPM}</div>
                 </div>

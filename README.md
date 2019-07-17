@@ -5,13 +5,25 @@ is a multiplayer game that is designed to improve typing skills in a fun and com
 ## Background and Overview
 The project is a real-time multiplayer application that incorporates an educational theme wrapped in a fun interactive environment. Users will have the opportunity to battle each other where the victor will be determined by their typing speed and precision. The user will also have the opportunity to play a single-player mode. The main challenges in creating this application are real-time functionality and smooth user experience. 
 
+## Screenshot & Demo Video
+<image src="frontend/src/assets/images/readme/Screen Shot 2019-07-17 at 9.14.13 AM.png" />
+When the user logs in or signs up, they will land on the page where they can choose either "Time Attack(Single Play)" mode or "Multiplayer" mode. 
+In the "Time Attack" mode, the user will set the time from 0-60 secs to enter the game. The main goal for the single player mode is to get the highest WPM(Word per Minute). 
+In the "Multiplayer" mode, the user who enters the first will have to create the game room and the game will begin when the second user joins the room. The main goal for the multiplayer mode is to beat the other player. Each time a user types a given word correctly, the user's character will attack the other user's character and damage the life bar. 
+
+<br/>
+<image src="frontend/src/assets/images/readme/Screen Shot 2019-07-17 at 9.15.09 AM.png" />
+Users always can access to the leaderboard. There are two separate leaderboards, "Single Player Leaderboard" and "Multi Player Leaderboard". The Single Player Leaderboard shows the rankings of all players' WPM. The Multi Player Leaderboard shows the rankings based on the number of wins each player have. 
+
+<br/> 
+
 ## Functionality and MVP
-- [ ] User Auth - Users can create and sign into their account on our application. Advantage for doing so will be for statistics and leaderboard positioning
-- [ ] Gameplay - A smooth gameplay experience that will allow users to race against time or another opponent through typing.
-- [ ] Single Player - Single player gameplay will allow users to beat their personal bests and others on a scale of wpm. 
-- [ ] Multiplayer - Users will face each other. Wins will allow them to climb the all time wins leaderboard
-- [ ] Leaderboard - (2) types of leaderboards. One will be for single player gameplay that will be based on wpms, while the other will be for the multiplayer game mode and be based on all-time total wins
-- [ ] Match History - Users will be able to display their match history and the challengers they faced. 
+- [ ] `User Auth` - Users can create and sign into their account on our application. Advantage for doing so will be for statistics and leaderboard positioning
+- [ ] `Gameplay` - A smooth gameplay experience that will allow users to race against time or another opponent through typing.
+- [ ] `Single Player` - Single player gameplay will allow users to beat their personal bests and others on a scale of wpm. 
+- [ ] `Multiplayer` - Users will face each other. Wins will allow them to climb the all time wins leaderboard
+- [ ] `Leaderboard` - (2) types of leaderboards. One will be for single player gameplay that will be based on wpms, while the other will be for the multiplayer game mode and be based on all-time total wins
+- [ ] `Match History` - Users will be able to display their match history and the challengers they faced. 
 
 ## Technologies and Technical Challenges
 
