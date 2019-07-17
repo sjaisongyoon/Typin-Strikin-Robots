@@ -100,7 +100,6 @@ class MultiGame extends Component {
     let { currentUser, openModal, updateSingleGameWpm, updateUser, deleteGameRoom, gameRoom } = this.props;
     
     // if (prevState !== this.state && !this.state.modal) this.setState({modal: this.props.modal})
-    console.log(prevState.modal, this.props.modal);
     if (this.props.modal === null && this.state.elapsedTime === 0) this.startTimer();
     if (prevState.ownHealthBar > this.state.ownHealthBar) {
       this.callPlayerAnimation('player2');
@@ -125,7 +124,7 @@ class MultiGame extends Component {
         multiplayerLosses: updateLoss
       };
       updateUser(updatedUser);
-      openModal('gameend-single-modal');
+      openModal('gameend-multi-modal');
     }
   }
 
