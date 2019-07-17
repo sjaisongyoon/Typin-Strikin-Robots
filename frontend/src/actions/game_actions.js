@@ -2,6 +2,7 @@ import {generateRandomGamePassage, findPassage} from '../util/generate_game_pass
 export const RECEIVE_PASSAGE = 'RECEIVE_PASSAGE';
 export const SET_GAME_TIME = 'SET_GAME_TIME';
 export const UPDATE_SINGLE_WPM = 'UPDATE_SINGLE_WPM';
+export const UPDATE_MULTI_WPM = 'UPDATE_MULTI_WPM';
 
 
 const receivePassage = passage => ({
@@ -19,6 +20,15 @@ export const updateSingleGameWpm = wpm => {
         type: UPDATE_SINGLE_WPM,
         wpm
     });
+}
+
+export const updateMultiGameWpm = payload => {
+    const { myOwnWPM, enemyWPM} = payload;
+    return ({
+        type: UPDATE_MULTI_WPM,
+        myOwnWPM,
+        enemyWPM,
+    })
 }
 
 
