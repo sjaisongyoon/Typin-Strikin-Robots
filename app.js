@@ -74,5 +74,5 @@ io.on('connection', socket => {
     
 // PRODUCTION
 http.listen(port, () => {
-    console.log('listening on http://typefighter.herokuapp.com')
+    console.log('listening on https://typefighter.herokuapp.com')
 });

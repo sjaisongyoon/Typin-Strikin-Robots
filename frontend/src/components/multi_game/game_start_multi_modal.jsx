@@ -8,7 +8,7 @@ class GameStartMultiModal extends React.Component {
       time: 3,
       twoPlayers: false,
       // socket: socketIOClient("http://127.0.0.1:3001"),
-      socket: socketIOClient("http://typefighter.herokuapp.com"),
+      socket: socketIOClient("https://typefighter.herokuapp.com"),
      }
   }
 
