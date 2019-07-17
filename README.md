@@ -1,21 +1,21 @@
-# Typin-Strikin-Robots
-A multiplayer game that is designed to improve typing skills in a fun and competitive manner.
-[Placeholder for live site]
+# TypeFighter
+[TypeFighter](http://typefighter.herokuapp.com)
+is a multiplayer game that is designed to improve typing skills in a fun and competitive manner.
 
 ## Background and Overview
-Typin-Strikin-Robots is a real-time multiplayer application that incorporates an educational theme wrapped in a fun interactive environment. Users will have the opportunity to battle each other where the victor will be determined by their typing speed and precision. The user will also have the opportunity to play a single-player mode. The main challenges in creating this application are real-time functionality and smooth user experience. 
+The project is a real-time multiplayer application that incorporates an educational theme wrapped in a fun interactive environment. Users will have the opportunity to battle each other where the victor will be determined by their typing speed and precision. The user will also have the opportunity to play a single-player mode. The main challenges in creating this application are real-time functionality and smooth user experience. 
 
 ## Functionality and MVP
-- [ ] User Auth - Users can sign into their account on our application. Advantage for doing so will be for statistics and leaderboard positioning
-- [ ] Gameplay - A smooth gameplay that will allow users to race against time or another opponent through typing.
+- [ ] User Auth - Users can create and sign into their account on our application. Advantage for doing so will be for statistics and leaderboard positioning
+- [ ] Gameplay - A smooth gameplay experience that will allow users to race against time or another opponent through typing.
 - [ ] Single Player - Single player gameplay will allow users to beat their personal bests and others on a scale of wpm. 
 - [ ] Multiplayer - Users will face each other. Wins will allow them to climb the all time wins leaderboard
 - [ ] Leaderboard - (2) types of leaderboards. One will be for single player gameplay that will be based on wpms, while the other will be for the multiplayer game mode and be based on all-time total wins
-- [ ] Goals/Player Stats - Users will be able to set goals for the wpm and can see their improvements over time. 
+- [ ] Match History - Users will be able to display their match history and the challengers they faced. 
 
 ## Technologies and Technical Challenges
 
-The overall architecture of Typin Strikin Robots is built with the MERN stack (MongoDB, Express, React, Node).  We also employed web sockets to facilitate a real-time multiplayer experience.  The meat of our app is on the frontend where all the game components are generated and the only information that needs to be sent back to the database are the results of each game.
+The overall architecture of TypeFighters is built with the MERN stack (MongoDB, Express, React, Node).  We also employed web sockets to facilitate a real-time multiplayer experience.  The meat of our app is on the frontend where all the game components are generated and the only information that needs to be sent back to the database are the results of each game.
 
 **Backend: MongoDB/Express**
 
@@ -25,7 +25,7 @@ For our game application, we store each user with their stats and information in
 
 The game and all of it's classic arcade themed components will be rendered using React.  Combining React with Redux, we  give all our components access to our store of data from the backend.
 
-**Socket.io**
+**Socket.io:**
 
 Socket.io is a javascript library that allows for bidirectional and real-time communication between the client/browser and the server. It utilizes a Node.js server along with a javascript library for the client.  This library is crucial for our game app if we want to implement a multiplayer feature.
 
@@ -63,7 +63,15 @@ Socket.io is a javascript library that allows for bidirectional and real-time co
 * Websocket implementation - Chris
 * CSS styling and art design - Calla/Kenny
 
+**July 16**
+
+* Animations and design - Kenny
+* Sound effects and logo - Sam
+* Heroku deployment - Calla
+* Modals - Chris
+* Match history - Kevin
 
 ## Bonus Features
 - [ ] Advanced animation
 - [ ] Complete log of match history
+- [ ] Multiple lobbies
