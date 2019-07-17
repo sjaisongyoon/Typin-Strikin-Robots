@@ -7,15 +7,16 @@ class GameStartMultiModal extends React.Component {
     this.state = { 
       time: 3,
       twoPlayers: false,
-      socket: socketIOClient("http://127.0.0.1:5000"),
-      // socket: socketIOClient("https://typefighter.herokuapp.com"),
+      // socket: socketIOClient("http://127.0.0.1:5000"),
+      socket: socketIOClient("https://typefighter.herokuapp.com"),
      }
   }
 
   openSocket() {
     this.state.socket.on("lobby", twoPlayers => {
-      if (twoPlayers) {
-        this.setState({ twoPlayers })
+      if (twoPlayers && (this.props.gameRoom.player2Id === null)) {
+        // this.setState({ twoPlayers })
+        this.props.fetchGameRooms()
       }
     })
     this.state.socket.emit("lobby");
@@ -23,7 +24,6 @@ class GameStartMultiModal extends React.Component {
 
   componentDidMount() {
     this.openSocket();
-
   }
 
   countdown() {
@@ -42,7 +42,9 @@ class GameStartMultiModal extends React.Component {
   }
 
   componentDidUpdate() {
-    if (this.state.twoPlayers && this.state.time === 3) {
+    // this.state.twoPlayers
+    let {gameRoom} = this.props;
+    if ( (gameRoom.player2Id && gameRoom.player1Id )&& this.state.time === 3) {
       this.countdown();
     }
   }
@@ -52,7 +54,9 @@ class GameStartMultiModal extends React.Component {
   }
 
   render() {
-    const display = (!this.state.twoPlayers) ? <div>
+    let { gameRoom } = this.props;
+    // (!this.state.twoPlayers)
+    const display = !(gameRoom.player2Id && gameRoom.player1Id) ? <div>
       <div className='gamestart-multi__modal-text'>waiting for</div> < br /> <div>challenger...</div>
     </div> : <div>
       {this.state.time}
