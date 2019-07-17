@@ -8,6 +8,8 @@ const msp = (state, ownProps) => {
         modalType: ownProps.type,
         currentUser: state.session.user,
         sessionWpm: state.entities.game.singleSessionWpm,
+        myOwnWPM,
+        enemyWPM,
         winner: myOwnWPM > enemyWPM ? 1 : myOwnWPM === enemyWPM ? 0 : -1,
     })
 }

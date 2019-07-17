@@ -17,7 +17,7 @@ export class GameEndMultiModal extends Component {
     }
 
     render() {
-        let { modalType, currentUser, sessionWpm, winner } = this.props;
+        let { modalType, currentUser, sessionWpm, winner, myOwnWPM, enemyWPM } = this.props;
         const winnerDisplay = winner === 1 ? 
             <div className='gameend-multi__modal-winner'>You Win!</div> : 
                 winner === 0 ? <div className='gameend-multi__modal-winner'>DRAW!</div> : 
@@ -30,7 +30,7 @@ export class GameEndMultiModal extends Component {
                 {winnerDisplay}
                 <div className="gameend-single__modal-stats">
                     <p className="gameend-single__modal-stat-single">
-                        CURRENT SESSION WPM: {sessionWpm}
+                        YOUR WPM: {myOwnWPM} <br/> THEIR WPM: {enemyWPM}
                     </p>
                     {/* <p className="gameend-single__modal-stat-single">
             LIFETIME WPM: 116
