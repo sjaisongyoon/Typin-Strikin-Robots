@@ -166,16 +166,30 @@ class MultiGame extends Component {
   }
 
   startTimer() {
+    const startSeconds = this.state.gameTime; 
+    const startTime = Date.now()
     let timer = setInterval(() => {
-      if (this.state.gameTime > 0) {
-        this.setState((prevState) => ({
-          gameTime: prevState.gameTime - 1,
-          elapsedTime: prevState.elapsedTime + 1
-        }))
-      } else {
-        clearInterval(timer);
-      }
+      let delta = Date.now() - startTime;
+      let timePassed = Math.floor(delta / 1000);
+      this.setState( prevState =>({
+        gameTime: startSeconds - timePassed,
+        elapsedTime: timePassed
+      }), () => {
+        if (startSeconds === timePassed) {
+          clearInterval(timer)
+        }
+      })
     }, 1000);
+    // let timer = setInterval(() => {
+    //   if (this.state.gameTime > 0) {
+    //     this.setState((prevState) => ({
+    //       gameTime: prevState.gameTime - 1,
+    //       elapsedTime: prevState.elapsedTime + 1
+    //     }))
+    //   } else {
+    //     clearInterval(timer);
+    //   }
+    // }, 1000);
   }
 
 
@@ -239,7 +253,7 @@ class MultiGame extends Component {
   handleSubmit() {
     // update initialWords, correctWords, currentWord, clear input
     let { currentWord, currentInput } = this.state;
-
+    
     if (currentWord === currentInput) {
       let soundEffects = [
         new Audio('assets/audio/01-punch.mp3'),
@@ -271,7 +285,7 @@ class MultiGame extends Component {
       // Update class for correct Words
       let word = document.getElementById(`${lastCorrectIdx}`);
       word.classList.add('word__span--correct')
-
+      this.calculateWPM();
       this.setState({
         currentInput: '',
         initialWords: this.state.initialWords.slice(1),
