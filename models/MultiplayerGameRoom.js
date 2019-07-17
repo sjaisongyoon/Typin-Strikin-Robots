@@ -15,7 +15,8 @@ const MultiplayerGameRoomSchema = new Schema({
     passageId: {
         type: Number,
         required: true,
-        default: Math.floor(Math.random() * (7 - 0 + 1)) + 0,
+        // default: Math.floor(Math.random() * (7 - 0 + 1)) + 0,
+        default: 7,
     },
     date: {
         type: Date,
