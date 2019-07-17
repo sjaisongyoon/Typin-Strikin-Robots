@@ -21,7 +21,7 @@ Users always can access to the leaderboard. There are two separate leaderboards,
 <br/> 
 
 ### Play Game DEMO
-<image src="https://media.giphy.com/media/fWpjlTUV46XYiwOXuq/giphy.gif"/>
+<image src="https://media.giphy.com/media/elhRW9X7AWrjiZyZQK/giphy.gif" />
 
 
 
