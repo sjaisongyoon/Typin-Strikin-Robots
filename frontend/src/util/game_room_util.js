@@ -4,8 +4,8 @@ export const createGameRoom =  gameRoomData => (
     axios.post('/api/multiplayerGameRooms', gameRoomData)
 )
 
-export const deleteGameRoom = gameRoomId => (
-    axios.delete(`/api/multiplayerGameRooms/${gameRoomId}`)
+export const deleteGameRoom = deleteData => (
+    axios.delete(`/api/multiplayerGameRooms/${deleteData.gameRoomId}`, {data:deleteData})
 )
 
 export const updateGameRoom = gameRoomData => (

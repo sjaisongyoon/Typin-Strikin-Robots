@@ -8,7 +8,7 @@ import { logout,signup } from './actions/session_actions';
 import {fetchUsers, updateUser} from './actions/user_actions';
 import {fetchLeaderboards} from './actions/leaderboard_actions';
 import {fetchPassage, setGameTime} from './actions/game_actions';
-import { createGameRoom, deleteGameRoom, fetchGameRooms } from './actions/game_room_actions';
+import { createGameRoom, deleteGameRoom, fetchGameRooms, updateGameRoom } from './actions/game_room_actions';
 
 // import {signup} from './util/session_api_util';
 import './App.scss';
@@ -44,6 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.updateUser = updateUser;
     window.createGameRoom = createGameRoom;
     window.deleteGameRoom = deleteGameRoom;
+    window.updateGameRoom = updateGameRoom;
     window.fetchGameRooms = fetchGameRooms;
     const root = document.getElementById('root');
 

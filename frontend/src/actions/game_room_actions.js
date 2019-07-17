@@ -22,8 +22,8 @@ export const createGameRoom = gameRoomData => dispatch => (
     APIUtil.createGameRoom(gameRoomData).then(gameRoom => dispatch(receiveGameRoom(gameRoom)))
 )
 
-export const deleteGameRoom = (gameRoomId) => dispatch => (
-    APIUtil.deleteGameRoom(gameRoomId).then((gameRoom) => dispatch(removeGameRoom(gameRoom)))
+export const deleteGameRoom = (deleteData) => dispatch => (
+    APIUtil.deleteGameRoom(deleteData).then((gameRoom) => dispatch(removeGameRoom(gameRoom)))
 )
 
 export const updateGameRoom = (gameRoomData) => dispatch => (

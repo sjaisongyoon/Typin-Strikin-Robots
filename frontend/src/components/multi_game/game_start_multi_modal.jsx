@@ -47,6 +47,10 @@ class GameStartMultiModal extends React.Component {
     }
   }
 
+  componentWillUnmount() {
+    this.state.socket.disconnect();
+  }
+
   render() {
     const display = (!this.state.twoPlayers) ? <div>
       <div className='gamestart-multi__modal-text'>waiting for</div> < br /> <div>challenger...</div>
