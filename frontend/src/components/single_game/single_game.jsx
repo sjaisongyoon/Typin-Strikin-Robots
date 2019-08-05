@@ -100,7 +100,7 @@ export class SingleGame extends Component {
         gameTime: startSeconds - timePassed,
         elapsedTime: timePassed
       }), () => {
-        if (startSeconds === timePassed){
+        if (startSeconds <= timePassed){
           clearInterval(timer)
         }
       }) 

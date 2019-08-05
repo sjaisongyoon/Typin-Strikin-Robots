@@ -33,7 +33,7 @@ $spriteHeight:80px;
 
 /* ken */
 .player2 { 
-  position:absolute; bottom:7rem; margin-left:150px; right: 31rem; transform: scale(2.5) scaleX(-1);
+  position:absolute; bottom:20%; margin-left:0; right: 25%; transform: scale(3.5) scaleX(-1);
   width:$spriteWidth; height:$spriteHeight; 
   background-image: url('assets/images/ken2.png'); 
   
