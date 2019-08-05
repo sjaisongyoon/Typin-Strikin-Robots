@@ -38,7 +38,7 @@ class Multi extends React.Component {
                 // debugger;
                 // return this.props.fetchPassage(action.gameRooms.data.passageId)
             })
-        // this.props.history.push('/games/multi')
+        this.props.history.push('/games/multi')
     }
 
     handleJoinGame(e) {
