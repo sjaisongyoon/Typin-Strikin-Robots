@@ -18,7 +18,7 @@ const generatePassage = () => {
 
 const MultiplayerGameRoomSchema = new Schema({
     player1Id: {
-        type: Schema.Types.ObjectxId, //same as mongoose.Types.ObjectId
+        type: Schema.Types.ObjectId, //same as mongoose.Types.ObjectId
         ref: 'users',
         default: null
     },

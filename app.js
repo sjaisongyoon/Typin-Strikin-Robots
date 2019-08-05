@@ -43,7 +43,7 @@ const port = process.env.PORT || 5000;
 // app.listen(port, () => console.log(`Server is running on port ${port}`));
 
 let socketList = {};
-let twoPlayers;x
+let twoPlayers;
 io.on('connection', socket => {
     console.log('A user has connected');
     socket.id = Math.random();
