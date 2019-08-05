@@ -158,7 +158,7 @@ class MultiGame extends Component {
   }
 
   createWordsDisplay() {
-    debugger;
+    // debugger;
     let wordsArr = this.props.activeGameRoom.passage.split(' ').map((word, idx) => {
       return <span key={idx} id={idx} className="word__span">{word}&nbsp;</span>
     })
