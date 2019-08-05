@@ -13,13 +13,19 @@ class GameStartMultiModal extends React.Component {
   }
 
   openSocket() {
-    this.state.socket.on("lobby", twoPlayers => {
-      if (twoPlayers && (this.props.gameRoom.player2Id === null)) {
+    this.state.socket.on("waitingRoom", gameRoomData => {
+      let twoPlayersInRoom = gameRoomData.players.length;
+      let thisGameRoom = this.props.gameRoom.id === gameRoomData.gameRoomId;
+      if (twoPlayersInRoom && thisGameRoom && (this.props.gameRoom.player2Id === null)) {
         // this.setState({ twoPlayers })
         this.props.fetchGameRooms()
       }
     })
-    this.state.socket.emit("lobby");
+    let data = {
+      gameRoomId: this.props.gameRoom.id,
+      myUserId: this.props.currentUser.id,
+    }
+    this.state.socket.emit("waitingRoom", data);
   }
 
   componentDidMount() {

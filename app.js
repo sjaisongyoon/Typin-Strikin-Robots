@@ -42,23 +42,36 @@ app.use("/api/multiplayerGameRooms", multiplayerGameRooms);
 const port = process.env.PORT || 5000;
 // app.listen(port, () => console.log(`Server is running on port ${port}`));
 
+let gameRooms = {};
 let socketList = {};
 let twoPlayers;
+
 io.on('connection', socket => {
     console.log('A user has connected');
     socket.id = Math.random();
     socketList[socket.id] = socket;
 
-    socket.on("gameroom", data => {
-        io.emit("gameroom", data);
-        console.log(data)
+    socket.on("gameRoom", data => {
+        // io.emit("gameRoom", data);
+        // console.log(data)
+        if (!gameRooms[data.gameRoomId]) gameRooms[data.gameRoomId] = [data.myUserId];
+        if (!gameRooms[data.gameRoomId].includes(data.myUserId)) gameRooms[data.gameRoomId].push(data.myUserId)
+        socket.join(data.gameRoomId);
+        io
+            .in(data.gameRoomId)
+            .emit(data.gameRoomId, data)
     })
 
-    socket.on("lobby", data => {
-        twoPlayers = Object.values(socketList).length >= 4 ? true : false;
-        io.emit("lobby", twoPlayers);
-        console.log(Object.values(socketList).length);
-        console.log(twoPlayers);
+    socket.on("waitingRoom", data => {
+        // twoPlayers = Object.values(socketList).length >= 4 ? true : false;
+        let gameRoomData = {
+            gameRoomId: data.gameRoomId,
+            players: gameRooms[data.gameRoomId]
+        }
+        io.emit("waitingRoom", gameRoomData);
+        // io.emit("lobby", twoPlayers);
+        // console.log(Object.values(socketList).length);
+        // console.log(twoPlayers);
     })
 
     socket.on('disconnect', () => {

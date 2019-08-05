@@ -67,7 +67,7 @@ class MultiGame extends Component {
   }
 
   openSocket() {
-    this.state.socket.on("gameroom", data => {
+    this.state.socket.on(this.props.gameRoom.id, data => {
       if (data.myUserId !== this.props.currentUser.id) {
         
         this.setState({ ownHealthBar: data.enemyHealthBar, 
@@ -76,11 +76,12 @@ class MultiGame extends Component {
       }
     })
     let data = {
+      gameRoomId: this.props.gameRoom.id,
       myUserId: this.props.currentUser.id,
       enemyHealthBar: this.state.enemyHealthBar,
       myCurrentWPM: this.state.currentWPM,
     }
-    this.state.socket.emit("gameroom", data);
+    this.state.socket.emit("gameRoom", data);
   }
 
   deleteGameRoom() {
