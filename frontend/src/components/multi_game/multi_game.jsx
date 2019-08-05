@@ -9,8 +9,8 @@ class MultiGame extends Component {
       // Sockets
       ownHealthBar: 100,
       enemyHealthBar: 100,
-      // socket: socketIOClient("http://127.0.0.1:5000"),
-      socket: socketIOClient("https://typefighter.herokuapp.com"),
+      socket: socketIOClient("http://127.0.0.1:5000"),
+      // socket: socketIOClient("https://typefighter.herokuapp.com"),
 
       // Gameplay
       gameTime: this.props.gameTime,
@@ -184,7 +184,7 @@ class MultiGame extends Component {
 
 
   createWordsArray() {
-    let words = this.props.gameRooms[activeGameRoom.data.id].passage.split(' ');
+    let words = this.props.activeGameRoom.data.passage.split(' ');
     let wordCount = words.length;
 
     let initialWords = words.map((word, idx) => {
