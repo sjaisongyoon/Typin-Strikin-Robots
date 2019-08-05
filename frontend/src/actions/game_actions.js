@@ -5,10 +5,10 @@ export const UPDATE_SINGLE_WPM = 'UPDATE_SINGLE_WPM';
 export const UPDATE_MULTI_WPM = 'UPDATE_MULTI_WPM';
 
 
-// const receivePassage = passage => ({
-//     type: RECEIVE_PASSAGE,
-//     passage
-// });
+const receivePassage = passage => ({
+    type: RECEIVE_PASSAGE,
+    passage
+});
 
 export const setGameTime = time => ({
     type: SET_GAME_TIME,
@@ -32,10 +32,10 @@ export const updateMultiGameWpm = payload => {
 }
 
 
-// export const fetchPassage = (passageId) => dispatch => {
-//     const passage = findPassage(passageId);
-//     return dispatch(receivePassage(passage))
-// };
+export const fetchPassage = (passageId) => dispatch => {
+    const passage = findPassage(passageId);
+    return dispatch(receivePassage(passage))
+};
 
 export const randomPassage = () => (
     generateRandomGamePassage()
