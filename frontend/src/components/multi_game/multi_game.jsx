@@ -44,6 +44,7 @@ class MultiGame extends Component {
     this.calculateWPM = this.calculateWPM.bind(this);
     this.calculateHealthBarDecrement = this.calculateHealthBarDecrement.bind(this);
     this.updateHealthBarDisplay = this.updateHealthBarDisplay.bind(this);
+    this.deleteGameRoom = this.deleteGameRoom.bind(this);
     // this.gameOver = this.gameOver.bind(this);
 
 
@@ -72,10 +73,15 @@ class MultiGame extends Component {
           enemyId: data.myUserId })
       }
     })
+    let data = {
+      myUserId: this.props.currentUser.id,
+      enemyHealthBar: this.state.enemyHealthBar,
+      myCurrentWPM: this.state.currentWPM,
+    }
+    this.state.socket.emit("gameroom", data);
   }
 
-  componentWillUnmount() {
-    this.state.socket.disconnect();
+  deleteGameRoom() {
     if (this.props.gameRoom) {
       let deleteData = {
         gameRoomId: this.props.gameRoom.id,
@@ -83,6 +89,12 @@ class MultiGame extends Component {
       }
       this.props.deleteGameRoom(deleteData);
     }
+  }
+
+  componentWillUnmount() {
+    this.state.socket.disconnect();
+    this.deleteGameRoom();
+    window.removeEventListener('beforeunload', this.deleteGameRoom);
   }
 
   componentDidMount() {
@@ -99,6 +111,7 @@ class MultiGame extends Component {
     setTimeout(() => {
       this.calculateHealthBarDecrement();
     }, 1000);
+    window.addEventListener('beforeunload', this.deleteGameRoom);
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -139,13 +152,6 @@ class MultiGame extends Component {
     if (newEnemyHealthBar <= 0) {
       newEnemyHealthBar = 0;
     }
-
-    let data = {
-      myUserId: this.props.currentUser.id,
-      enemyHealthBar: newEnemyHealthBar,
-      myCurrentWPM: this.state.currentWPM,
-    }
-    this.state.socket.emit("gameroom", data)
     this.setState({enemyHealthBar: newEnemyHealthBar});
   }
 
@@ -312,6 +318,12 @@ class MultiGame extends Component {
       ownHealthBarDisplay: ownBarDisplayPos,
       EnemyHealthBarDisplay: enemyBarDisplayPos,
     })
+    let data = {
+      myUserId: this.props.currentUser.id,
+      enemyHealthBar: this.state.enemyHealthBar,
+      myCurrentWPM: this.state.currentWPM,
+    }
+    this.state.socket.emit("gameroom", data);
   }
 
 
