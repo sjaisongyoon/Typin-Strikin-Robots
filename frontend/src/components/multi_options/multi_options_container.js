@@ -6,7 +6,8 @@ import {fetchPassage} from '../../actions/game_actions'
 const mapStateToProps = (state) => {
     return ({
         currentUser: state.session.user,
-        gameRoom: Object.values(state.entities.gameRooms)[0]
+        gameRooms: Object.values(state.entities.gameRooms),
+        users: state.entities.users
     });
 }
 
