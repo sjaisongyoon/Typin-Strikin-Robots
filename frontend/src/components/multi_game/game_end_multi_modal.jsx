@@ -17,10 +17,11 @@ export class GameEndMultiModal extends Component {
     }
 
     render() {
-        let { modalType, currentUser, sessionWpm, winner, myOwnWPM, enemyWPM } = this.props;
-        const winnerDisplay = winner === 1 ? 
+        let { currentUser, myOwnWPM, enemyWPM } = this.props;
+        // let winner = myOwnWPM > enemyWPM ? 1 : myOwnWPM === enemyWPM ? 0 : -1;
+        const winnerDisplay = myOwnWPM > enemyWPM ? 
             <div className='gameend-multi__modal-winner'>YOU WIN</div> : 
-                winner === 0 ? <div className='gameend-multi__modal-winner'>DRAW</div> : 
+            myOwnWPM === enemyWPM ? <div className='gameend-multi__modal-winner'>DRAW</div> : 
                 <div className='gameend-multi__modal-winner'>YOU LOSE</div>
         return (
             <div className="gameend-single__modal-container">
