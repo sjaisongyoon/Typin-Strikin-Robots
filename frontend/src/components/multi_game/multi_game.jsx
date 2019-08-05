@@ -67,7 +67,7 @@ class MultiGame extends Component {
   }
 
   openSocket() {
-    this.state.socket.on("gameroom", data => {
+    this.state.socket.on(this.props.activeGameRoom.id, data => {
       if (data.myUserId !== this.props.currentUser.id) {
         
         this.setState({ ownHealthBar: data.enemyHealthBar, 
@@ -76,17 +76,18 @@ class MultiGame extends Component {
       }
     })
     let data = {
+      gameRoomId: this.props.activeGameRoom.id,
       myUserId: this.props.currentUser.id,
       enemyHealthBar: this.state.enemyHealthBar,
       myCurrentWPM: this.state.currentWPM,
     }
-    this.state.socket.emit("gameroom", data);
+    this.state.socket.emit("gameRoom", data);
   }
 
   deleteGameRoom() {
-    if (this.props.gameRoom) {
+    if (this.props.activeGameRoom.id) {
       let deleteData = {
-        gameRoomId: this.props.gameRoom.id,
+        gameRoomId: this.props.activeGameRoom.id,
         currentUserId: this.props.currentUser.id
       }
       this.props.deleteGameRoom(deleteData);
@@ -109,7 +110,7 @@ class MultiGame extends Component {
 
     // Gameplay
     this.createWordsArray();
-    console.log(this.state);
+    // console.log(this.state);
     setTimeout(() => {
       this.calculateHealthBarDecrement();
     }, 1000);
@@ -117,7 +118,7 @@ class MultiGame extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    let { currentUser, openModal, updateMultiGameWpm, updateUser, deleteGameRoom, gameRoom } = this.props;
+    let { currentUser, openModal, updateMultiGameWpm, updateUser } = this.props;
     
     // if (prevState !== this.state && !this.state.modal) this.setState({modal: this.props.modal})
     if (this.props.modal === null && this.state.elapsedTime === 0) this.startTimer();
@@ -315,11 +316,12 @@ class MultiGame extends Component {
       EnemyHealthBarDisplay: enemyBarDisplayPos,
     })
     let data = {
+      gameRoomId: this.props.activeGameRoom.id,
       myUserId: this.props.currentUser.id,
       enemyHealthBar: this.state.enemyHealthBar,
       myCurrentWPM: this.state.currentWPM,
     }
-    this.state.socket.emit("gameroom", data);
+    this.state.socket.emit("gameRoom", data);
   }
 
 
