@@ -177,7 +177,7 @@ class MultiGame extends Component {
         gameTime: startSeconds - timePassed,
         elapsedTime: timePassed
       }), () => {
-        if (startSeconds === timePassed) {
+        if (startSeconds <= timePassed) {
           clearInterval(timer)
         }
       })

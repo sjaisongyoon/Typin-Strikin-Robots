@@ -4,11 +4,12 @@ import {createGameRoom, updateGameRoom, fetchGameRooms} from '../../actions/game
 import {fetchPassage} from '../../actions/game_actions'
 
 const mapStateToProps = (state) => {
-    return ({
-        currentUser: state.session.user,
-        gameRooms: Object.values(state.entities.gameRooms),
-        users: state.entities.users
-    });
+    return {
+      currentUser: state.session.user,
+      gameRooms: Object.values(state.entities.gameRooms),
+      activeGameRoom: state.ui.activeGameRoom,
+      users: state.entities.users
+    };
 }
 
 const mapDispatchToProps = (dispatch) => {
