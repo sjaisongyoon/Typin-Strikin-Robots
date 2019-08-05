@@ -7,22 +7,23 @@ class GameStartMultiModal extends React.Component {
     this.state = { 
       time: 3,
       twoPlayers: false,
-      // socket: socketIOClient("http://127.0.0.1:5000"),
-      socket: socketIOClient("https://typefighter.herokuapp.com"),
+      socket: socketIOClient("http://127.0.0.1:5000"),
+      // socket: socketIOClient("https://typefighter.herokuapp.com"),
      }
   }
 
   openSocket() {
     this.state.socket.on("waitingRoom", gameRoomData => {
       let twoPlayersInRoom = gameRoomData.players.length;
-      let thisGameRoom = this.props.gameRoom.id === gameRoomData.gameRoomId;
-      if (twoPlayersInRoom && thisGameRoom && (this.props.gameRoom.player2Id === null)) {
+      let thisGameRoom = this.props.activeGameRoom.id === gameRoomData.gameRoomId;
+      // debugger
+      if (twoPlayersInRoom && thisGameRoom) {
         // this.setState({ twoPlayers })
-        this.props.fetchGameRooms()
+        this.props.fetchActiveGameRoom(this.props.activeGameRoom.id)
       }
     })
     let data = {
-      gameRoomId: this.props.gameRoom.id,
+      gameRoomId: this.props.activeGameRoom.id,
       myUserId: this.props.currentUser.id,
     }
     this.state.socket.emit("waitingRoom", data);
@@ -49,8 +50,8 @@ class GameStartMultiModal extends React.Component {
 
   componentDidUpdate() {
     // this.state.twoPlayers
-    let {gameRoom} = this.props;
-    if ( (gameRoom.player2Id && gameRoom.player1Id )&& this.state.time === 3) {
+    let {activeGameRoom} = this.props;
+    if ( (activeGameRoom.player2Id && activeGameRoom.player1Id )&& this.state.time === 3) {
       this.countdown();
     }
   }
@@ -60,9 +61,9 @@ class GameStartMultiModal extends React.Component {
   }
 
   render() {
-    let { gameRoom } = this.props;
+    let { activeGameRoom } = this.props;
     // (!this.state.twoPlayers)
-    const display = !(gameRoom.player2Id && gameRoom.player1Id) ? <div>
+    const display = !(activeGameRoom.player2Id && activeGameRoom.player1Id) ? <div>
       <div className='gamestart-multi__modal-text'>waiting for</div> < br /> <div>challenger...</div>
     </div> : <div>
       {this.state.time}

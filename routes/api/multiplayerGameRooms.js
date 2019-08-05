@@ -35,6 +35,17 @@ router.get("/",
         .catch(err => res.status(404).json({ nomultiplayergameroomsfound: 'No multiplayerGameRooms found' }));
 });
 
+router.get('/:multiplayerGameRoomId',
+    (req,res) => {
+        let multiplayerGameRoom = { _id: mongoose.Types.ObjectId(req.params.multiplayerGameRoomId) }
+        MultiplayerGameRoom.findOne(multiplayerGameRoom)
+            .then( fetchedRoom => {
+                res.json(gameRoomPojo(fetchedRoom));
+            })
+            .catch(err => res.status(404).json({ nomultiplayergameroomfound: 'No multiplayerGameRoom found' }));
+    }
+);
+
 router.post("/", 
 // passport.authenticate('jwt', { session: false }), 
 (req, res) => {

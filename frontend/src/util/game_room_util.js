@@ -12,6 +12,10 @@ export const updateGameRoom = gameRoomData => (
     axios.patch(`/api/multiplayerGameRooms/${gameRoomData.id}`, gameRoomData)
 )
 
+export const fetchActiveGameRoom = (gameRoomId) => (
+    axios.get(`/api/multiplayerGameRooms/${gameRoomId}`)
+)
+
 export const fetchGameRooms = () => (
     axios.get('/api/multiplayerGameRooms')
 )

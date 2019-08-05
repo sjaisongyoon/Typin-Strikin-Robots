@@ -50,17 +50,20 @@ io.on('connection', socket => {
     console.log('A user has connected');
     socket.id = Math.random();
     socketList[socket.id] = socket;
+    let gameData = {};
 
     socket.on("gameRoom", data => {
         // io.emit("gameRoom", data);
         // console.log(data)
         if (!gameRooms[data.gameRoomId]) gameRooms[data.gameRoomId] = [data.myUserId];
         if (!gameRooms[data.gameRoomId].includes(data.myUserId)) gameRooms[data.gameRoomId].push(data.myUserId)
-        socket.join(data.gameRoomId);
+        // socket.join(data.gameRoomId);
+        gameData = data;
         io
-            .in(data.gameRoomId)
-            .emit(data.gameRoomId, data)
+            // .in(gameData.gameRoomId)
+            .emit(gameData.gameRoomId, gameData)
     })
+
 
     socket.on("waitingRoom", data => {
         // twoPlayers = Object.values(socketList).length >= 4 ? true : false;
@@ -68,6 +71,7 @@ io.on('connection', socket => {
             gameRoomId: data.gameRoomId,
             players: gameRooms[data.gameRoomId]
         }
+        console.log(gameRoomData);
         io.emit("waitingRoom", gameRoomData);
         // io.emit("lobby", twoPlayers);
         // console.log(Object.values(socketList).length);

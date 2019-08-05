@@ -37,7 +37,7 @@ export class GameEndMultiModal extends Component {
             LIFETIME WPM: 116
           </p> */}
                     <div className="gameend-single__modal-btn-container">
-                        <Link to="/options/single" className="gameend-single__modal-btn" onClick={() => this.handleClick('replay')}>REPLAY</Link>
+                        {/* <Link to="/options/single" className="gameend-single__modal-btn" onClick={() => this.handleClick('replay')}>REPLAY</Link> */}
                         <Link to="/select" className="gameend-single__modal-btn" onClick={this.props.closeModal} onClick={() => this.handleClick('menu')}>BACK TO MENU</Link>
                     </div>
 
