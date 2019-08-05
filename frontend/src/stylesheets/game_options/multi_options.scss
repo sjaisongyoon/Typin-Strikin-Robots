@@ -6,7 +6,7 @@
   cursor: pointer;
   padding: 1.4rem;
   font-size: 1rem;
-  width: 100%;
+  // width: 100%;
   text-transform: uppercase;
 }
 
@@ -42,7 +42,11 @@
 }
 
 .multi__btn-wrapper {
-  max-width: 300px;
+  // max-width: 300px;
+  display: flex;
+  margin-bottom: 1rem;
+  justify-content: space-between;
+  align-items: flex-end;
 }
 
 h2.multioptions__title {
@@ -54,4 +58,56 @@ h2.multioptions__title {
   text-decoration: none;
   color: white;
   width: 100%;
+}
+
+.multi__rooms {
+  width: 100%;
+}
+
+.multi__rooms-header {
+  font-size: 1.8rem;
+}
+
+.multi__rooms-inner {
+  width: 100%;
+  color: #fff;
+  border: 5px solid rgb(222, 155, 5);
+  height: 500px;
+  overflow-y: scroll;
+  // padding: 2rem;
+}
+
+.multi__rooms-row--first {
+  padding: 1.6rem 2rem !important;
+  border: 5px solid rgb(222, 155, 5);
+  background-color: white;
+  color: black;
+}
+
+.multi__rooms-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 5px solid rgba(255,255,255,.2);
+  padding: 1.2rem;
+  
+}
+
+.multi__rooms-row:hover {
+  background-color: rgba(255,255,255,0.15);
+  cursor: pointer;
+}
+
+.multi__rooms-row--first:hover {
+  background-color: white;
+  color: black;
+}
+
+.multi__rooms-item {
+  font-size: 1.4rem;
+}
+
+.multi__rooms-btn {
+  margin-bottom: 0;
+  padding: 0.8rem 1.4rem;
 }
