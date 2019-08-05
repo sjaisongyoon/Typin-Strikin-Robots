@@ -77,11 +77,17 @@ h2.multioptions__title {
   // padding: 2rem;
 }
 
+.multi__rooms-loading {
+  width: 100%;
+  height: 100%;
+}
+
 .multi__rooms-row--first {
   padding: 1.6rem 2rem !important;
   border: 5px solid rgb(222, 155, 5);
   background-color: white;
   color: black;
+  cursor: default;
 }
 
 .multi__rooms-row {
@@ -104,7 +110,10 @@ h2.multioptions__title {
 }
 
 .multi__rooms-item {
-  font-size: 1.4rem;
+  font-size: 1.2rem;
+  text-align: center;
+  flex: 1;
+  line-height: 2rem;
 }
 
 .multi__rooms-btn {

@@ -100,7 +100,7 @@ class MultiGame extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchPassage(this.props.gameRoom.passageId)
+    // this.props.fetchPassage(this.props.gameRoom.passageId)
     // Sockets
     this.openSocket();
     // this.setState({modal: true})
@@ -158,7 +158,7 @@ class MultiGame extends Component {
   }
 
   createWordsDisplay() {
-    let wordsArr = this.props.gamePassage.split(' ').map((word, idx) => {
+    let wordsArr = this.props.gameRooms.passage.split(' ').map((word, idx) => {
       return <span key={idx} id={idx} className="word__span">{word}&nbsp;</span>
     })
 
@@ -184,7 +184,7 @@ class MultiGame extends Component {
 
 
   createWordsArray() {
-    let words = this.props.gamePassage.split(' ');
+    let words = this.props.gameRooms[activeGameRoom.data.id].passage.split(' ');
     let wordCount = words.length;
 
     let initialWords = words.map((word, idx) => {
