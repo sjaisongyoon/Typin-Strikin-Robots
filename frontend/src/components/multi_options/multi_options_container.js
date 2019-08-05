@@ -16,7 +16,7 @@ const mapDispatchToProps = (dispatch) => {
         createGameRoom: gameRoomData => dispatch(createGameRoom(gameRoomData)),
         updateGameRoom: gameRoomData => dispatch(updateGameRoom(gameRoomData)),
         fetchGameRooms: () => dispatch(fetchGameRooms()),
-        fetchPassage: passageId => dispatch(fetchPassage(passageId)) 
+        // fetchPassage: passageId => dispatch(fetchPassage(passageId)) 
     });
 }
 

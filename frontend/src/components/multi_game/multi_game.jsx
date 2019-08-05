@@ -184,7 +184,7 @@ class MultiGame extends Component {
 
 
   createWordsArray() {
-    let words = this.props.gameRooms[activeGameRoom.data.id].passage.split(' ');
+    let words = this.props.activeGameRoom.data.passage.split(' ');
     let wordCount = words.length;
 
     let initialWords = words.map((word, idx) => {
