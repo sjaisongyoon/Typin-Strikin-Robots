@@ -72,6 +72,12 @@ class MultiGame extends Component {
           enemyId: data.myUserId })
       }
     })
+    let data = {
+      myUserId: this.props.currentUser.id,
+      enemyHealthBar: this.state.enemyHealthBar,
+      myCurrentWPM: this.state.currentWPM,
+    }
+    this.state.socket.emit("gameroom", data);
   }
 
   componentWillUnmount() {
@@ -102,8 +108,11 @@ class MultiGame extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
+
+
     let { currentUser, openModal, updateSingleGameWpm, updateUser, deleteGameRoom, gameRoom } = this.props;
-    
+ 
+
     // if (prevState !== this.state && !this.state.modal) this.setState({modal: this.props.modal})
     console.log(prevState.modal, this.props.modal);
     if (this.props.modal === null && this.state.elapsedTime === 0) this.startTimer();
@@ -140,13 +149,6 @@ class MultiGame extends Component {
     if (newEnemyHealthBar <= 0) {
       newEnemyHealthBar = 0;
     }
-
-    let data = {
-      myUserId: this.props.currentUser.id,
-      enemyHealthBar: newEnemyHealthBar,
-      myCurrentWPM: this.state.currentWPM,
-    }
-    this.state.socket.emit("gameroom", data)
     this.setState({enemyHealthBar: newEnemyHealthBar});
   }
 
@@ -313,6 +315,12 @@ class MultiGame extends Component {
       ownHealthBarDisplay: ownBarDisplayPos,
       EnemyHealthBarDisplay: enemyBarDisplayPos,
     })
+    let data = {
+      myUserId: this.props.currentUser.id,
+      enemyHealthBar: this.state.enemyHealthBar,
+      myCurrentWPM: this.state.currentWPM,
+    }
+    this.state.socket.emit("gameroom", data);
   }
 
 
