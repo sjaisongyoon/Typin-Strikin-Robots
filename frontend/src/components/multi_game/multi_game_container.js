@@ -11,8 +11,9 @@ const msp = state => {
     gameTime: state.entities.game.time,
     gamePassage: state.entities.game.passage || "",
     currentUser: state.session.user,
+    activeGameRoom: state.ui.activeGameRoom,
     modal: state.ui.modal,
-    gameRoom: Object.values(state.entities.gameRooms)[0] || {},
+    gameRooms: Object.values(state.entities.gameRooms) || {},
     selectUser: (userId) => selectUser(state, userId)
   })
 }
@@ -24,7 +25,7 @@ const mdp = dispatch => {
     openModal: type => dispatch(openModal(type)),
     updateUser: (stats) => dispatch(updateUser(stats)),
     deleteGameRoom: (deleteData) => dispatch(deleteGameRoom(deleteData)),
-    fetchPassage: (passageId) => dispatch(fetchPassage(passageId))
+    // fetchPassage: (passageId) => dispatch(fetchPassage(passageId))
 
   })
 }
