@@ -30,6 +30,10 @@ export const updateGameRoom = (gameRoomData) => dispatch => (
     APIUtil.updateGameRoom(gameRoomData).then((gameRoom) => dispatch(receiveGameRoom(gameRoom)))
 )
 
+export const fetchActiveGameRoom = (gameRoomId) => dispatch => (
+    APIUtil.fetchActiveGameRoom(gameRoomId).then(gameRoom => dispatch(receiveGameRoom(gameRoom)))
+)
+
 export const fetchGameRooms = () => dispatch => (
     APIUtil.fetchGameRooms().then(gameRooms => dispatch(receiveAllGameRooms(gameRooms)))
 )
