@@ -4,7 +4,6 @@ import SingleOptions from './single_options';
 const mapStateToProps = state => {
     return {
         user: state.session.user,
-        // leaders: state.leaders
     }
 }
 

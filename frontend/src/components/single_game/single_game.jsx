@@ -1,23 +1,5 @@
 import React, { Component } from 'react'
-// import '../../util/player1';
 import $ from 'jquery';
-
-
-// document.addEventListener('DOMContentLoaded', () => {
-//   var $ken = $('.player1');
-//   var $kenPos, $fireballPos;
-  
-//   const punch = function () {
-//     $ken.addClass('punch');
-//     setTimeout(function () { $ken.removeClass('punch'); }, 150);
-//   };
-//   $('#a').click(punch);
-// });
-
-
-
-
-
 
 export class SingleGame extends Component {
   constructor(props) {
@@ -149,7 +131,6 @@ export class SingleGame extends Component {
     let elapsedTime = this.state.elapsedTime;
 
     let currentWPM = ((numCorrectWords / 5 / elapsedTime) * 60).toFixed(0);
-    // debugger;
     this.setState({
       currentWPM: currentWPM
     });
@@ -194,7 +175,6 @@ export class SingleGame extends Component {
         correctWords: correctWords,
         currentWord: this.state.initialWords[0]
       });
-      console.log(this.state)
     }
 
     if (currentWord.length < currentInput.length) {

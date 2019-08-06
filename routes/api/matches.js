@@ -47,7 +47,6 @@ const newMatch = reqBody => {
 router.get("/test", (req, res) => res.json({ msg: "This is the matches route"}));
 
 router.get('/user/:userId', 
-// passport.authenticate('jwt', { session: false }),
 (req, res) => {
     let winner = { winnerId: mongoose.Types.ObjectId(req.params.userId)};
     let loser = { loserId: mongoose.Types.ObjectId(req.params.userId) };
@@ -66,7 +65,6 @@ router.get('/user/:userId',
 
 //may want to add in validation for game type and be included in only two types: single, multi
 router.post('/', 
-// passport.authenticate('jwt', { session: false }),
 (req, res) => {
         let match = newMatch(req.body);
         match.save().then(match => res.json(matchPojo(match)))

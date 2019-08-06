@@ -6,7 +6,6 @@
   cursor: pointer;
   padding: 1.4rem;
   font-size: 1rem;
-  // width: 100%;
   text-transform: uppercase;
 }
 
@@ -42,7 +41,6 @@
 }
 
 .multi__btn-wrapper {
-  // max-width: 300px;
   display: flex;
   margin-bottom: 1rem;
   justify-content: space-between;
@@ -74,7 +72,6 @@ h2.multioptions__title {
   border: 5px solid rgb(222, 155, 5);
   height: 500px;
   overflow-y: scroll;
-  // padding: 2rem;
 }
 
 .multi__rooms-loading {
