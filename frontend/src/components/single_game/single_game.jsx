@@ -1,23 +1,5 @@
 import React, { Component } from 'react'
-// import '../../util/player1';
 import $ from 'jquery';
-
-
-// document.addEventListener('DOMContentLoaded', () => {
-//   var $ken = $('.player1');
-//   var $kenPos, $fireballPos;
-  
-//   const punch = function () {
-//     $ken.addClass('punch');
-//     setTimeout(function () { $ken.removeClass('punch'); }, 150);
-//   };
-//   $('#a').click(punch);
-// });
-
-
-
-
-
 
 export class SingleGame extends Component {
   constructor(props) {

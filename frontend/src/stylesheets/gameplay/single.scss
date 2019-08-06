@@ -1,5 +1,4 @@
 .singlegame__top {
-  // margin-bottom: 10rem;
   width: 100%;
   padding: 3rem;
   padding-top: 2rem;
@@ -53,7 +52,6 @@ h3.singlegame__top-timer-text {
   align-items: flex-start;
   background-color: pink;
   border-radius: 5px;
-  // margin: 0 3rem 3rem 3rem;
   background-image: linear-gradient(0deg, transparent 0%, rgba(0,0,0,0.3) 85%, black 100%),url('assets/images/01-street-fighter-background-optimized.jpg');
   background-size: cover;
   background-position: bottom;
@@ -67,7 +65,6 @@ h3.singlegame__top-timer-text {
 }
 
 .singlegame__container {
-  // margin-top: 4rem;
 }
 
 
@@ -82,9 +79,6 @@ h3.singlegame__top-timer-text {
 
 .word__span--correct {
   color: greenyellow;
-  // background: linear-gradient(rgba(255,255,255,1) 0%, rgba(38, 110, 255, 1) 28%, rgb(166, 58, 130), #fff);
-  // -webkit-background-clip: text;
-  // -webkit-text-fill-color: transparent;
 }
 
 .game__input-preview {
@@ -100,9 +94,7 @@ h3.singlegame__top-timer-text {
 }
 
 
-//////////
 // Gameplay Characters
-//////////
 .player1 {
   transform: scale(3);
   bottom: 8rem;
@@ -110,9 +102,7 @@ h3.singlegame__top-timer-text {
 
 
 
-//////////
 // media queries
-//////////
 @media only screen and (max-width: 1200px) {
   .singlegame__player-name {
     font-weight: 600;

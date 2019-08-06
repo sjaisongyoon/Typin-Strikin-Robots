@@ -49,7 +49,6 @@ class MultiGame extends Component {
     this.incorrectInputDisplay = this.incorrectInputDisplay.bind(this);
     this.resetInputDisplay = this.resetInputDisplay.bind(this);
     this.removeGameRoom = this.removeGameRoom.bind(this);
-    // this.gameOver = this.gameOver.bind(this);
 
     // Moves
 
@@ -109,8 +108,6 @@ class MultiGame extends Component {
       this.props.history.push('/options/multi');
     }
   }
-
-
 
   componentWillUnmount() {
     let data = {
@@ -208,7 +205,6 @@ class MultiGame extends Component {
       })
     }, 1000);
   }
-
 
   createWordsArray() {
     let passage = this.props.activeGameRoom.passage || ''

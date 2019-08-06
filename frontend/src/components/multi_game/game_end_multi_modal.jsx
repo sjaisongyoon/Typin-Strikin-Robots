@@ -18,7 +18,6 @@ export class GameEndMultiModal extends Component {
 
     render() {
         let { currentUser, myOwnWPM, enemyWPM } = this.props;
-        // let winner = myOwnWPM > enemyWPM ? 1 : myOwnWPM === enemyWPM ? 0 : -1;
         const winnerDisplay = myOwnWPM > enemyWPM ? 
             <div className='gameend-multi__modal-winner'>YOU WIN</div> : 
             myOwnWPM === enemyWPM ? <div className='gameend-multi__modal-winner'>DRAW</div> : 

@@ -115,13 +115,6 @@ router.get('/', passport.authenticate('jwt', { session: false }),(req, res) => {
     .then(users => {
       let usersPojo = {};
       users.forEach( (user) => {
-        // let userPojo = {
-        //   id: user.id,
-        //   username: user.username,
-        //   multiplayerWins: user.multiplayerWins,
-        //   multiplayerLosses: user.multiplayerLosses,
-        //   singleplayerWPM: user.singleplayerWPM
-        // };
         usersPojo[user.id] = userPojo(user);
       })
       res.json(usersPojo);
@@ -154,19 +147,11 @@ router.get('/leaderboard', passport.authenticate('jwt', { session: false }),(req
         .catch(err => res.status(404).json({ nousersfound: 'No users found' }));
     })
     .catch(err => res.status(404).json({ nousersfound: 'No users found' }));
-  // User.find()
-  //   .sort({ singleplayerWPM: -1})
-  //   .then( users => {
-  //     leaderboardPojo["singleplayerWPM"] = users;
-  //     res.json(leaderboardPojo);
-  //   })
-  //   .catch(err => res.status(404).json({ nousersfound: 'No users found' }));
 });
 
 router.patch('/:userId', passport.authenticate('jwt', { session: false }),(req, res) => {
   const user = { _id: mongoose.Types.ObjectId(req.params.userId)}
   User.findOne(user).then((fetchedUser) => {
-    // fetchedUser.numMatches = fetchedUser.numMatches === 0 ? 1 : fetchedUser.numMatches + 1;
     if (req.body.singleplayerWPM) {
       fetchedUser.singleplayerWPM = fetchedUser.singleplayerWPM < req.body.singleplayerWPM ? req.body.singleplayerWPM : fetchedUser.singleplayerWPM
     }
@@ -174,13 +159,6 @@ router.patch('/:userId', passport.authenticate('jwt', { session: false }),(req, 
     fetchedUser.multiplayerLosses = (parseInt(req.body.multiplayerLosses) === 1) ? fetchedUser.multiplayerLosses + 1 : fetchedUser.multiplayerLosses;
     fetchedUser.save()
       .then(updatedUser => {
-        // let updatedUserPojo = {
-        //   id: updatedUser.id,
-        //   username: updatedUser.username,
-        //   multiplayerWins: updatedUser.multiplayerWins,
-        //   multiplayerLosses: updatedUser.multiplayerLosses,
-        //   singleplayerWPM: updatedUser.singleplayerWPM
-        // };
         res.json(userPojo(updatedUser));
       })
       .catch(err => res.status(400).json({ updatefailed: 'Something wrong when updating user!' }));

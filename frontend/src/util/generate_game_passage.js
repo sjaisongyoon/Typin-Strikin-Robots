@@ -17,5 +17,3 @@ export const generateRandomGamePassage = () => {
 export const findPassage = (passageId) =>{
   return passages[passageId];
 }
-
-// export default generateGamePassage;
