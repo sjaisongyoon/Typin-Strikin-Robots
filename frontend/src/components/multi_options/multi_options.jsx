@@ -106,7 +106,7 @@ class Multi extends React.Component {
                         <div className="multi__rooms-item">{playersInRoom}</div>
                         <div className="multi__rooms-item">{playerCount}</div>
                         <div className="multi__rooms-item">
-                            <button className="joingame__button multi__rooms-btn" data-gameid={gameRoom.id} onClick={this.handleJoinGame}>JOIN</button>
+                            <button className="joingame__button multi__rooms-btn" data-gameid={gameRoom.id} onClick={this.handleJoinGame} disabled={player1 && player2 ?  'disabled': ''}>JOIN</button>
                         </div>
                     </div>
                 );
