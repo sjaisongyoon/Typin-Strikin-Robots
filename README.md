@@ -44,6 +44,95 @@ For our game application, we store each user with their stats and information in
 
 The game and all of it's classic arcade themed components will be rendered using React.  Combining React with Redux, we  give all our components access to our store of data from the backend.
 
+The game logic depends on a user's text input matching the text of a randomly generated passage. 
+
+First we convert the passage to an array of strings, `initialWords`, then update 
+our **React** component's state. This will help us keep track of 
+which word the user is currently typing. 
+ 
+```javascript
+createWordsArray() {
+    let passage = this.props.activeGameRoom.passage || ''
+    let words = passage.split(' ');
+    let wordCount = words.length;
+
+    let initialWords = words.map((word, idx) => {
+        return idx === wordCount - 1 ? `${word}` : `${word} `
+    });
+    let currentWord = initialWords.shift();
+    this.setState({
+        initialWords,
+        currentWord: currentWord,
+        wordCount: wordCount
+    });
+}
+```
+We also create an array of spans to render the words to the DOM. This allows 
+us to give realtime feedback to the user by changing font color of a correctly submitted word.  
+
+```javascript
+createWordsDisplay() {
+let passage = this.props.activeGameRoom.passage || ''
+let wordsArr = passage.split(' ').map((word, idx) => {
+    return <span key={idx} id={idx} className="word__span">{word}&nbsp;</span>
+})
+return wordsArr;
+}
+```
+<!-- 
+The input box takes a user's text input and updates the value of our `currentInput` 
+variable in our state object. Any change to this value also triggers the `onChange`
+event listener.
+
+```javascript
+// within the render function, user text input field
+<input
+type="text"
+className="game__input-box"
+placeholder="Type here.."
+value={this.state.currentInput}
+onChange={(e) => this.handleInput(e)}
+autoFocus />
+``` -->
+The input field's `onChange` event listener invokes our asynchronous `handleInput` method to ensure 
+component rendering and user input always remain in sync. 
+
+```javascript
+async handleInput(e) {
+    e.persist();
+    if (this.state.gameTime !== 0 && this.state.ownHealthBar !== 0) {
+        let wordSoFar = e.target.value;
+
+        await this.setState({
+            currentInput: wordSoFar
+        });
+        this.updateUserOutput();
+        this.handleSubmit();
+    }
+}
+```
+If the user's input matches the current word the `handleSubmit` method updates our React component's 
+state. This clears the input field and properly sets the the next word to be typed. 
+
+```javascript
+handleSubmit() {
+    //...
+    // if the input is a correct match
+    if (currentWord === currentInput) {
+        //...
+        
+        // update local state with new values (next word)
+        this.setState({
+            currentInput: '',
+            initialWords: this.state.initialWords.slice(1),
+            correctWords: correctWords,
+            currentWord: this.state.initialWords[0]
+        })
+    }
+    //...
+}
+```
+
 **Socket.io:**
 
 Socket.io is a javascript library that allows for bidirectional and real-time communication between the client/browser and the server. It utilizes a Node.js server along with a javascript library for the client.  This library is crucial for our game app if we want to implement a multiplayer feature.
