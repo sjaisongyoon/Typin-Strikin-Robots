@@ -103,9 +103,39 @@ h3.singlegame__top-timer-text {
 //////////
 // Gameplay Characters
 //////////
-
-
 .player1 {
   transform: scale(3);
   bottom: 8rem;
+}
+
+
+
+//////////
+// media queries
+//////////
+@media only screen and (max-width: 1200px) {
+  .singlegame__player-name {
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: .4rem;
+  }
+  .singlegame__player-health {
+    font-size: 1rem;
+    margin-bottom: .4rem;  
+  }
+  .singlegame__player-wpm {
+    font-size: 1rem;
+    margin-top: .8rem;
+  }
+
+  .singlegame__top-time {
+    text-align: center;
+    margin-top: 0;
+    font-size: 1rem;
+  }
+
+  h3.singlegame__top-timer-text {
+    font-size: 1rem;
+  }
+
 }
