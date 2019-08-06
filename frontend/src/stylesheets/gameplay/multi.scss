@@ -43,19 +43,19 @@
 .multigame__top-timer {
   font-size: 2rem;
   position: relative;
-  top: 6rem;
+  top: 3.6rem;
   text-align: center;
 }
 
 .multigame__top-timer-text {
-  font-size: 2rem;
+  font-size: 1rem;
   margin-bottom: 0;  
 }
 
 .multigame__top-time {
   text-align: center;
   margin-top: 0;
-  font-size: 3rem;
+  font-size: 1.6rem;
 }
 
 .multigame__fight-container {
@@ -80,4 +80,41 @@
 
 .multigame__fight-inner {
   width: 100%;
+}
+
+
+@media only screen and (max-width: 1200px) {
+
+.multigame__top-player {
+  margin-top: 2rem;
+}
+
+.multigame__player-name {
+  font-size: 1rem;
+  margin-bottom: .4rem;
+}
+
+.multigame__player-health {
+  font-size: 1rem;
+  margin-bottom: .4rem;
+}
+.multigame__player-wpm {
+  font-size: 1rem;
+}
+
+
+.multigame__top-timer {
+  font-size: 1rem;
+}
+
+.multigame__top-timer-text {
+  font-size: 1rem;
+  margin-bottom: 0;  
+}
+
+.multigame__top-time {
+  margin-top: 0;
+  font-size: 1rem;
+}
+
 }
