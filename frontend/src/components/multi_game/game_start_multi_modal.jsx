@@ -18,6 +18,7 @@ class GameStartMultiModal extends React.Component {
       let thisGameRoom = this.props.activeGameRoom.id === gameRoomData.gameRoomId;
       // debugger
       if (twoPlayersInRoom && thisGameRoom) {
+        // debugger
         // this.setState({ twoPlayers })
         this.props.fetchActiveGameRoom(this.props.activeGameRoom.id)
       }
