@@ -48,7 +48,7 @@ class MultiGame extends Component {
     this.correctInputDisplay = this.correctInputDisplay.bind(this);
     this.incorrectInputDisplay = this.incorrectInputDisplay.bind(this);
     this.resetInputDisplay = this.resetInputDisplay.bind(this);
-    this.deleteGameRoom = this.deleteGameRoom.bind(this);
+    this.removeGameRoom = this.removeGameRoom.bind(this);
     // this.gameOver = this.gameOver.bind(this);
 
     // Moves
@@ -94,7 +94,11 @@ class MultiGame extends Component {
     this.state.socket.emit("gameRoom", data);
   }
 
-  deleteGameRoom() {
+  removeGameRoom(e) {
+    if (e) {
+      e.preventDefault();
+      // e.returnValue = "Are you sure?"
+    }
     if (this.props.activeGameRoom.id) {
       let deleteData = {
         gameRoomId: this.props.activeGameRoom.id,
@@ -102,7 +106,10 @@ class MultiGame extends Component {
       }
       this.props.deleteGameRoom(deleteData);
     }
+    
   }
+
+
 
   componentWillUnmount() {
     let data = {
@@ -113,11 +120,13 @@ class MultiGame extends Component {
     }
     this.state.socket.emit("gameRoom", data);
     this.state.socket.disconnect();
-    this.deleteGameRoom();
-    window.removeEventListener('beforeunload', this.deleteGameRoom);
+    this.removeGameRoom();
+    window.removeEventListener('beforeunload', this.removeGameRoom);
   }
 
   componentDidMount() {
+    window.onbeforeunload = this.removeGameRoom;
+    window.addEventListener('beforeunload', this.removeGameRoom);
     // this.props.fetchPassage(this.props.gameRoom.passageId)
     // Sockets
     this.openSocket();
@@ -131,7 +140,6 @@ class MultiGame extends Component {
     setTimeout(() => {
       this.calculateHealthBarDecrement();
     }, 1000);
-    window.addEventListener('beforeunload', this.deleteGameRoom);
   }
 
   componentDidUpdate(prevProps, prevState) {
