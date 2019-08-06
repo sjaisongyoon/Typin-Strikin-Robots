@@ -189,7 +189,7 @@ A challenge we ran into was starting a game simultaneously for both players as s
 
 
 
-**Technical Challenges:**
+#### Technical Challenges:
 * Git management between a team of 5 collaborators
 * Implementing web sockets to allow multiple users an open pipe for user to user interaction in our multiplayer mode
 * Rendering animations for a visually appealing experience
