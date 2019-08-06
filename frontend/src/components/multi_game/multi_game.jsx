@@ -27,6 +27,7 @@ class MultiGame extends Component {
       enemyHealthBarDisplay: 250,
       enemyWPM: 0,
       enemyId: "",
+      twoPlayers: true,
     }
 
 
@@ -74,7 +75,16 @@ class MultiGame extends Component {
           enemyWPM: data.myCurrentWPM, 
           enemyId: data.myUserId })
       }
-    })
+      if (data.players.length >= 3) {
+        this.setState({twoPlayers: false})
+      }
+    });
+
+    // this.state.socket.on('disconnection', () => {
+    //   console.log("a user disconnected seen on multi_game")
+    //   this.props.fetchActiveGameRoom(this.props.activeGameRoom.id);
+    // });
+
     let data = {
       gameRoomId: this.props.activeGameRoom.id,
       myUserId: this.props.currentUser.id,
@@ -95,6 +105,13 @@ class MultiGame extends Component {
   }
 
   componentWillUnmount() {
+    let data = {
+      gameRoomId: this.props.activeGameRoom.id,
+      myUserId: null,
+      enemyHealthBar: this.state.enemyHealthBar,
+      myCurrentWPM: this.state.currentWPM,
+    }
+    this.state.socket.emit("gameRoom", data);
     this.state.socket.disconnect();
     this.deleteGameRoom();
     window.removeEventListener('beforeunload', this.deleteGameRoom);
@@ -118,8 +135,8 @@ class MultiGame extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    let { currentUser, openModal, updateMultiGameWpm, updateUser } = this.props;
-    
+    let { currentUser, openModal, updateMultiGameWpm, updateUser, activeGameRoom } = this.props;
+    // let twoPlayers = activeGameRoom.player1Id && activeGameRoom.player2Id;
     // if (prevState !== this.state && !this.state.modal) this.setState({modal: this.props.modal})
     if (this.props.modal === null && this.state.elapsedTime === 0) this.startTimer();
     if (prevState.ownHealthBar > this.state.ownHealthBar) {
@@ -127,7 +144,7 @@ class MultiGame extends Component {
       this.updateHealthBarDisplay();
     }
 
-    if (!this.state.modal && (this.state.ownHealthBar === 0 || this.state.enemyHealthBar === 0 || this.state.gameTime === 0)) {
+    if (!this.state.modal && (this.state.ownHealthBar === 0 || this.state.enemyHealthBar === 0 || this.state.gameTime === 0 || (!this.state.twoPlayers && this.state.elapsedTime > 0) )) {
       this.setState({ modal: true });
       updateMultiGameWpm({ myOwnWPM: parseInt(this.state.currentWPM), enemyWPM: parseInt(this.state.enemyWPM), });
       let updateLoss;

@@ -59,6 +59,7 @@ io.on('connection', socket => {
         if (!gameRooms[data.gameRoomId].includes(data.myUserId)) gameRooms[data.gameRoomId].push(data.myUserId)
         // socket.join(data.gameRoomId);
         gameData = data;
+        gameData["players"] = gameRooms[data.gameRoomId];
         io
             // .in(gameData.gameRoomId)
             .emit(gameData.gameRoomId, gameData)
@@ -79,7 +80,8 @@ io.on('connection', socket => {
     })
 
     socket.on('disconnect', () => {
-        console.log("user disconnected");
+        // io.emit("disconnection");
+        console.log("user disconnected backend");
         delete socketList[socket.id];
     });
 });
