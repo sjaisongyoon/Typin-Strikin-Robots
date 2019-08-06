@@ -7,10 +7,10 @@ The project is a real-time multiplayer application that incorporates an educatio
 
 ## Screenshot & Demo Video
 
-#### Single Player Gameplay
+### Single Player Gameplay
 <image src="frontend/src/assets/images/readme/typefighter_single_player.gif" />
 
-#### Online (Realtime) Multiplayer Gameplay
+### Online (Realtime) Multiplayer Gameplay
 <image src="frontend/src/assets/images/readme/typefighter_multi_player.gif" />
 
 ### Select Play Modes
