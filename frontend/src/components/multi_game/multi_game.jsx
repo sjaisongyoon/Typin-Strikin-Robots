@@ -95,13 +95,29 @@ class MultiGame extends Component {
   }
 
   deleteGameRoom() {
-    if (this.props.activeGameRoom.id) {
+    let gameOver = this.state.gameTime <= this.state.elapsedTime;
+    let activeGameRoom = this.props.activeGameRoom.id ? true : false;
+    let twoPlayers = this.props.activeGameRoom.player1Id && this.props.activeGameRoom.player2Id;
+
+    if (activeGameRoom) {
       let deleteData = {
         gameRoomId: this.props.activeGameRoom.id,
         currentUserId: this.props.currentUser.id
       }
       this.props.deleteGameRoom(deleteData);
     }
+    if (!gameOver) {
+      // debugger
+      this.props.history.push('/options/multi');
+    }
+    
+    // if (this.props.activeGameRoom.id) {
+    //   let deleteData = {
+    //     gameRoomId: this.props.activeGameRoom.id,
+    //     currentUserId: this.props.currentUser.id
+    //   }
+    //   this.props.deleteGameRoom(deleteData);
+    // }
   }
 
   componentWillUnmount() {
@@ -122,7 +138,11 @@ class MultiGame extends Component {
     // Sockets
     this.openSocket();
     // this.setState({modal: true})
-    this.props.openModal('gamestart-multi-modal')
+    if (!this.props.activeGameRoom.id) {
+      this.props.history.push('/options/multi');
+    } else {
+      this.props.openModal('gamestart-multi-modal')
+    }
     console.log('open socket')
 
     // Gameplay
@@ -163,6 +183,7 @@ class MultiGame extends Component {
       };
       updateUser(updatedUser);
       openModal('gameend-multi-modal');
+      this.deleteGameRoom();
     }
   }
 
@@ -177,7 +198,8 @@ class MultiGame extends Component {
 
   createWordsDisplay() {
     // debugger;
-    let wordsArr = this.props.activeGameRoom.passage.split(' ').map((word, idx) => {
+    let passage = this.props.activeGameRoom.passage || ''
+    let wordsArr = passage.split(' ').map((word, idx) => {
       return <span key={idx} id={idx} className="word__span">{word}&nbsp;</span>
     })
 
@@ -203,7 +225,8 @@ class MultiGame extends Component {
 
 
   createWordsArray() {
-    let words = this.props.activeGameRoom.passage.split(' ');
+    let passage = this.props.activeGameRoom.passage || ''
+    let words = passage.split(' ');
     let wordCount = words.length;
 
     let initialWords = words.map((word, idx) => {
