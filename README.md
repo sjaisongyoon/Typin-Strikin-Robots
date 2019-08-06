@@ -7,7 +7,10 @@ The project is a real-time multiplayer application that incorporates an educatio
 
 ## Screenshot & Demo Video
 
+#### Single Player Gameplay
 <image src="frontend/src/assets/images/readme/typefighter_single_player.gif" />
+
+#### Online (Realtime) Multiplayer Gameplay
 <image src="frontend/src/assets/images/readme/typefighter_multi_player.gif" />
 
 ### Select Play Modes
@@ -190,46 +193,9 @@ A challenge we ran into was starting a game simultaneously for both players as s
 
 
 #### Technical Challenges:
-* Git management between a team of 5 collaborators
+<!--* Git management between a team of 5 collaborators-->
 * Implementing web sockets to allow multiple users an open pipe for user to user interaction in our multiplayer mode
 * Rendering animations for a visually appealing experience
-
-## Accomplished Over the Weekend
-
-* Gain familiartiy with the MERN stack
-* Decide on overall website design and structure
-* Setup backend server and component structure
-* Allow for front and backend communication
-* Apply CSS styling and design
-* Complete project proposal
-
-## Group Members & Work Breakdown
-
-**Calla Lee, Chris Gee, Kenny Choi, Kevin La, Sam Yoon**
-
-**July 13 - July 14**
-
-* User auth and database creation - Kevin
-* Component skeletal structure, styling - Kenny
-* Styling, Git and organization management - Calla
-* AXIOS/API/Redux Cycle - Sam
-* Websockets - Chris
-
-**July 15**
-
-* Continue and finish weekend tasks - All
-* Add Selectors, API calls, and reducers - Sam
-* Backend layout for match history and leaderboards - Kevin
-* Websocket implementation - Chris
-* CSS styling and art design - Calla/Kenny
-
-**July 16**
-
-* Animations and design - Kenny
-* Sound effects and logo - Sam
-* Heroku deployment - Calla
-* Modals - Chris
-* Debugging and stress testing - Kevin
 
 ## Bonus Features
 - [ ] Advanced animation
