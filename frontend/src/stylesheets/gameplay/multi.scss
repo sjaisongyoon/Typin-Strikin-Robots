@@ -83,38 +83,43 @@
 }
 
 
+
+
+//////////
+// media queries
+//////////
 @media only screen and (max-width: 1200px) {
 
-.multigame__top-player {
-  margin-top: 2rem;
-}
+  .multigame__top-player {
+    margin-top: 2rem;
+  }
 
-.multigame__player-name {
-  font-size: 1rem;
-  margin-bottom: .4rem;
-}
+  .multigame__player-name {
+    font-size: 1rem;
+    margin-bottom: .4rem;
+  }
 
-.multigame__player-health {
-  font-size: 1rem;
-  margin-bottom: .4rem;
-}
-.multigame__player-wpm {
-  font-size: 1rem;
-}
+  .multigame__player-health {
+    font-size: 1rem;
+    margin-bottom: .4rem;
+  }
+  .multigame__player-wpm {
+    font-size: 1rem;
+  }
 
 
-.multigame__top-timer {
-  font-size: 1rem;
-}
+  .multigame__top-timer {
+    font-size: 1rem;
+  }
 
-.multigame__top-timer-text {
-  font-size: 1rem;
-  margin-bottom: 0;  
-}
+  .multigame__top-timer-text {
+    font-size: 1rem;
+    margin-bottom: 0;  
+  }
 
-.multigame__top-time {
-  margin-top: 0;
-  font-size: 1rem;
-}
+  .multigame__top-time {
+    margin-top: 0;
+    font-size: 1rem;
+  }
 
 }
