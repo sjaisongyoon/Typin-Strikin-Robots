@@ -7,8 +7,8 @@ The project is a real-time multiplayer application that incorporates an educatio
 
 ## Screenshot & Demo Video
 
-![Multi-Demo](https://mrkchoi.github.io/WHR_data_visualization/dist/assets/screenshots/typefighter_multi_player.gif)
-![Single-Demo](https://mrkchoi.github.io/WHR_data_visualization/dist/assets/screenshots/typefighter_single_player.gif)
+<image src="frontend/src/assets/images/readme/typefighter_single_player.gif" />
+<image src="frontend/src/assets/images/readme/typefighter_multi_player.gif" />
 
 ### Select Play Modes
 <image src="frontend/src/assets/images/readme/Screen Shot 2019-07-17 at 9.14.13 AM.png" />
