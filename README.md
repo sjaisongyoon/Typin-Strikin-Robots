@@ -36,11 +36,11 @@ Users always can access to the leaderboard. There are two separate leaderboards,
 
 The overall architecture of TypeFighters is built with the MERN stack (MongoDB, Express, React, Node).  We also employed web sockets to facilitate a real-time multiplayer experience.  The meat of our app is on the frontend where all the game components are generated and the only information that needs to be sent back to the database are the results of each game.
 
-**Backend: MongoDB/Express**
+### Backend: MongoDB/Express
 
 For our game application, we store each user with their stats and information in the database.  Every time the app is loaded, express extracts all the users from Mongo and we manipulate the query results into a simple POJO back to the frontend.  This minimizes the time it takes to find a particular user and their data in our redux store, namely the currently logged in user.
 
-**Frontend: React/Node.js**
+### Frontend: React/Node.js
 
 The game and all of it's classic arcade themed components will be rendered using React.  Combining React with Redux, we  give all our components access to our store of data from the backend.
 
@@ -133,9 +133,61 @@ handleSubmit() {
 }
 ```
 
-**Socket.io:**
+### Socket.io:
 
 Socket.io is a javascript library that allows for bidirectional and real-time communication between the client/browser and the server. It utilizes a Node.js server along with a javascript library for the client.  This library is crucial for our game app if we want to implement a multiplayer feature.
+
+Welcome to the Typin-Strikin-Robots wiki!
+
+#### Multiplayer Functionality
+Once a simultaneous start was established, we then needed information to be passed between each user such as health bar status and WPM.  However, only users in that specific game room should receive that information.  We decided the simplest approach would be to transmit data from the server side by using dynamic rooms, where each room depended on the incoming data.
+
+```js
+let gameRooms = {};
+let socketList = {};
+let twoPlayers;
+
+io.on('connection', socket => {
+    socket.on("gameRoom", data => {
+        if (!gameRooms[data.gameRoomId]) gameRooms[data.gameRoomId] = [data.myUserId];
+        if (!gameRooms[data.gameRoomId].includes(data.myUserId)) gameRooms[data.gameRoomId].push(data.myUserId)
+        gameData = data;
+        gameData["players"] = gameRooms[data.gameRoomId];
+        io
+            .emit(gameData.gameRoomId, gameData)
+    })
+
+
+    socket.on("waitingRoom", data => {
+        let gameRoomData = {
+            gameRoomId: data.gameRoomId,
+            players: gameRooms[data.gameRoomId]
+        }
+        io.emit("waitingRoom", gameRoomData);
+    })
+});
+```
+
+#### Simultaneous Start Functionality
+A challenge we ran into was starting a game simultaneously for both players as soon as the second player joined the room.  With our initial logic, the second player to join the room would be able to start immediately since they already had knowledge of the first person that created the room.  The issue was finding a way to let the first player know a second player has joined.  Thus Socket.IO.  By recording each connected socket in the backend and mapping it to the specific gameroomID, we were able to accurately communicate when a second player has joined a specific game room without affecting other game rooms going on in the background.
+```js
+  openSocket() {
+    this.state.socket.on("waitingRoom", gameRoomData => {
+      let twoPlayersInRoom = gameRoomData.players.length === 2;
+      let thisGameRoom = this.props.activeGameRoom.id === gameRoomData.gameRoomId;
+      if (twoPlayersInRoom && thisGameRoom) {
+        this.props.fetchActiveGameRoom(this.props.activeGameRoom.id)
+      }
+    })
+    let data = {
+      gameRoomId: this.props.activeGameRoom.id,
+      myUserId: this.props.currentUser.id,
+    }
+    this.state.socket.emit("waitingRoom", data);
+  }
+```
+
+
 
 **Technical Challenges:**
 * Git management between a team of 5 collaborators
