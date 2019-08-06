@@ -9,8 +9,8 @@ class MultiGame extends Component {
       // Sockets
       ownHealthBar: 100,
       enemyHealthBar: 100,
-      socket: socketIOClient("http://127.0.0.1:5000"),
-      // socket: socketIOClient("https://typefighter.herokuapp.com"),
+      // socket: socketIOClient("http://127.0.0.1:5000"),
+      socket: socketIOClient("https://typefighter.herokuapp.com"),
 
       // Gameplay
       gameTime: this.props.gameTime,
@@ -144,7 +144,7 @@ class MultiGame extends Component {
       this.updateHealthBarDisplay();
     }
 
-    if (!this.state.modal && (this.state.ownHealthBar === 0 || this.state.enemyHealthBar === 0 || this.state.gameTime === 0 || (!this.state.twoPlayers && this.state.elapsedTime > 0) )) {
+    if (!this.state.modal && (this.state.ownHealthBar === 0 || this.state.enemyHealthBar === 0 || this.state.gameTime <= 0 || (!this.state.twoPlayers && this.state.elapsedTime > 0) )) {
       this.setState({ modal: true });
       updateMultiGameWpm({ myOwnWPM: parseInt(this.state.currentWPM), enemyWPM: parseInt(this.state.enemyWPM), });
       let updateLoss;
@@ -194,7 +194,7 @@ class MultiGame extends Component {
         gameTime: startSeconds - timePassed,
         elapsedTime: timePassed
       }), () => {
-        if (startSeconds === timePassed) {
+        if (startSeconds <= timePassed) {
           clearInterval(timer)
         }
       })
@@ -559,7 +559,7 @@ class MultiGame extends Component {
                   <div className="multigame__player-wpm">WPM: {this.state.currentWPM }</div>
                 </div>
                 <div className="multigame__top-timer">
-                  <h3 className="multigame__top-timer-text">Timer</h3>
+                  {/* <h3 className="multigame__top-timer-text">Timer</h3> */}
                   <h4 className="multigame__top-time">00:{this.state.gameTime > 9 ? this.state.gameTime : `0${this.state.gameTime}`}</h4>
                 </div>
                 <div className="multigame__top-player">

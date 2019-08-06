@@ -18,24 +18,26 @@
 
 .singlegame__player-name {
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 2rem;
   margin-bottom: 1rem;
 }
 .singlegame__player-health {
-  font-size: 1rem;
+  font-size: 2rem;
   margin-bottom: 1rem;  
 }
 .singlegame__player-wpm {
-  font-size: 1rem;
+  font-size: 2rem;
+  margin-top: 1.4rem;
 }
 
 .singlegame__top-time {
   text-align: center;
   margin-top: 0;
+  font-size: 2rem;
 }
 
 h3.singlegame__top-timer-text {
-  font-size: 1rem;
+  font-size: 2rem;
 }
 
 .singlegame__top-stats-wrapper {
@@ -45,19 +47,23 @@ h3.singlegame__top-timer-text {
 }
 
 .singlegame__fight-container {
-  height: 300px;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: flex-start;
   background-color: pink;
   border-radius: 5px;
-  margin: 0 3rem 3rem 3rem;
+  // margin: 0 3rem 3rem 3rem;
   background-image: linear-gradient(0deg, transparent 0%, rgba(0,0,0,0.3) 85%, black 100%),url('assets/images/01-street-fighter-background-optimized.jpg');
   background-size: cover;
   background-position: bottom;
   background-repeat: no-repeat;
-  position: relative;
-  // display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -99;
 }
 
 .singlegame__container {
@@ -75,7 +81,7 @@ h3.singlegame__top-timer-text {
 }
 
 .word__span--correct {
-  color: blue;
+  color: greenyellow;
   // background: linear-gradient(rgba(255,255,255,1) 0%, rgba(38, 110, 255, 1) 28%, rgb(166, 58, 130), #fff);
   // -webkit-background-clip: text;
   // -webkit-text-fill-color: transparent;
@@ -97,9 +103,39 @@ h3.singlegame__top-timer-text {
 //////////
 // Gameplay Characters
 //////////
-
-
 .player1 {
   transform: scale(3);
   bottom: 8rem;
+}
+
+
+
+//////////
+// media queries
+//////////
+@media only screen and (max-width: 1200px) {
+  .singlegame__player-name {
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: .4rem;
+  }
+  .singlegame__player-health {
+    font-size: 1rem;
+    margin-bottom: .4rem;  
+  }
+  .singlegame__player-wpm {
+    font-size: 1rem;
+    margin-top: .8rem;
+  }
+
+  .singlegame__top-time {
+    text-align: center;
+    margin-top: 0;
+    font-size: 1rem;
+  }
+
+  h3.singlegame__top-timer-text {
+    font-size: 1rem;
+  }
+
 }
