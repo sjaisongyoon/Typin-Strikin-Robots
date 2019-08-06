@@ -10,7 +10,6 @@ import {fetchLeaderboards} from './actions/leaderboard_actions';
 import {fetchPassage, setGameTime} from './actions/game_actions';
 import { createGameRoom, deleteGameRoom, fetchGameRooms, updateGameRoom } from './actions/game_room_actions';
 
-// import {signup} from './util/session_api_util';
 import './App.scss';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -39,7 +38,6 @@ document.addEventListener('DOMContentLoaded', () => {
     window.getState = store.getState;
     window.fetchUsers = fetchUsers;
     window.fetchLeaderboards = fetchLeaderboards;
-    // window.fetchPassage = fetchPassage;
     window.setGameTime = setGameTime;
     window.updateUser = updateUser;
     window.createGameRoom = createGameRoom;

@@ -149,7 +149,6 @@ export class SingleGame extends Component {
     let elapsedTime = this.state.elapsedTime;
 
     let currentWPM = ((numCorrectWords / 5 / elapsedTime) * 60).toFixed(0);
-    // debugger;
     this.setState({
       currentWPM: currentWPM
     });

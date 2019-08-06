@@ -80,11 +80,6 @@ class MultiGame extends Component {
       }
     });
 
-    // this.state.socket.on('disconnection', () => {
-    //   console.log("a user disconnected seen on multi_game")
-    //   this.props.fetchActiveGameRoom(this.props.activeGameRoom.id);
-    // });
-
     let data = {
       gameRoomId: this.props.activeGameRoom.id,
       myUserId: this.props.currentUser.id,
@@ -97,7 +92,6 @@ class MultiGame extends Component {
   removeGameRoom(e) {
     if (e) {
       e.preventDefault();
-      // e.returnValue = "Are you sure?"
     }
       let gameOver = this.state.gameTime <= this.state.elapsedTime;
       let activeGameRoom = this.props.activeGameRoom.id ? true : false;
@@ -112,17 +106,8 @@ class MultiGame extends Component {
     }
     
     if (!gameOver) {
-      // debugger
       this.props.history.push('/options/multi');
     }
-    
-    // if (this.props.activeGameRoom.id) {
-    //   let deleteData = {
-    //     gameRoomId: this.props.activeGameRoom.id,
-    //     currentUserId: this.props.currentUser.id
-    //   }
-    //   this.props.deleteGameRoom(deleteData);
-    // }
   }
 
 
@@ -143,10 +128,8 @@ class MultiGame extends Component {
   componentDidMount() {
     window.onbeforeunload = this.removeGameRoom;
     window.addEventListener('beforeunload', this.removeGameRoom);
-    // this.props.fetchPassage(this.props.gameRoom.passageId)
     // Sockets
     this.openSocket();
-    // this.setState({modal: true})
     if (!this.props.activeGameRoom.id) {
       this.props.history.push('/options/multi');
     } else {
@@ -156,7 +139,6 @@ class MultiGame extends Component {
 
     // Gameplay
     this.createWordsArray();
-    // console.log(this.state);
     setTimeout(() => {
       this.calculateHealthBarDecrement();
     }, 1000);
@@ -164,8 +146,6 @@ class MultiGame extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     let { currentUser, openModal, updateMultiGameWpm, updateUser, activeGameRoom } = this.props;
-    // let twoPlayers = activeGameRoom.player1Id && activeGameRoom.player2Id;
-    // if (prevState !== this.state && !this.state.modal) this.setState({modal: this.props.modal})
     if (this.props.modal === null && this.state.elapsedTime === 0) this.startTimer();
     if (prevState.ownHealthBar > this.state.ownHealthBar) {
       this.callPlayerAnimation('player2');
@@ -205,7 +185,6 @@ class MultiGame extends Component {
   }
 
   createWordsDisplay() {
-    // debugger;
     let passage = this.props.activeGameRoom.passage || ''
     let wordsArr = passage.split(' ').map((word, idx) => {
       return <span key={idx} id={idx} className="word__span">{word}&nbsp;</span>
@@ -293,13 +272,10 @@ class MultiGame extends Component {
   handleSubmit() {
     let { currentWord, currentInput } = this.state;
     
-    // if word input length is less than current word, display default input box
     if (currentWord.length > currentInput.length) {
       this.resetInputDisplay();
     }
 
-    // if the input is a correct match
-    // debugger;
     if (currentWord === currentInput) {
 
       // audio
@@ -583,14 +559,12 @@ class MultiGame extends Component {
               <div className="multigame__top-stats-wrapper">
                 <div className="multigame__top-player">
                   <div className="multigame__player-name">{currentUser.username}</div>
-                  {/* {(this.state.ownHealthBar).toFixed(2)}% */}
 
                   <div className="multigame__player-health" style={{backgroundPosition: `${this.state.ownHealthBarDisplay}px`}}>
                   </div>
                   <div className="multigame__player-wpm">WPM: {this.state.currentWPM }</div>
                 </div>
                 <div className="multigame__top-timer">
-                  {/* <h3 className="multigame__top-timer-text">Timer</h3> */}
                   <h4 className="multigame__top-time">00:{this.state.gameTime > 9 ? this.state.gameTime : `0${this.state.gameTime}`}</h4>
                 </div>
                 <div className="multigame__top-player">

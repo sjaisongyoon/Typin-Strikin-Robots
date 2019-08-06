@@ -16,10 +16,7 @@ class GameStartMultiModal extends React.Component {
     this.state.socket.on("waitingRoom", gameRoomData => {
       let twoPlayersInRoom = gameRoomData.players.length === 2;
       let thisGameRoom = this.props.activeGameRoom.id === gameRoomData.gameRoomId;
-      // debugger
       if (twoPlayersInRoom && thisGameRoom) {
-        // debugger
-        // this.setState({ twoPlayers })
         this.props.fetchActiveGameRoom(this.props.activeGameRoom.id)
       }
     })
@@ -50,7 +47,6 @@ class GameStartMultiModal extends React.Component {
   }
 
   componentDidUpdate() {
-    // this.state.twoPlayers
     let {activeGameRoom} = this.props;
     if ( (activeGameRoom.player2Id && activeGameRoom.player1Id )&& this.state.time === 3) {
       this.countdown();
@@ -63,7 +59,6 @@ class GameStartMultiModal extends React.Component {
 
   render() {
     let { activeGameRoom } = this.props;
-    // (!this.state.twoPlayers)
     const display = !(activeGameRoom.player2Id && activeGameRoom.player1Id) ? <div>
       <div className='gamestart-multi__modal-text'>waiting for</div> < br /> <div>challenger...</div>
     </div> : <div>
