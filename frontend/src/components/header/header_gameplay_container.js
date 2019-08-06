@@ -15,5 +15,4 @@ const mdp = dispatch => {
 }
 
 
-// export default connect(null, null)(HeaderGameplay);
 export default connect(msp, mdp)(HeaderGameplay);

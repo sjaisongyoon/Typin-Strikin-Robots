@@ -135,7 +135,6 @@ class MultiGame extends Component {
     } else {
       this.props.openModal('gamestart-multi-modal')
     }
-    console.log('open socket')
 
     // Gameplay
     this.createWordsArray();

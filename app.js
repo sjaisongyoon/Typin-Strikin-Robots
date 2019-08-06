@@ -24,7 +24,6 @@ if (process.env.NODE_ENV === 'production') {
 
 mongoose
     .connect(db, { useNewUrlParser: true })
-    .then(() => console.log("Connected to MongoDB successfully"))
     .catch(err => console.log(err));
 
 app.get("/", (req, res) => res.send("Hello World!!!!!!"));
@@ -40,48 +39,35 @@ app.use("/api/matches", matches);
 app.use("/api/multiplayerGameRooms", multiplayerGameRooms);
 
 const port = process.env.PORT || 5000;
-// app.listen(port, () => console.log(`Server is running on port ${port}`));
 
 let gameRooms = {};
 let socketList = {};
 let twoPlayers;
 
 io.on('connection', socket => {
-    console.log('A user has connected');
     socket.id = Math.random();
     socketList[socket.id] = socket;
     let gameData = {};
 
     socket.on("gameRoom", data => {
-        // io.emit("gameRoom", data);
-        // console.log(data)
         if (!gameRooms[data.gameRoomId]) gameRooms[data.gameRoomId] = [data.myUserId];
         if (!gameRooms[data.gameRoomId].includes(data.myUserId)) gameRooms[data.gameRoomId].push(data.myUserId)
-        // socket.join(data.gameRoomId);
         gameData = data;
         gameData["players"] = gameRooms[data.gameRoomId];
         io
-            // .in(gameData.gameRoomId)
             .emit(gameData.gameRoomId, gameData)
     })
 
 
     socket.on("waitingRoom", data => {
-        // twoPlayers = Object.values(socketList).length >= 4 ? true : false;
         let gameRoomData = {
             gameRoomId: data.gameRoomId,
             players: gameRooms[data.gameRoomId]
         }
-        console.log(gameRoomData);
         io.emit("waitingRoom", gameRoomData);
-        // io.emit("lobby", twoPlayers);
-        // console.log(Object.values(socketList).length);
-        // console.log(twoPlayers);
     })
 
     socket.on('disconnect', () => {
-        // io.emit("disconnection");
-        console.log("user disconnected backend");
         delete socketList[socket.id];
     });
 });

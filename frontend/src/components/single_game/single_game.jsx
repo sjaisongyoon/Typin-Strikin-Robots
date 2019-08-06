@@ -193,7 +193,6 @@ export class SingleGame extends Component {
         correctWords: correctWords,
         currentWord: this.state.initialWords[0]
       });
-      console.log(this.state)
     }
 
     if (currentWord.length < currentInput.length) {

@@ -14,5 +14,4 @@ const mdp = (state, ownProps) => {
 }
 
 
-// export default connect(null, null)(HeaderLanding);
 export default connect(msp, mdp)(HeaderLanding);
