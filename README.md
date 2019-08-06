@@ -39,14 +39,15 @@ Users always can access to the leaderboard. There are two separate leaderboards,
 
 The overall architecture of TypeFighters is built with the MERN stack (MongoDB, Express, React, Node).  We also employed web sockets to facilitate a real-time multiplayer experience.  The meat of our app is on the frontend where all the game components are generated and the only information that needs to be sent back to the database are the results of each game.
 
-### Backend: MongoDB/Express
+### Backend: MongoDB/Express/Node.js
 
 For our game application, we store each user with their stats and information in the database.  Every time the app is loaded, express extracts all the users from Mongo and we manipulate the query results into a simple POJO back to the frontend.  This minimizes the time it takes to find a particular user and their data in our redux store, namely the currently logged in user.
 
-### Frontend: React/Node.js
+### Frontend: React/Redux.js
 
 The game and all of it's classic arcade themed components will be rendered using React.  Combining React with Redux, we  give all our components access to our store of data from the backend.
 
+#### Handling User Input
 The game logic depends on a user's text input matching the text of a randomly generated passage. 
 
 First we convert the passage to an array of strings, `initialWords`, then update 
@@ -139,8 +140,6 @@ handleSubmit() {
 ### Socket.io:
 
 Socket.io is a javascript library that allows for bidirectional and real-time communication between the client/browser and the server. It utilizes a Node.js server along with a javascript library for the client.  This library is crucial for our game app if we want to implement a multiplayer feature.
-
-Welcome to the Typin-Strikin-Robots wiki!
 
 #### Multiplayer Functionality
 Once a simultaneous start was established, we then needed information to be passed between each user such as health bar status and WPM.  However, only users in that specific game room should receive that information.  We decided the simplest approach would be to transmit data from the server side by using dynamic rooms, where each room depended on the incoming data.
