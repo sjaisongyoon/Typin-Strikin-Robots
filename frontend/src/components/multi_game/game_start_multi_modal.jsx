@@ -14,7 +14,7 @@ class GameStartMultiModal extends React.Component {
 
   openSocket() {
     this.state.socket.on("waitingRoom", gameRoomData => {
-      let twoPlayersInRoom = gameRoomData.players.length;
+      let twoPlayersInRoom = gameRoomData.players.length === 2;
       let thisGameRoom = this.props.activeGameRoom.id === gameRoomData.gameRoomId;
       // debugger
       if (twoPlayersInRoom && thisGameRoom) {

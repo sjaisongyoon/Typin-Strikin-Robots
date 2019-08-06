@@ -3,7 +3,7 @@ import MultiGame from './multi_game';
 import { setGameTime, updateMultiGameWpm, fetchPassage } from '../../actions/game_actions';
 import { openModal } from '../../actions/modal_actions';
 import { updateUser } from '../../actions/user_actions';
-import { deleteGameRoom } from '../../actions/game_room_actions.js'
+import { deleteGameRoom, fetchActiveGameRoom } from '../../actions/game_room_actions.js'
 import { selectUser } from '../../reducers/selectors';
 
 const msp = state => {
@@ -26,7 +26,7 @@ const mdp = dispatch => {
     updateUser: (stats) => dispatch(updateUser(stats)),
     deleteGameRoom: (deleteData) => dispatch(deleteGameRoom(deleteData)),
     // fetchPassage: (passageId) => dispatch(fetchPassage(passageId))
-
+    fetchActiveGameRoom: (gameRoomId) => dispatch(fetchActiveGameRoom(gameRoomId)),
   })
 }
 
