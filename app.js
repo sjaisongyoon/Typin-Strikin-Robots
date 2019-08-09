@@ -15,18 +15,12 @@ const multiplayerGameRooms = require("./routes/api/multiplayerGameRooms");
 
 const path = require('path');
 
-if (process.env.NODE_ENV === 'production') {
-    app.use(express.static('frontend/build'));
-    app.get('/*', (req, res) => {
-      res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
-    })
-  }
 
 mongoose
-    .connect(db, { useNewUrlParser: true })
-    .catch(err => console.log(err));
+.connect(db, { useNewUrlParser: true })
+.catch(err => console.log(err));
 
-app.get("/", (req, res) => res.send("Hello World!!!!!!"));
+// app.get("/", (req, res) => res.send("Hello World!!!!!!"));
 
 app.use(passport.initialize());
 require('./config/passport')(passport);
@@ -37,6 +31,14 @@ app.use(bodyParser.json());
 app.use("/api/users", users);
 app.use("/api/matches", matches);
 app.use("/api/multiplayerGameRooms", multiplayerGameRooms);
+
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static('frontend/build'));
+    app.get('/*', (req, res) => {
+      res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
+    })
+}
+
 
 const port = process.env.PORT || 5000;
 
